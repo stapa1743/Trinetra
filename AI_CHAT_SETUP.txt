@@ -1,0 +1,26 @@
+TRINETRA ADVANCED AI CHAT — SETUP GUIDE
+
+WHAT IS INCLUDED
+- General-purpose AI assistant: visitors can ask questions across many subjects, not only Trinetra FAQs.
+- ChatGPT-style layout with new chat, recent conversations, follow-up context, formatted answers and code blocks.
+- Voice-to-text input in browsers that support the Web Speech API (browser permission required).
+- Copy answer/code actions.
+- Attach small text-based files (.txt, .md, .csv, .json, .log, .xml, .html, .css, .js, .php, .py) and ask questions about their contents. Files are read in the browser and sent as part of the message; maximum 200 KB.
+- Recent chats are saved in localStorage in the visitor's own browser, not in the website admin database.
+
+ENABLE LIVE AI
+1. Upload the complete website folder to a PHP 8+ hosting account.
+2. Ensure PHP cURL and mbstring extensions are enabled.
+3. Create an API key in your OpenAI Platform account and add billing/usage limits as appropriate.
+4. Set OPENAI_API_KEY as a server environment variable. Do NOT put the key in JavaScript, HTML, or a public config file.
+5. Optional: set OPENAI_MODEL to a model available to your API project. The default in api/chat.php is gpt-6-luna; change it only to a model your account can access.
+6. Ensure api/chat.php is reachable at https://your-domain.example/api/chat.php.
+7. Test with a general question such as “Explain photosynthesis” and a code question.
+
+IMPORTANT LIMITATIONS
+- This is a text-first assistant. Voice input converts speech to text; it does not speak replies aloud.
+- File attachments currently support text-based formats listed above, not PDF, DOCX, XLSX, images or video.
+- No live web search, image generation, or execution of uploaded code is enabled by default.
+- Visitor conversation history is browser-local only; no admin chat transcript viewer is included in this version.
+- API use is billed separately by OpenAI. Set usage limits and monitor your API account.
+- Static-only hosting cannot run the PHP API. It must be hosted on a PHP-enabled server for real AI answers.

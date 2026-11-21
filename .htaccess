@@ -1,0 +1,8 @@
+Options -Indexes
+RewriteEngine On
+# Keep legacy dashboard URLs protected by redirecting them to their PHP-guarded pages.
+RewriteRule ^(dashboard|contact-enquiries|email-subscribers|registered-members)\.html$ $1.php [R=302,L,NC]
+# Do not expose private setup and include files.
+<FilesMatch "^(ADMIN_DASHBOARD_SECURITY_SETUP\.txt|.*\.sql)$">
+  Require all denied
+</FilesMatch>

@@ -1,0 +1,23 @@
+TRINETRA PAGES & BLOG CONTENT MANAGER
+
+Open dashboard.html and use the Pages & Blog Content Manager panel.
+
+WEBSITE PAGES
+- Select Website pages.
+- Create a page with its name, URL slug, heading and content.
+- Use Edit to load an existing custom page into the form, then Save page changes.
+- Use Preview to view a published custom page.
+- Use Publish / Unpublish to control visibility.
+- Use Remove to delete a custom page.
+
+BLOG POSTS
+- Select Blog posts (the tab switches to the blog editor).
+- Add a title, category, summary and full article content.
+- Use Edit to update any listed blog post, including built-in posts.
+- Use Publish / Unpublish to control whether the post is visible.
+- Use Remove to remove a custom post or hide a built-in post.
+
+IMPORTANT STORAGE LIMITATION
+This version uses browser localStorage. Changes are visible only in the same browser profile on the same device. They do not update the hosted website for other visitors or other devices. A live public CMS requires a protected PHP/MySQL backend and authenticated admin access.
+
+The original static HTML pages (Home, About, Services, Solutions, Blog and Contact) are files in the website package. The browser dashboard cannot physically delete those files; it can hide their navigation links. Custom pages created in this manager can be deleted.

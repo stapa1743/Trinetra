@@ -1,0 +1,17 @@
+<?php
+declare(strict_types=1);
+$isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
+session_name('TRINETRA_ADMIN');
+session_set_cookie_params(['lifetime'=>0,'path'=>'/','secure'=>$isHttps,'httponly'=>true,'samesite'=>'Strict']);
+ini_set('session.use_strict_mode','1');
+session_start();
+if (!empty($_SESSION['trinetra_admin_authenticated'])) { header('Location: dashboard.php'); exit; }
+if (empty($_SESSION['admin_login_csrf'])) $_SESSION['admin_login_csrf'] = bin2hex(random_bytes(32));
+$next = $_GET['next'] ?? $_POST['next'] ?? 'dashboard.php';
+$allowed = ['dashboard.php','contact-enquiries.php','email-subscribers.php','registered-members.php'];
+if (!in_array($next, $allowed, true)) $next = 'dashboard.php';
+$error = $_SESSION['admin_login_error'] ?? '';
+unset($_SESSION['admin_login_error']);
+?><!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Trinetra Admin Login</title>
+<style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:22px;background:radial-gradient(circle at 15% 10%,#173e67,transparent 38%),#071326;color:#eaf2ff;font:15px/1.5 Inter,Segoe UI,Arial,sans-serif}.panel{width:min(100%,430px);padding:34px;border:1px solid #294568;border-radius:22px;background:rgba(10,25,46,.88);box-shadow:0 24px 80px #0008;backdrop-filter:blur(18px)}.brand{display:flex;align-items:center;gap:12px;font-weight:850;letter-spacing:2px}.brand img{width:48px;height:48px;object-fit:contain}.eyebrow{margin:26px 0 4px;color:#36d7e8;font-size:11px;letter-spacing:2px;font-weight:800}h1{margin:0 0 8px;font-size:29px}p{color:#9fb2ce;margin:0 0 23px}label{display:block;margin:14px 0 6px;color:#c4d2e6;font-size:12px;font-weight:700}input{width:100%;padding:13px 14px;border-radius:10px;border:1px solid #345174;background:#08172b;color:#fff;font:inherit;outline:none}input:focus{border-color:#36d7e8;box-shadow:0 0 0 3px #36d7e81e}button{width:100%;margin-top:22px;padding:13px;border:0;border-radius:10px;background:linear-gradient(120deg,#ffe7a0,#ffb52d);color:#171006;font-weight:850;font-size:14px;cursor:pointer}.error{padding:11px 13px;border:1px solid #87465a;background:#4b2434;border-radius:9px;color:#ffdce4;margin:15px 0}.foot{margin-top:20px;text-align:center;font-size:11px;color:#7186a7}</style></head><body><main class="panel"><div class="brand"><img src="assets/trinetra-logo.png" alt="Trinetra logo">TRINETRA</div><div class="eyebrow">SECURE CONTROL CENTER</div><h1>Administrator Login</h1><p>Sign in with your private dashboard credentials to continue.</p><?php if ($error): ?><div class="error"><?=htmlspecialchars($error, ENT_QUOTES, 'UTF-8')?></div><?php endif; ?><form method="post" action="admin-auth.php" autocomplete="on"><input type="hidden" name="csrf" value="<?=htmlspecialchars($_SESSION['admin_login_csrf'], ENT_QUOTES, 'UTF-8')?>"><input type="hidden" name="next" value="<?=htmlspecialchars($next, ENT_QUOTES, 'UTF-8')?>"><label for="username">Admin username</label><input id="username" name="username" autocomplete="username" required maxlength="100"><label for="password">Password</label><input id="password" type="password" name="password" autocomplete="current-password" required><button type="submit">Sign In to Dashboard</button></form><div class="foot">Restricted access · Trinetra Pvt Ltd</div></main></body></html>

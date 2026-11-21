@@ -1,0 +1,14 @@
+TRINETRA — SEPARATE REGISTERED MEMBERS DASHBOARD
+
+A dedicated Registered Website Members option has been added to the dashboard sidebar.
+
+HOW TO USE
+1. Upload the complete website folder to your PHP hosting.
+2. Open dashboard.html.
+3. Select “Registered Website Members” in the left navigation.
+4. Enter the private dashboard admin key configured in api/config.php.
+5. Click “Load registered members”.
+
+The dedicated page is registered-members.html. It uses the existing secure api/auth.php admin endpoint and assets/member-admin.js. Existing member records and database configuration are retained.
+
+Features: total/active/blocked counts, search by name/email/ID, status filter, CSV export, block/unblock, and delete. Passwords are never shown.

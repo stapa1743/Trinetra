@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090806">
+  <meta name="description" content="Explore TRINETRA Launch Defense Suite: a layered cybersecurity and network defense service framework for modern organizations.">
+  <title>Launch Defense Suite | TRINETRA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--gold:#ffc247;--gold2:#ff9d16;--gold3:#ffe7a0;--ink:#080807;--panel:rgba(13,13,12,.82);--line:rgba(255,190,66,.42);--white:#f8f5ed;--muted:#c8c1b4;--cyan:#27d8ff;--green:#79f4a4}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:100px}
+    body{font-family:Inter,Arial,sans-serif;background:#080807;color:var(--white);overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;z-index:-3;background:linear-gradient(90deg,rgba(5,5,5,.46),rgba(5,5,5,.22) 55%,rgba(5,5,5,.42)),url("assets/trinetra-background.png") center/cover no-repeat;transform:scale(1.015)}
+    body:after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 70% 28%,transparent 0 23%,rgba(0,0,0,.25) 65%),linear-gradient(180deg,rgba(0,0,0,.22),transparent 25%,rgba(0,0,0,.58))}
+    a{color:inherit;text-decoration:none}button{font:inherit}
+    .ambient{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
+    .spark{position:absolute;width:3px;height:3px;border-radius:50%;background:#ffd36b;box-shadow:0 0 12px 3px #ff9f20;opacity:0;animation:floatSpark 7s linear infinite}
+    @keyframes floatSpark{0%{transform:translateY(30px) scale(.5);opacity:0}20%{opacity:.8}80%{opacity:.65}100%{transform:translateY(-120px) scale(1.3);opacity:0}}
+    .topbar{position:fixed;z-index:1000;top:8px;left:50%;transform:translateX(-50%);width:min(1450px,calc(100% - 36px));min-height:66px;padding:0 22px;display:flex;align-items:center;justify-content:space-between;gap:18px;border:1px solid var(--line);border-radius:19px;background:rgba(9,9,8,.9);backdrop-filter:blur(18px);box-shadow:0 8px 35px #0009,0 0 22px #ffad2630}
+    .brand{display:flex;align-items:center;gap:11px;min-width:max-content}.brand-mark{width:44px;height:44px;border-radius:50%;overflow:hidden;border:1px solid var(--gold);box-shadow:0 0 18px #ffb52d55}.brand-mark img{width:100%;height:100%;object-fit:cover}.brand-name{font:700 24px Cinzel,serif;letter-spacing:2px;color:#ffda82;text-shadow:0 0 13px #ff9d16aa}
+    .navlinks{display:flex;align-items:center;gap:clamp(10px,1.35vw,21px);margin-left:auto}.navlinks a{font-size:11px;color:#f4f0e8;position:relative;padding:23px 0;white-space:nowrap;transition:.25s}.navlinks a:hover,.navlinks a.active{color:#ffd45f}.navlinks a:after{content:"";position:absolute;left:0;right:100%;bottom:15px;height:1px;background:var(--gold);transition:.25s}.navlinks a:hover:after,.navlinks a.active:after{right:0}
+    .launch,.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 18px;border-radius:999px;background:linear-gradient(120deg,#ffe7a0,#ffb52d 55%,#ff8c16);color:#171006;font-weight:800;font-size:12px;box-shadow:0 7px 25px #ffad2640;transition:.3s;border:0;cursor:pointer}.launch:hover,.btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px #ffad2670}.btn.secondary{background:rgba(10,10,9,.55);border:1px solid #ffc24788;color:#ffe7a0;box-shadow:none}.menu-btn{display:none;background:transparent;color:var(--gold);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:20px}
+    .wrap{width:min(1180px,calc(100% - 44px));margin:auto}
+    .hero{min-height:790px;padding:170px 0 100px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:48px}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--gold3);font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase}.eyebrow:before{content:"";width:28px;height:1px;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+    h1,h2,h3{font-family:Cinzel,Georgia,serif}h1{font-size:clamp(43px,6vw,76px);line-height:1.08;letter-spacing:-1.5px;margin:23px 0;color:#fff8e8}h1 span,.gold{color:var(--gold);text-shadow:0 0 25px #ffad2630}
+    .hero-copy{font-size:15px;line-height:1.95;color:#ded7c9;max-width:650px}.hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}.hero-note{display:flex;gap:12px;align-items:center;margin-top:25px;color:#cfc5b2;font-size:11px;letter-spacing:.5px}.live-dot{width:8px;height:8px;border-radius:50%;background:#76ff9b;box-shadow:0 0 14px #76ff9b;animation:pulse 1.8s infinite}
+    @keyframes pulse{50%{opacity:.35;transform:scale(.72)}}
+    .defense-visual{position:relative;min-height:490px;display:grid;place-items:center;isolation:isolate}
+    .visual-grid{position:absolute;inset:7%;border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 42px,rgba(255,194,71,.12) 43px 44px);animation:rotate 55s linear infinite}
+    .visual-grid:before,.visual-grid:after{content:"";position:absolute;inset:10%;border:1px dashed #ffc24755;border-radius:50%;animation:rotate 30s linear infinite reverse}
+    .visual-grid:after{inset:23%;border-color:#27d8ff55;animation-duration:20s}
+    @keyframes rotate{to{transform:rotate(360deg)}}
+    .shield{width:230px;height:265px;display:grid;place-items:center;clip-path:polygon(50% 0,91% 16%,86% 68%,50% 100%,14% 68%,9% 16%);background:linear-gradient(145deg,#ffe7a0,#bd781a 40%,#19140a 72%);filter:drop-shadow(0 0 35px #ffb52d66);animation:float 5s ease-in-out infinite}
+    .shield-inner{width:218px;height:253px;clip-path:polygon(50% 0,91% 16%,86% 68%,50% 100%,14% 68%,9% 16%);display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,#39260d,#0c0b09 72%);font-size:66px;color:#ffcf69;text-shadow:0 0 28px #ffb52d}
+    @keyframes float{50%{transform:translateY(-13px)}}
+    .orbit-tag{position:absolute;padding:11px 14px;border:1px solid #ffc24766;border-radius:12px;background:rgba(9,9,8,.86);backdrop-filter:blur(12px);font-size:10px;font-weight:800;letter-spacing:1px;color:#ffe7a0;box-shadow:0 8px 25px #0008;animation:tagFloat 4s ease-in-out infinite}
+    .orbit-tag b{display:block;color:#fff;font-size:12px;margin-bottom:4px}.tag-a{top:13%;left:0}.tag-b{top:21%;right:-2%;animation-delay:-1s}.tag-c{bottom:18%;left:1%;animation-delay:-2s}.tag-d{bottom:12%;right:0;animation-delay:-3s}
+    @keyframes tagFloat{50%{transform:translateY(-9px)}}
+    .trust-strip{border-top:1px solid #ffc24730;border-bottom:1px solid #ffc24730;background:rgba(8,8,7,.68);padding:22px 0}.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;text-align:center}.trust-grid strong{display:block;color:#ffe09a;font:700 17px Cinzel,serif}.trust-grid span{display:block;color:#bfb5a4;font-size:10px;letter-spacing:1px;margin-top:6px;text-transform:uppercase}
+    section.content-section{padding:100px 0;background:linear-gradient(180deg,rgba(5,5,4,.24),rgba(5,5,4,.82))}.section-head{text-align:center;max-width:760px;margin:0 auto 48px}.section-head .eyebrow{justify-content:center}.section-head h2{font-size:clamp(30px,4vw,48px);line-height:1.2;margin:18px 0}.section-head p{color:var(--muted);font-size:14px;line-height:1.9}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.feature-card{position:relative;overflow:hidden;padding:28px;border:1px solid #ffc24742;border-radius:20px;background:linear-gradient(145deg,rgba(24,20,12,.94),rgba(7,8,8,.91));min-height:250px;transition:.35s}.feature-card:before{content:"";position:absolute;inset:-80% 30% auto;height:150px;background:#ffbd3c18;filter:blur(30px);transform:rotate(-20deg)}.feature-card:hover{transform:translateY(-8px);border-color:#ffd36b;box-shadow:0 18px 40px #0008,0 0 24px #ffb52d1b}.feature-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:#ffc24718;border:1px solid #ffc24755;color:#ffdc8a;font-size:23px;margin-bottom:22px}.feature-card h3{font-size:18px;margin-bottom:12px;color:#ffe5ad}.feature-card p{font-size:12px;line-height:1.85;color:#c9c0b2}
+    .layers{display:grid;grid-template-columns:.8fr 1.2fr;gap:42px;align-items:center}.layer-intro h2{font-size:clamp(30px,4vw,46px);line-height:1.2;margin:18px 0}.layer-intro p{font-size:13px;line-height:1.9;color:var(--muted)}.layer-list{display:grid;gap:12px}.layer{display:grid;grid-template-columns:48px 1fr auto;align-items:center;gap:16px;padding:18px 20px;border:1px solid #ffc2473b;border-radius:15px;background:rgba(12,12,10,.84);transition:.3s}.layer:hover{border-color:#ffd36b;transform:translateX(6px);background:#17130b}.layer-number{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:#ffc24718;color:#ffdc8a;font:700 14px Cinzel,serif}.layer h3{font:700 14px Inter,sans-serif;color:#ffe3a4;margin-bottom:5px}.layer p{font-size:11px;line-height:1.6;color:#c2b9aa}.layer-arrow{color:#ffcb63;font-size:19px}
+    .journey-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.journey-step{padding:23px 20px;border:1px solid #ffc2473b;border-radius:17px;background:rgba(10,10,9,.86)}.journey-step span{font:700 27px Cinzel,serif;color:#ffca5a}.journey-step h3{font-size:15px;margin:12px 0;color:#ffe5ad}.journey-step p{font-size:11px;line-height:1.8;color:#c9c0b2}
+    .cta-panel{padding:48px;border:1px solid #ffc24777;border-radius:25px;background:radial-gradient(circle at 85% 20%,#ffb52d20,transparent 32%),linear-gradient(130deg,rgba(30,23,11,.95),rgba(8,9,9,.96));box-shadow:0 20px 65px #0008;display:flex;align-items:center;justify-content:space-between;gap:30px}.cta-panel h2{font-size:clamp(27px,3.5vw,42px);margin:14px 0}.cta-panel p{max-width:680px;color:#cfc5b5;font-size:13px;line-height:1.8}
+    .faq-list{max-width:850px;margin:auto;display:grid;gap:10px}.faq-item{border:1px solid #ffc2473b;border-radius:14px;background:rgba(10,10,9,.84);overflow:hidden}.faq-question{width:100%;padding:19px 20px;text-align:left;background:none;border:0;color:#ffe5ad;font-weight:700;display:flex;justify-content:space-between;gap:15px;cursor:pointer}.faq-answer{display:none;padding:0 20px 19px;color:#c9c0b2;font-size:12px;line-height:1.85}.faq-item.open .faq-answer{display:block}.faq-item.open .faq-question span:last-child{transform:rotate(45deg)}
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+    .site-footer{position:relative;background:#070706;border-top:1px solid #ffc24744}
+
+    /* Shared responsive footer styling */
+    .site-footer{position:relative;overflow:hidden;margin-top:45px;padding:58px max(28px,calc((100% - 1335px)/2)) 22px;background:linear-gradient(180deg,rgba(10,9,8,.96),rgba(4,4,4,.99));border-top:1px solid #d99b3d88;isolation:isolate}
+    .site-footer:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.2;background:radial-gradient(ellipse at 15% 0%,#ffb52b55,transparent 42%),radial-gradient(ellipse at 85% 30%,#ff8e1c30,transparent 38%)}
+    .footer-glow{position:absolute;top:-1px;left:50%;width:min(720px,80%);height:1px;transform:translateX(-50%);background:#ffd16c;box-shadow:0 0 24px 5px #ffae2b88}
+    .footer-main{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:34px;padding-bottom:38px}
+    .footer-brand,.footer-column{min-width:0}.footer-logo{display:inline-flex;align-items:center;gap:12px}.footer-logo img{width:48px;height:48px;object-fit:cover;border-radius:50%;border:1px solid #dca443;box-shadow:0 0 18px #ffb52d44}.footer-logo span{font:700 27px Cinzel,serif;letter-spacing:2px;color:#ffda82;text-shadow:0 0 12px #ff9d1666}
+    .footer-tagline{font-size:10px;letter-spacing:1.7px;color:#f4bd58;margin:12px 0}.footer-about{max-width:330px;color:#c7beb0;font-size:13px;line-height:1.75}
+    .footer-socials{display:flex;gap:9px;margin-top:20px}.footer-socials a{width:34px;height:34px;display:grid;place-items:center;border:1px solid #9b713b;border-radius:50%;color:#f5c66d;background:#17120b;transition:.25s;font-size:13px;font-weight:700}.footer-socials a:hover{transform:translateY(-4px);box-shadow:0 0 17px #ffb52d77}
+    .footer-column{display:flex;flex-direction:column;align-items:flex-start;gap:13px}.footer-column h3{font-size:15px;color:#ffda8a;margin:5px 0 7px;font-weight:700}.footer-column>a{font-size:13px;color:#c9c1b5;transition:.2s;line-height:1.5}.footer-column>a:hover,.footer-legal a:hover,.back-to-top:hover{color:#ffc247;transform:translateX(3px)}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:22px;border-top:1px solid #a87a3d55;color:#a99f90;font-size:11px}.footer-legal{display:flex;gap:22px}.footer-legal a,.back-to-top{color:#bdb3a5;transition:.2s;white-space:nowrap}
+    @media(max-width:950px){.footer-main{grid-template-columns:1.3fr 1fr 1fr;gap:28px}.footer-brand{grid-column:1/-1}}
+    @media(max-width:600px){.site-footer{padding:42px 20px 20px;margin-top:25px}.footer-main{grid-template-columns:1fr 1fr;gap:26px 18px;padding-bottom:30px}.footer-brand{grid-column:1/-1}.footer-logo img{width:42px;height:42px}.footer-logo span{font-size:23px}.footer-column h3{font-size:14px}.footer-column>a{font-size:12px}.footer-bottom{align-items:flex-start;flex-direction:column;gap:13px}.footer-legal{flex-wrap:wrap;gap:14px}.footer-bottom p,.footer-legal a,.back-to-top{font-size:10px}}
+
+    @media(max-width:1100px){.navlinks{gap:9px}.navlinks a{font-size:10px}.launch{display:none}.hero{gap:20px}.feature-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:760px){.topbar{width:calc(100% - 24px);padding:0 14px}.menu-btn{display:block}.navlinks{display:none;position:absolute;top:68px;left:0;right:0;padding:12px 18px 18px;background:rgba(8,8,7,.98);border:1px solid #a87831;border-radius:14px;flex-direction:column;align-items:stretch;gap:0}.navlinks.open{display:flex}.navlinks a{padding:13px 7px;border-bottom:1px solid #ffffff12;font-size:13px}.navlinks a:after{display:none}.hero{grid-template-columns:1fr;padding-top:140px;min-height:unset;text-align:center}.hero .eyebrow{justify-content:center}.hero-copy{margin:auto}.hero-actions{justify-content:center}.defense-visual{min-height:370px}.trust-grid{grid-template-columns:repeat(2,1fr);row-gap:22px}.layers{grid-template-columns:1fr}.journey-grid{grid-template-columns:repeat(2,1fr)}.cta-panel{display:block;text-align:center;padding:34px 24px}.cta-panel .btn{margin-top:24px}.section-head{margin-bottom:34px}}
+    @media(max-width:520px){.wrap{width:calc(100% - 30px)}.brand-name{font-size:21px}.brand-mark{width:39px;height:39px}.feature-grid{grid-template-columns:1fr}.journey-grid{grid-template-columns:1fr}.defense-visual{min-height:320px}.shield{width:180px;height:210px}.shield-inner{width:170px;height:200px;font-size:52px}.orbit-tag{font-size:8px;padding:8px}.orbit-tag b{font-size:10px}.layer{grid-template-columns:42px 1fr}.layer-arrow{display:none}section.content-section{padding:75px 0}.cta-panel{padding:30px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+  
+    .navlinks a.nav-cta{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:10px 15px!important;margin:0 1px;border:1px solid #ffc247;
+      border-radius:999px;background:linear-gradient(120deg,#ffe7a0,#ffb52d 58%,#ff9418);
+      color:#171006!important;font-weight:800!important;font-size:11px!important;
+      letter-spacing:.15px;box-shadow:0 5px 18px #ffad2638;
+      transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
+    }
+    .navlinks a.nav-cta:after{display:none!important}
+    .navlinks a.nav-cta:hover{color:#100c05!important;transform:translateY(-2px);box-shadow:0 9px 24px #ffad2670;filter:brightness(1.06)}
+    @media(max-width:760px){.navlinks a.nav-cta{align-self:flex-start;margin:10px 0 2px;padding:11px 17px!important}}
+    
+
+    .launch-suite-right{
+      display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;
+      padding:11px 16px;border:1px solid #ffc247;border-radius:999px;
+      background:linear-gradient(120deg,#ffe7a0,#ffb52d 58%,#ff9418);
+      color:#171006!important;font-size:11px;font-weight:800;letter-spacing:.15px;
+      box-shadow:0 5px 18px #ffad2638;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
+    }
+    .launch-suite-right:hover{transform:translateY(-2px);box-shadow:0 9px 24px #ffad2670;filter:brightness(1.06)}
+    @media(max-width:1100px){.launch-suite-right{padding:9px 11px;font-size:10px}}
+    @media(max-width:760px){.launch-suite-right{display:none}}
+    
+
+            .launch-suite-mobile{display:none}
+            @media(max-width:760px){.navlinks .launch-suite-mobile{display:block;color:#ffd36b;font-weight:800}}
+            
+</style>
+</head>
+<body>
+  <div class="ambient" id="ambient" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="TRINETRA home"><span class="brand-mark"><img src="assets/trinetra-logo.png" alt="TRINETRA emblem"></span><span class="brand-name">TRINETRA</span></a>
+    <nav class="navlinks" id="navlinks" aria-label="Main navigation">
+      <a href="index.html#home">Home</a><a href="about.html">About</a><a href="service.html">Services</a><a href="solutions.html">Solutions</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+    <a class="launch-suite-mobile" href="launch-defense-suite.html">Launch Defense Suite</a></nav>
+    <a class="launch-suite-right" href="launch-defense-suite.html">Launch Defense Suite</a><a class="launch" href="contact.html">Talk to an Expert ↗</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  </header>
+
+  <main>
+    <section class="hero wrap" id="top">
+      <div class="hero-content reveal">
+        <div class="eyebrow">A unified cyber defense experience</div>
+        <h1>Launch your next layer of <span>defense.</span></h1>
+        <p class="hero-copy">Launch Defense Suite brings essential security thinking into one coordinated framework. From network visibility and access control to threat monitoring, endpoint awareness and response planning, TRINETRA helps organizations build a stronger, more prepared security posture.</p>
+        <div class="hero-actions">
+          <a class="btn" href="contact.html">Discuss your security needs ↗</a>
+          <a class="btn secondary" href="#capabilities">Explore capabilities ↓</a>
+        </div>
+        <div class="hero-note"><span class="live-dot"></span> SECURITY-FIRST DESIGN · BUILT AROUND YOUR ENVIRONMENT</div>
+      </div>
+      <div class="defense-visual reveal" aria-label="Illustration of a layered cyber defense shield">
+        <div class="visual-grid"></div>
+        <div class="orbit-tag tag-a"><b>NETWORK</b>Traffic visibility</div>
+        <div class="orbit-tag tag-b"><b>IDENTITY</b>Access assurance</div>
+        <div class="orbit-tag tag-c"><b>ENDPOINT</b>Device posture</div>
+        <div class="orbit-tag tag-d"><b>RESPONSE</b>Prepared action</div>
+        <div class="shield"><div class="shield-inner">⬡</div></div>
+      </div>
+    </section>
+
+    <div class="trust-strip">
+      <div class="wrap trust-grid">
+        <div><strong>01 / VISIBILITY</strong><span>Understand your environment</span></div>
+        <div><strong>02 / CONTROL</strong><span>Apply clear security policies</span></div>
+        <div><strong>03 / DETECTION</strong><span>Spot suspicious activity</span></div>
+        <div><strong>04 / RESPONSE</strong><span>Prepare the next action</span></div>
+      </div>
+    </div>
+
+    <section class="content-section" id="capabilities">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">Core capabilities</div>
+          <h2>Security that works as <span class="gold">one system.</span></h2>
+          <p>Bring the key disciplines of modern cyber defense into a practical, connected operating approach. Scope and technology choices can be tailored to your existing infrastructure and requirements.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal"><div class="feature-icon">⌘</div><h3>Network Defense</h3><p>Improve network visibility with segmentation planning, secure connectivity, firewall policy reviews and traffic-flow awareness.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon">◈</div><h3>Threat Monitoring</h3><p>Establish monitoring priorities, alert review workflows and escalation paths to help teams identify activity that needs attention.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon">⬡</div><h3>Zero-Trust Access</h3><p>Strengthen access decisions through identity-aware controls, least-privilege principles and verification of users and devices.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon">▣</div><h3>Endpoint Readiness</h3><p>Build endpoint protection practices around device inventory, configuration hygiene, patch awareness and response coordination.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon">⌁</div><h3>Cloud & Data Security</h3><p>Review cloud access, configuration and data-handling practices to reduce avoidable exposure across connected services.</p></article>
+          <article class="feature-card reveal"><div class="feature-icon">✧</div><h3>Incident Preparedness</h3><p>Document response roles, communication paths, recovery priorities and practical exercises before an incident occurs.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="architecture">
+      <div class="wrap layers">
+        <div class="layer-intro reveal">
+          <div class="eyebrow">Layered architecture</div>
+          <h2>Build defense in <span class="gold">layers.</span></h2>
+          <p>No single control can address every risk. A layered approach connects people, processes and technology so that visibility, prevention, detection and response reinforce one another.</p>
+          <div class="hero-actions"><a class="btn secondary" href="solutions.html">View all solutions ↗</a></div>
+        </div>
+        <div class="layer-list">
+          <div class="layer reveal"><div class="layer-number">01</div><div><h3>Discover & Map</h3><p>Identify critical assets, connections, users and important data flows.</p></div><span class="layer-arrow">↗</span></div>
+          <div class="layer reveal"><div class="layer-number">02</div><div><h3>Protect & Govern</h3><p>Define access boundaries, configuration standards and policy ownership.</p></div><span class="layer-arrow">↗</span></div>
+          <div class="layer reveal"><div class="layer-number">03</div><div><h3>Monitor & Detect</h3><p>Prioritize useful telemetry, alert context and escalation procedures.</p></div><span class="layer-arrow">↗</span></div>
+          <div class="layer reveal"><div class="layer-number">04</div><div><h3>Respond & Improve</h3><p>Coordinate response, restore services and feed lessons into the next review.</p></div><span class="layer-arrow">↗</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="delivery">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">A clear engagement journey</div>
+          <h2>From first review to <span class="gold">ongoing improvement.</span></h2>
+          <p>A structured starting point helps align the work with your environment, operational needs and security priorities.</p>
+        </div>
+        <div class="journey-grid">
+          <article class="journey-step reveal"><span>01</span><h3>Understand</h3><p>Discuss your business context, existing controls, key systems and current concerns.</p></article>
+          <article class="journey-step reveal"><span>02</span><h3>Assess</h3><p>Review architecture, exposure areas, access practices and monitoring readiness.</p></article>
+          <article class="journey-step reveal"><span>03</span><h3>Design</h3><p>Prioritize recommendations and define a practical roadmap with clear ownership.</p></article>
+          <article class="journey-step reveal"><span>04</span><h3>Improve</h3><p>Support implementation planning, validation and periodic security reviews.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="faq">
+      <div class="wrap">
+        <div class="section-head reveal"><div class="eyebrow">Common questions</div><h2>Know what to <span class="gold">expect.</span></h2></div>
+        <div class="faq-list reveal">
+          <div class="faq-item"><button class="faq-question" aria-expanded="false">What is Launch Defense Suite? <span>＋</span></button><div class="faq-answer">It is TRINETRA's proposed coordinated cybersecurity service framework, bringing together network defense, access security, monitoring, endpoint readiness and incident preparedness.</div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false">Can it work with our existing infrastructure? <span>＋</span></button><div class="faq-answer">The engagement can begin with a review of your current environment. Recommendations should account for existing platforms, operational constraints and your organization's requirements.</div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false">Is this a fixed software package? <span>＋</span></button><div class="faq-answer">This page describes a service framework rather than promising a specific software product. Exact scope, tools, deliverables and timelines are agreed during consultation.</div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false">How do we get started? <span>＋</span></button><div class="faq-answer">Use the contact link to share your goals and current challenges. The next step is to discuss scope and identify an appropriate assessment or planning engagement.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="contact">
+      <div class="wrap">
+        <div class="cta-panel reveal">
+          <div><div class="eyebrow">Start with a conversation</div><h2>Ready to strengthen your <span class="gold">defense?</span></h2><p>Tell us about your network, security priorities and the outcomes you want to achieve. TRINETRA can help you identify a practical next step.</p></div>
+          <a class="btn" href="contact.html">Contact TRINETRA ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <div class="footer-glow"></div>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a class="footer-logo" href="#home">
+          <img src="assets/trinetra-logo.png" alt="Trinetra emblem">
+          <span>TRINETRA</span>
+        </a>
+        <p class="footer-tagline">DIVINE VISION · POWER · PROTECTION</p>
+        <p class="footer-about">Intelligent network security and zero-trust defense for a safer, more resilient digital world.</p>
+        <div class="footer-socials" aria-label="Social media links">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="X">𝕏</a>
+          <a href="#" aria-label="GitHub">⌘</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Explore</h3>
+        <a href="#home">Home</a>
+        <a href="about.html">About Us</a><a href="service.html">Services</a>
+        <a href="#solutions">Our Solutions</a>
+        <a href="#threat-intel">Threat Intelligence</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#founder">Founder</a>
+        <a href="#resources">Resources</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Solutions</h3>
+        <a href="#solutions">Network Security</a>
+        <a href="#solutions">Zero-Trust Access</a>
+        <a href="#solutions">Quantum-ready Encryption</a>
+        <a href="#solutions">Security Operations</a>
+        <a href="#solutions">Cloud Security</a>
+      </div>
+
+      <div class="footer-column footer-contact">
+        <h3>Get in Touch</h3>
+        <a href="contact.html"><span>✉</span> Contact our team</a>
+        <a href="contact.html"><span>⌖</span> Request a security consultation</a>
+        <a href="contact.html"><span>↗</span> Launch Defense Suite</a>
+        <div class="footer-status"><i></i> Security-first. Always.</div>
+      </div>
+    </div>
+
+    <div class="footer-newsletter">
+      <div>
+        <h3>Stay ahead of emerging threats</h3>
+        <p>Get occasional security insights and Trinetra updates.</p>
+      </div>
+      <form id="footerNewsletter" class="newsletter-form">
+        <label class="sr-only" for="newsletterEmail">Email address</label>
+        <input id="newsletterEmail" type="email" placeholder="Enter your email address" required>
+        <button type="submit">Subscribe <span>→</span></button>
+      </form>
+      <p id="newsletterMessage" class="newsletter-message" role="status"></p>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> TRINETRA. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#footer">Privacy Policy</a>
+        <a href="#footer">Terms of Service</a>
+        <a href="#footer">Cookie Policy</a>
+      </div>
+      <a class="back-to-top" href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn=document.getElementById('menuBtn');
+    const nav=document.getElementById('navlinks');
+    menuBtn.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));menuBtn.textContent=open?'×':'☰'});
+    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰'}));
+    const yearNode=document.getElementById('year');if(yearNode)yearNode.textContent=new Date().getFullYear();
+    const ambient=document.getElementById('ambient');
+    for(let i=0;i<28;i++){const spark=document.createElement('span');spark.className='spark';spark.style.left=Math.random()*100+'%';spark.style.top=(35+Math.random()*65)+'%';spark.style.animationDelay=(Math.random()*7)+'s';spark.style.animationDuration=(5+Math.random()*5)+'s';ambient.appendChild(spark)}
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(element=>observer.observe(element));
+    document.querySelectorAll('.faq-question').forEach(button=>button.addEventListener('click',()=>{const item=button.closest('.faq-item');const open=item.classList.toggle('open');button.setAttribute('aria-expanded',String(open))}));
+  </script>
+  <script src="assets/trinetra-customizer.js"></script>
+<script src="assets/newsletter-subscriptions.js"></script>
+  <script src="assets/trinetra-ai-chat.js" defer></script>
+<script src="assets/member-auth.js" defer></script>
+</body>
+</html>

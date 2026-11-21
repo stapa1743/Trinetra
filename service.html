@@ -1,0 +1,2629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090806">
+  <meta name="description" content="Explore Trinetra services in enterprise networking, cybersecurity, cloud, software development and IT consulting.">
+  <title>Services | TRINETRA Cyber Defense</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --gold:#ffc247;--gold2:#ff9d16;--gold3:#ffe7a0;--ink:#080807;
+      --panel:rgba(13,13,12,.78);--line:rgba(255,190,66,.42);--white:#f8f5ed;
+      --muted:#c8c1b4;--green:#66ff5e;--cyan:#27d8ff;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:100px}
+    body{font-family:Inter,Arial,sans-serif;background:#080807;color:var(--white);overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;z-index:-3;background:
+      linear-gradient(90deg,rgba(5,5,5,.36),rgba(5,5,5,.12) 55%,rgba(5,5,5,.2)),
+      url("assets/trinetra-background.png") center center/cover no-repeat;transform:scale(1.015)}
+    body:after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:
+      radial-gradient(ellipse at 70% 28%,transparent 0 23%,rgba(0,0,0,.16) 65%),
+      linear-gradient(180deg,rgba(0,0,0,.16),transparent 25%,rgba(0,0,0,.38))}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .ambient{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
+    .spark{position:absolute;width:3px;height:3px;border-radius:50%;background:#ffd36b;box-shadow:0 0 12px 3px #ff9f20;opacity:0;animation:floatSpark 6s linear infinite}
+    @keyframes floatSpark{0%{transform:translateY(30px) scale(.5);opacity:0}20%{opacity:.9}80%{opacity:.7}100%{transform:translateY(-120px) scale(1.3);opacity:0}}
+    .topbar{position:fixed;z-index:1000;top:8px;left:50%;transform:translateX(-50%);width:min(1450px,calc(100% - 44px));height:66px;padding:0 28px;
+      display:flex;align-items:center;justify-content:space-between;gap:24px;border:1px solid rgba(255,190,66,.48);
+      border-radius:19px;background:rgba(9,9,8,.84);backdrop-filter:blur(18px);box-shadow:0 8px 35px #0009,0 0 22px #ffad2630}
+    .brand{display:flex;align-items:center;gap:12px;min-width:max-content}
+    .brand-mark{width:48px;height:48px;display:grid;place-items:center;overflow:hidden;border-radius:50%;border:1px solid var(--gold);color:var(--gold3);
+      background:radial-gradient(circle,#68400d,#17100a 70%);box-shadow:0 0 18px #ffb52d55;font-size:25px}
+    .brand-mark img{width:100%;height:100%;display:block;object-fit:cover;border-radius:50%}
+    .brand-name{font:700 27px Cinzel,serif;letter-spacing:2px;color:#ffda82;text-shadow:0 0 13px #ff9d16aa}
+    .navlinks{display:flex;align-items:center;gap:clamp(17px,2.5vw,43px);margin-left:auto}
+    .navlinks a{font-size:14px;color:#f4f0e8;position:relative;padding:23px 0;transition:.25s}
+    .navlinks a:after{content:"";position:absolute;left:50%;bottom:13px;width:0;height:2px;background:var(--gold);box-shadow:0 0 10px var(--gold);transition:.3s;transform:translateX(-50%)}
+    .navlinks a:hover,.navlinks a.active{color:#ffd45f}.navlinks a:hover:after,.navlinks a.active:after{width:100%}
+    .launch{display:flex;align-items:center;gap:9px;border:1px solid var(--gold);border-radius:30px;padding:11px 18px;color:#ffd65c;background:#281a08;white-space:nowrap;
+      box-shadow:inset 0 0 13px #ffb72b18,0 0 15px #ffb72b18;transition:.3s}
+    .launch:hover{background:#ffc247;color:#171006;box-shadow:0 0 25px #ffb72b99;transform:translateY(-2px)}
+    .menu-btn{display:none;background:none;border:0;color:white;font-size:27px;cursor:pointer}
+    main{width:min(1335px,calc(100% - 56px));margin:0 auto}
+    .hero{min-height:auto;padding:112px 0 22px;display:flex;align-items:flex-start;position:relative}
+    .hero-copy{width:min(610px,52%);position:relative;z-index:2;padding-top:3px}
+    .eyebrow{display:flex;align-items:center;gap:17px;color:#f7ead0;letter-spacing:3px;font-size:13px;text-transform:uppercase;margin-bottom:13px}
+    .eyebrow:before,.eyebrow:after{content:"";height:1px;width:40px;background:linear-gradient(90deg,transparent,var(--gold))}
+    .eyebrow:after{background:linear-gradient(90deg,var(--gold),transparent)}
+    h1{font:800 clamp(58px,7vw,105px)/.98 Cinzel,serif;letter-spacing:2px;color:#ffd77a;
+      background:linear-gradient(180deg,#fff2b8 0%,#ffc13d 45%,#b96b0c 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+      filter:drop-shadow(0 5px 14px #ff9b2470);animation:titleGlow 4s ease-in-out infinite alternate}
+    @keyframes titleGlow{to{filter:drop-shadow(0 5px 24px #ffb52da8)}}
+    .tagline{font-weight:800;font-size:clamp(15px,1.7vw,23px);letter-spacing:1.2px;color:#ffbd35;margin:9px 0 15px}
+    .hero h2{font-size:clamp(24px,2.25vw,34px);line-height:1.18;font-weight:600;max-width:560px;margin-bottom:14px}
+    .intro{color:#ded8ce;line-height:1.55;font-size:15px;max-width:560px}
+    .actions{display:flex;flex-wrap:wrap;gap:16px;margin:23px 0 18px}
+    .btn{min-height:50px;padding:0 24px;border-radius:11px;display:inline-flex;align-items:center;justify-content:center;gap:11px;font-weight:700;transition:.3s;cursor:pointer}
+    .btn-primary{background:linear-gradient(135deg,#ffdb6c,#e99b16);color:#171006;border:1px solid #ffca42;box-shadow:0 0 22px #ffae2b70,inset 0 1px #fff8}
+    .btn-primary:hover{transform:translateY(-4px);box-shadow:0 8px 30px #ffae2baa}
+    .btn-outline{border:1px solid #ddd0b8;background:#171512b8;color:#fff;box-shadow:inset 0 0 15px #fff1}
+    .btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-4px)}
+    .quick-stats{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+    .quick-stats span{padding:10px 14px;border:1px solid #7c6a4b66;border-radius:30px;background:#11100dc9;font-size:13px;color:#eee}
+    .quick-stats b{color:var(--green);margin-left:4px}
+    .modules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) 2.65fr;gap:18px;align-items:stretch;margin:0 0 18px}
+    .module,.telemetry,.metric-strip{border:1px solid rgba(255,206,126,.55);background:linear-gradient(145deg,rgba(36,34,30,.88),rgba(9,9,8,.88));
+      backdrop-filter:blur(12px);box-shadow:0 9px 26px #0008,inset 0 1px #fff2;position:relative;overflow:hidden}
+    .module{min-height:151px;border-radius:16px;padding:20px 21px;display:flex;flex-direction:column;justify-content:space-between;transition:.35s}
+    .module:before,.telemetry:before{content:"";position:absolute;inset:-1px;background:linear-gradient(110deg,transparent 25%,#ffc24718 50%,transparent 75%);transform:translateX(-110%);transition:.65s}
+    .module:hover:before,.telemetry:hover:before{transform:translateX(110%)}
+    .module:hover{transform:translateY(-7px);border-color:#ffc247;box-shadow:0 12px 35px #ff9d1640,inset 0 0 25px #ffb52b1c}
+    .module.featured{background:linear-gradient(145deg,rgba(135,82,11,.93),rgba(34,22,8,.95));border-color:#ffc247;box-shadow:0 0 22px #ffae2b4a}
+    .module-icon{font-size:34px;color:#ffca4b;text-shadow:0 0 15px #ffae2b}
+    .module strong{font-size:17px;line-height:1.35;font-weight:600}
+    .module .arrow{position:absolute;right:19px;bottom:20px;font-size:23px;color:#fff}
+    .telemetry{border-radius:16px;padding:17px 20px;min-height:151px}
+    .telemetry-head{display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:13px}
+    .live{font-size:11px;color:#b8ffad;background:#123010;border:1px solid #3c9e34;border-radius:20px;padding:5px 10px}
+    .live:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#5cff4d;margin-right:6px;box-shadow:0 0 9px #5cff4d}
+    .telemetry-body{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;align-items:center}
+    .bars{height:83px;display:flex;align-items:end;gap:3px;border-bottom:1px solid #a58a4c55;padding:0 3px}
+    .bars i{display:block;flex:1;min-width:2px;background:linear-gradient(0deg,#ffad26,#ffe28a);border-radius:3px 3px 0 0;box-shadow:0 0 8px #ffae2b66;animation:barPulse 1.4s ease-in-out infinite alternate;transform-origin:bottom}
+    .bars i:nth-child(3n){background:linear-gradient(0deg,#08a9dc,#53e9ff);box-shadow:0 0 8px #00cfff66}
+    @keyframes barPulse{to{transform:scaleY(.55);opacity:.72}}
+    .telemetry-data{display:grid;gap:8px;font-size:12px;color:#e7e2d9}
+    .telemetry-data div{display:flex;justify-content:space-between;gap:10px}.telemetry-data b{color:#ffd46d}
+    .metric-strip{border-radius:17px;padding:15px 24px;display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:48px}
+    .metric{display:flex;align-items:center;justify-content:center;gap:17px;padding:0 12px;border-right:1px solid #bd862f99}
+    .metric:last-child{border:0}.metric-icon{font-size:34px;color:#ffc247;text-shadow:0 0 15px #ffae2b}
+    .metric strong{display:block;font-size:22px}.metric small{color:#d8d0c3;font-size:13px}
+    .section{padding:85px 0;scroll-margin-top:80px}
+    .section-heading{text-align:center;margin-bottom:38px}
+    .section-heading .eyebrow{justify-content:center}
+    .section-heading h2{font:700 clamp(30px,4vw,48px) Cinzel,serif;color:#ffdb8b;text-shadow:0 0 20px #ff9c2e55}
+    .section-heading p{color:#d0c8bb;margin:12px auto 0;max-width:650px;line-height:1.6}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .feature-card{padding:27px;border:1px solid #b8863b77;border-radius:16px;background:linear-gradient(145deg,#17140fcf,#080807e8);backdrop-filter:blur(10px);transition:.35s}
+    .feature-card:hover{transform:translateY(-8px);border-color:#ffd16b;box-shadow:0 12px 35px #ff9d162c}
+    .feature-card .module-icon{font-size:36px}.feature-card h3{font-size:19px;margin:15px 0 9px}.feature-card p{color:#c9c1b5;font-size:14px;line-height:1.65}
+    .architecture{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+    .architecture-visual{min-height:290px;border:1px solid #bd873e88;border-radius:20px;background:radial-gradient(circle at center,#8b4c0c55,transparent 58%),#0b0a08d9;display:grid;place-items:center;position:relative;overflow:hidden}
+    .orbit{width:190px;height:190px;border:1px solid #ffbc43;border-radius:50%;display:grid;place-items:center;box-shadow:0 0 35px #ff9f2d66,inset 0 0 30px #ff9f2d33;animation:spin 18s linear infinite}
+    .orbit:before,.orbit:after{content:"";position:absolute;width:245px;height:245px;border:1px dashed #ffbd4d88;border-radius:50%;animation:spin 24s linear infinite reverse}
+    .orbit:after{width:300px;height:300px;border-color:#ffbd4d44}
+    .orbit span{font-size:75px;color:#ffd16c;text-shadow:0 0 28px #ff9e1b}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .architecture-copy h3{font:600 28px Cinzel,serif;color:#ffda8a;margin-bottom:15px}.architecture-copy p{line-height:1.7;color:#d3cbbf;margin-bottom:18px}
+    .architecture-copy li{list-style:none;margin:12px 0;color:#eee}.architecture-copy li:before{content:"✦";color:#ffc247;margin-right:11px}
+    .contact-box{max-width:760px;margin:auto;padding:34px;border:1px solid #d29a43aa;border-radius:18px;background:#0c0b09e8;box-shadow:0 0 35px #ff9e1c1b}
+    .contact-box form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .contact-box input,.contact-box textarea{width:100%;padding:14px 15px;color:#fff;background:#17140f;border:1px solid #80602f;border-radius:9px;outline:none}
+    .contact-box input:focus,.contact-box textarea:focus{border-color:#ffc247;box-shadow:0 0 0 3px #ffc24720}
+    .contact-box textarea{grid-column:1/-1;min-height:120px;resize:vertical}
+    .contact-box button{grid-column:1/-1;justify-self:start}
+
+
+    /* Founder & Technical Director */
+    .founder-section{position:relative;display:grid;grid-template-columns:minmax(280px,.88fr) minmax(0,1.35fr);gap:clamp(30px,5vw,76px);align-items:center;padding:88px 0;scroll-margin-top:90px}
+    .founder-photo-wrap{position:relative;max-width:470px;margin-inline:auto;width:100%;padding:12px;border:1px solid #dba94d99;border-radius:25px;background:linear-gradient(145deg,#ffcf6b2b,#100d08);box-shadow:0 22px 65px #0009,0 0 32px #ffb52b1c}
+    .founder-photo-wrap:before{content:"";position:absolute;inset:-8px;border:1px solid #ffbf4d55;border-radius:30px;pointer-events:none}
+    .founder-photo{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 28%;border-radius:17px;filter:saturate(1.04);transition:transform .7s ease,filter .7s ease}
+    .founder-photo-wrap:hover .founder-photo{transform:scale(1.018);filter:saturate(1.16)}
+    .founder-photo-caption{position:absolute;left:24px;right:24px;bottom:24px;padding:15px 17px;border:1px solid #ffcf6b66;border-radius:13px;background:#090806d9;backdrop-filter:blur(12px);text-align:left}
+    .founder-photo-caption strong{display:block;color:#ffe0a0;font:700 17px Cinzel,serif;letter-spacing:.5px}
+    .founder-photo-caption span{display:block;color:#d8c9ae;font-size:11px;letter-spacing:1.7px;text-transform:uppercase;margin-top:5px}
+    .founder-copy .eyebrow{margin-bottom:13px}
+    .founder-copy h2{font:700 clamp(30px,4vw,47px)/1.15 Cinzel,serif;color:#ffdb8b;text-shadow:0 0 20px #ff9c2e55;margin-bottom:20px}
+    .founder-copy h2 span{display:block;color:#ffc247}
+    .founder-intro{font-size:15px;line-height:1.85;color:#ded5c7;margin-bottom:25px}
+    .founder-copy h3{font:600 20px Cinzel,serif;color:#ffda8a;margin:0 0 17px}
+    .founder-skills{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;list-style:none}
+    .founder-skills li{display:flex;align-items:flex-start;gap:10px;color:#e7dfd2;font-size:13px;line-height:1.55;padding:12px;border:1px solid #a77c3f45;border-radius:11px;background:linear-gradient(135deg,#1c170fbd,#090807b8);transition:transform .25s,border-color .25s,background .25s}
+    .founder-skills li:hover{transform:translateY(-3px);border-color:#ffc247a8;background:#251b0d}
+    .founder-skills svg{width:17px;height:17px;flex:0 0 17px;margin-top:1px;color:#ffc247}
+    .founder-note{margin-top:22px;padding:15px 18px;border-left:3px solid #ffc247;background:linear-gradient(90deg,#ffb52b17,transparent);color:#d7cbb8;font-size:13px;line-height:1.7}
+    @media(max-width:850px){.founder-section{grid-template-columns:minmax(230px,.8fr) minmax(0,1.2fr);gap:28px}.founder-skills{grid-template-columns:1fr}}
+    @media(max-width:650px){.founder-section{grid-template-columns:1fr;padding:62px 0}.founder-photo-wrap{max-width:390px}.founder-copy h2{font-size:32px}.founder-intro{font-size:14px}.founder-skills{grid-template-columns:1fr 1fr;gap:9px}.founder-skills li{font-size:12px;padding:10px}}
+    @media(max-width:420px){.founder-skills{grid-template-columns:1fr}}
+    @media(prefers-reduced-motion:reduce){.founder-photo,.founder-skills li{transition:none}}
+
+    /* Responsive Trinetra footer */
+    .site-footer{position:relative;overflow:hidden;margin-top:45px;padding:58px max(28px,calc((100% - 1335px)/2)) 22px;background:linear-gradient(180deg,rgba(10,9,8,.94),rgba(4,4,4,.99));border-top:1px solid #d99b3d88;isolation:isolate}
+    .site-footer:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.2;background:radial-gradient(ellipse at 15% 0%,#ffb52b55,transparent 42%),radial-gradient(ellipse at 85% 30%,#ff8e1c30,transparent 38%)}
+    .footer-glow{position:absolute;top:-1px;left:50%;width:min(720px,80%);height:1px;transform:translateX(-50%);background:#ffd16c;box-shadow:0 0 24px 5px #ffae2b88}
+    .footer-main{display:grid;grid-template-columns:1.65fr 1fr 1.25fr 1.35fr;gap:42px;padding-bottom:42px}
+    .footer-logo{display:inline-flex;align-items:center;gap:12px}
+    .footer-logo img{width:48px;height:48px;object-fit:cover;border-radius:50%;border:1px solid #dca443;box-shadow:0 0 18px #ffb52d44}
+    .footer-logo span{font:700 27px Cinzel,serif;letter-spacing:2px;color:#ffda82;text-shadow:0 0 12px #ff9d1666}
+    .footer-tagline{font-size:10px;letter-spacing:1.7px;color:#f4bd58;margin:12px 0}
+    .footer-about{max-width:330px;color:#c7beb0;font-size:13px;line-height:1.75}
+    .footer-socials{display:flex;gap:9px;margin-top:20px}
+    .footer-socials a{width:34px;height:34px;display:grid;place-items:center;border:1px solid #9b713b;border-radius:50%;color:#f5c66d;background:#17120b;transition:.25s;font-size:13px;font-weight:700}
+    .footer-socials a:hover{background:#ffc247;color:#171006;transform:translateY(-4px);box-shadow:0 0 17px #ffb52d77}
+    .footer-column{display:flex;flex-direction:column;align-items:flex-start;gap:13px}
+    .footer-column h3,.footer-newsletter h3{font-size:15px;color:#ffda8a;margin:5px 0 7px;font-weight:700}
+    .footer-column>a{font-size:13px;color:#c9c1b5;transition:.2s;line-height:1.5}
+    .footer-column>a:hover,.footer-legal a:hover,.back-to-top:hover{color:#ffc247;transform:translateX(3px)}
+    .footer-contact>a{display:flex;gap:10px;align-items:flex-start}
+    .footer-contact>a span{color:#ffc247}
+    .footer-status{display:flex;align-items:center;gap:9px;margin-top:6px;padding:9px 12px;border:1px solid #6d592f;border-radius:30px;color:#d7d0c4;font-size:11px;background:#17130c}
+    .footer-status i{width:7px;height:7px;border-radius:50%;background:#6cff65;box-shadow:0 0 10px #6cff65}
+    .footer-newsletter{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 0;border-top:1px solid #a87a3d55;border-bottom:1px solid #a87a3d55;position:relative}
+    .footer-newsletter h3{font-size:17px;margin:0 0 6px}
+    .footer-newsletter p{color:#c7beb0;font-size:12px}
+    .newsletter-form{display:flex;width:min(470px,48%);padding:4px;border:1px solid #a77c3f;border-radius:10px;background:#15120d}
+    .newsletter-form input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#fff;padding:10px 12px;font:inherit;font-size:12px}
+    .newsletter-form input::placeholder{color:#a99d8b}
+    .newsletter-form button{border:0;border-radius:7px;padding:10px 15px;background:linear-gradient(135deg,#ffdc79,#e9a32a);color:#171006;font-weight:700;font-size:12px;cursor:pointer;white-space:nowrap;transition:.25s}
+    .newsletter-form button:hover{box-shadow:0 0 18px #ffb52d77;transform:translateY(-1px)}
+    .newsletter-message{position:absolute;right:0;bottom:2px;color:#ffd16c!important;font-size:11px!important}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:22px;color:#a99f90;font-size:11px}
+    .footer-legal{display:flex;gap:22px}
+    .footer-legal a,.back-to-top{color:#bdb3a5;transition:.2s}
+    .back-to-top{white-space:nowrap}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:900px){.footer-main{grid-template-columns:1.4fr 1fr 1fr;gap:30px}.footer-contact{grid-column:2/4}.footer-newsletter{align-items:flex-start;flex-direction:column}.newsletter-form{width:100%}}
+    @media(max-width:600px){.site-footer{padding:42px 20px 20px;margin-top:25px}.footer-main{grid-template-columns:1fr 1fr;gap:28px 18px;padding-bottom:30px}.footer-brand{grid-column:1/-1}.footer-contact{grid-column:auto}.footer-logo img{width:42px;height:42px}.footer-logo span{font-size:23px}.footer-column h3{font-size:14px}.footer-column>a{font-size:12px}.footer-newsletter{gap:15px;padding:20px 0 28px}.footer-newsletter h3{font-size:15px}.newsletter-form{flex-direction:column;border:0;background:transparent;padding:0;gap:8px}.newsletter-form input{min-height:44px;border:1px solid #a77c3f;border-radius:8px;background:#15120d}.newsletter-form button{min-height:43px}.newsletter-message{bottom:5px;left:0;right:auto}.footer-bottom{align-items:flex-start;flex-direction:column;gap:13px}.footer-legal{flex-wrap:wrap;gap:14px}.footer-bottom p,.footer-legal a,.back-to-top{font-size:10px}}
+    @media(prefers-reduced-motion:reduce){.footer-socials a,.footer-column>a,.footer-legal a,.back-to-top,.newsletter-form button{transition:none}}
+
+    .reveal{opacity:0;transform:translateY(25px);transition:opacity .8s ease,transform .8s ease}.reveal.visible{opacity:1;transform:none}
+    .backtop{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;border:1px solid #ffc247;background:#171108;color:#ffd16c;font-size:20px;z-index:90;opacity:0;pointer-events:none;transition:.3s}
+    .backtop.show{opacity:1;pointer-events:auto}
+    @media(max-width:1050px){
+      .topbar{padding:0 18px}.navlinks{gap:18px}.navlinks a{font-size:13px}.launch{padding:10px 13px;font-size:12px}
+      .modules{grid-template-columns:repeat(4,1fr)}.telemetry{grid-column:1/-1}.hero-copy{width:58%}
+    }
+    @media(max-width:760px){
+      html{scroll-padding-top:80px}.topbar{top:0;left:0;transform:none;width:100%;height:64px;border-radius:0;padding:0 16px}
+      .brand-mark{width:40px;height:40px;font-size:21px}.brand-name{font-size:21px}.menu-btn{display:block;margin-left:auto}
+      .launch{display:none}.navlinks{display:none;position:absolute;top:68px;left:0;right:0;padding:12px 18px 18px;background:rgba(8,8,7,.97);border:1px solid #a87831;border-radius:14px;flex-direction:column;align-items:stretch;gap:0}
+      .navlinks.open{display:flex}.navlinks a{padding:13px 7px;border-bottom:1px solid #ffffff12}.navlinks a:after{display:none}
+      main{width:calc(100% - 32px)}.hero{padding-top:100px;min-height:auto;padding-bottom:28px}.hero-copy{width:100%;max-width:570px}
+      .hero:after{content:"";position:absolute;inset:90px -16px 0;background:linear-gradient(90deg,#080807d9,#08080770);z-index:0;pointer-events:none}
+      .hero-copy{z-index:1}.eyebrow{font-size:10px;letter-spacing:2px}h1{font-size:clamp(50px,13vw,78px)}
+      .intro{font-size:14px}.actions{gap:10px}.btn{min-height:47px;padding:0 16px;font-size:13px}
+      .quick-stats span{font-size:11px;padding:8px 10px}.modules{grid-template-columns:repeat(2,1fr);gap:12px}
+      .module{min-height:135px;padding:17px}.module strong{font-size:15px}.telemetry{grid-column:1/-1}
+      .metric-strip{grid-template-columns:repeat(2,1fr);gap:18px;padding:20px 12px;margin-bottom:35px}
+      .metric{justify-content:flex-start;border:0;padding:0 8px}.metric-icon{font-size:27px}.metric strong{font-size:18px}.metric small{font-size:11px}
+      .section{padding:60px 0}.feature-grid{grid-template-columns:1fr}.architecture{grid-template-columns:1fr}.architecture-visual{min-height:250px}
+      .contact-box{padding:20px}.contact-box form{grid-template-columns:1fr}.contact-box textarea,.contact-box button{grid-column:auto}
+    }
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+  
+  
+    .about-hero{padding:150px 0 70px;min-height:430px;position:relative;display:grid;place-items:center;text-align:center;overflow:hidden}
+    .about-hero:before{content:"";position:absolute;inset:8% 12%;border:1px solid #ffbd3540;border-radius:32px;box-shadow:0 0 90px #ffad2618,inset 0 0 70px #ffad2610;pointer-events:none}
+    .about-hero-inner{position:relative;z-index:1;max-width:900px}
+    .about-hero h1{font-size:clamp(42px,6vw,76px);line-height:1.08;margin:12px 0 18px}
+    .about-hero p{color:#e5dccb;line-height:1.8;font-size:clamp(15px,1.5vw,19px);max-width:760px;margin:auto}
+    .about-kicker{color:var(--gold);letter-spacing:4px;text-transform:uppercase;font-size:12px;font-weight:800}
+    .about-section{padding:76px 0}
+    .about-heading{text-align:center;max-width:850px;margin:0 auto 42px}
+    .about-heading h2{font:700 clamp(30px,4vw,48px)/1.15 Cinzel,serif;color:#ffda82;margin:12px 0}
+    .about-heading p{color:#d7cebd;line-height:1.8}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+    .about-panel{border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#17130ddf,#090908e8);padding:32px;box-shadow:0 18px 50px #0007}
+    .about-panel h3{font:700 25px Cinzel,serif;color:#ffd16b;margin-bottom:16px}
+    .about-panel p{color:#ddd4c4;line-height:1.85;margin:0 0 14px}
+    .founder-photo-wrap{position:relative;max-width:470px;margin:auto;padding:12px;border:1px solid var(--gold);border-radius:24px;background:linear-gradient(145deg,#ffc24755,#16100a);box-shadow:0 0 45px #ffad2630}
+    .founder-photo-wrap:before{content:"";position:absolute;inset:22px -12px -12px 22px;border:1px solid #ffc24780;border-radius:24px;z-index:-1}
+    .founder-photo{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 25%;border-radius:16px}
+    .founder-caption{text-align:center;padding:18px 8px 5px}
+    .founder-caption h3{font:700 23px Cinzel,serif;color:#ffda82}
+    .founder-caption p{color:#d2c7b5;font-size:13px;margin-top:5px}
+    .expertise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .expertise-card{padding:25px;border:1px solid #ffbd3545;border-radius:17px;background:#100e0be8;transition:.3s;min-height:190px}
+    .expertise-card:hover{transform:translateY(-7px);border-color:var(--gold);box-shadow:0 12px 35px #ffad2620}
+    .expertise-icon{font-size:28px;color:var(--gold);margin-bottom:15px}
+    .expertise-card h3{font-size:17px;color:#ffe0a0;margin-bottom:9px}
+    .expertise-card p{font-size:13px;line-height:1.7;color:#d1c8b9}
+    .journey-list{max-width:950px;margin:auto;position:relative}
+    .journey-list:before{content:"";position:absolute;left:19px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--gold),#a45d12)}
+    .journey-item{position:relative;padding:0 0 28px 58px}
+    .journey-item:before{content:"";position:absolute;left:10px;top:7px;width:20px;height:20px;border-radius:50%;background:#ffc247;border:4px solid #38240c;box-shadow:0 0 15px #ffbd35}
+    .journey-card{border:1px solid #ffbd3545;background:#100e0be8;border-radius:16px;padding:22px 25px}
+    .journey-card time{color:var(--gold);font-size:12px;letter-spacing:1px;font-weight:800}
+    .journey-card h3{font-size:19px;color:#ffe0a0;margin:6px 0}
+    .journey-card p{color:#d1c8b9;line-height:1.7;font-size:14px}
+    .skill-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .skill-pills span{padding:9px 14px;border:1px solid #ffc24770;border-radius:30px;background:#ffc24712;color:#ffe2a1;font-size:13px}
+    .about-cta{margin:35px 0 80px;padding:42px;border:1px solid var(--line);border-radius:22px;text-align:center;background:linear-gradient(120deg,#201607e8,#0c0b09f2);box-shadow:0 0 55px #ffad2615}
+    .about-cta h2{font:700 clamp(28px,4vw,42px) Cinzel,serif;color:#ffda82;margin-bottom:12px}
+    .about-cta p{color:#d8cebd;margin-bottom:22px}
+    .about-page .topbar{position:fixed}
+    @media(max-width:850px){.about-grid{grid-template-columns:1fr}.expertise-grid{grid-template-columns:repeat(2,1fr)}.about-hero{padding-top:125px}}
+    @media(max-width:560px){main{width:min(100% - 32px,1335px)}.expertise-grid{grid-template-columns:1fr}.about-panel{padding:23px}.about-section{padding:55px 0}.about-cta{padding:28px 20px}.about-hero:before{inset:4% 2%}}
+
+  
+
+    .services-main{width:min(1320px,calc(100% - 52px));margin:0 auto;padding:118px 0 80px}
+    .services-hero{position:relative;min-height:430px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:45px;padding:50px 0 65px}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;color:#ffd36d;border:1px solid #ffbf4b66;background:#241806a8;border-radius:30px;padding:9px 15px;font-size:12px;letter-spacing:2px;text-transform:uppercase}
+    .eyebrow:before{content:"";width:7px;height:7px;background:#66ff5e;border-radius:50%;box-shadow:0 0 12px #66ff5e}
+    .services-hero h1{font:700 clamp(42px,6vw,76px)/1.08 Cinzel,serif;color:#fff5dc;margin:24px 0 20px;max-width:750px}
+    .services-hero h1 span{color:#ffc247;text-shadow:0 0 25px #ff9d1644}
+    .services-hero p{color:#d3cbbb;font-size:17px;line-height:1.85;max-width:690px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+    .gold-btn,.outline-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:30px;font-weight:700;transition:.25s}
+    .gold-btn{color:#1a1004;background:linear-gradient(135deg,#ffe49a,#ffb52e);box-shadow:0 8px 28px #ffad2638}
+    .gold-btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px #ffad2670}
+    .outline-btn{border:1px solid #ffcb68a3;color:#ffe4a5;background:#140f08a8}
+    .outline-btn:hover{background:#ffc247;color:#160f05}
+    .hero-visual{position:relative;min-height:300px;display:grid;place-items:center}
+    .orbit{width:min(330px,75vw);aspect-ratio:1;border:1px solid #ffc24766;border-radius:50%;display:grid;place-items:center;position:relative;box-shadow:0 0 55px #ffad2620,inset 0 0 45px #ffad2614;animation:orbitPulse 5s ease-in-out infinite}
+    .orbit:before,.orbit:after{content:"";position:absolute;border:1px dashed #ffc24755;border-radius:50%;inset:25px;animation:spin 24s linear infinite}
+    .orbit:after{inset:55px;animation-direction:reverse;animation-duration:18s}
+    .orbit-core{width:125px;height:125px;border-radius:28px;display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,#60400f,#171006 70%);border:1px solid #ffd36d;box-shadow:0 0 40px #ffb52d55;color:#ffe39b;font:700 40px Cinzel,serif}
+    .orbit-node{position:absolute;width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:#171108;border:1px solid #ffbf4b;color:#ffd36d;box-shadow:0 0 20px #ffad2644;font-size:20px}
+    .orbit-node.n1{top:3%;left:42%}.orbit-node.n2{right:1%;top:42%}.orbit-node.n3{bottom:4%;left:42%}.orbit-node.n4{left:1%;top:42%}
+    @keyframes spin{to{transform:rotate(360deg)}}@keyframes orbitPulse{50%{transform:scale(1.025);box-shadow:0 0 75px #ffad2638,inset 0 0 50px #ffad2620}}
+    .service-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:10px 0 75px}
+    .stat{padding:20px;border:1px solid #ffc24738;background:#0d0c0ad9;border-radius:16px;text-align:center;backdrop-filter:blur(12px)}
+    .stat strong{display:block;color:#ffd36d;font:700 28px Cinzel,serif}.stat span{color:#bdb4a5;font-size:12px;letter-spacing:1px;text-transform:uppercase}
+    .section-heading{text-align:center;margin:0 auto 34px;max-width:780px}
+    .section-heading .eyebrow{margin-bottom:16px}.section-heading h2{font:700 clamp(30px,4vw,48px)/1.2 Cinzel,serif;color:#fff0ce;margin-bottom:14px}
+    .section-heading h2 span{color:#ffc247}.section-heading p{color:#c9c0b2;line-height:1.8}
+    .service-tools{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin:30px 0 24px}
+    .filter-list{display:flex;gap:9px;flex-wrap:wrap}
+    .filter-btn{border:1px solid #ffc24755;border-radius:30px;background:#14110c;color:#e8ddc9;padding:9px 16px;cursor:pointer;transition:.2s}
+    .filter-btn:hover,.filter-btn.active{background:#ffc247;color:#1b1205;border-color:#ffc247}
+    .service-search{background:#100e0a;border:1px solid #ffc24755;border-radius:30px;padding:11px 16px;color:#fff;width:min(100%,260px);outline:none}
+    .service-search:focus{border-color:#ffd36d;box-shadow:0 0 0 3px #ffc24720}
+    .service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .service-card{position:relative;overflow:hidden;min-height:295px;padding:25px;border-radius:18px;border:1px solid #ffc24735;background:linear-gradient(145deg,rgba(24,19,11,.96),rgba(8,8,7,.92));box-shadow:0 15px 35px #0005;transition:transform .35s,border-color .35s,box-shadow .35s}
+    .service-card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 100% 0%,#ffb52d14,transparent 45%);pointer-events:none}
+    .service-card:hover{transform:translateY(-8px);border-color:#ffc247a6;box-shadow:0 18px 42px #0008,0 0 25px #ffb52d18}
+    .card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+    .service-icon{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;background:#ffc24716;border:1px solid #ffc24765;color:#ffd36d;font-size:24px}
+    .service-number{font:600 13px Cinzel,serif;color:#8c7651;letter-spacing:2px}
+    .service-card h3{font:700 19px Cinzel,serif;color:#fff0ce;margin-bottom:12px}
+    .service-card p{font-size:13px;line-height:1.8;color:#c4bbac;min-height:70px}
+    .service-tags{display:flex;flex-wrap:wrap;gap:7px;margin:17px 0 20px}
+    .service-tags span{font-size:10px;color:#f5d99c;border:1px solid #ffbf4b38;background:#ffbf4b0c;border-radius:20px;padding:5px 9px}
+    .service-more{display:flex;align-items:center;justify-content:space-between;color:#ffd36d;font-size:12px;font-weight:700;border-top:1px solid #ffc24724;padding-top:13px}
+    .service-more span{font-size:17px;transition:transform .2s}.service-more:hover span{transform:translate(3px,-3px)}
+    .process-section{margin-top:85px;padding:38px;border:1px solid #ffc24740;border-radius:22px;background:linear-gradient(135deg,#171108e8,#0b0b09e8)}
+    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:28px}
+    .process-step{text-align:center;padding:18px 12px}
+    .process-step b{width:55px;height:55px;margin:0 auto 15px;border:1px solid #ffc2478a;border-radius:50%;display:grid;place-items:center;color:#ffd36d;background:#ffc24712;font:700 20px Cinzel,serif}
+    .process-step h3{color:#fff0ce;font:600 16px Cinzel,serif;margin-bottom:8px}.process-step p{color:#bdb4a5;font-size:12px;line-height:1.7}
+    .service-cta{margin-top:75px;padding:42px;border-radius:22px;border:1px solid #ffc24766;background:radial-gradient(circle at 90% 10%,#ffb52d22,transparent 40%),#100e0a;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .service-cta h2{font:700 clamp(25px,3vw,38px) Cinzel,serif;color:#fff0ce;margin-bottom:10px}.service-cta p{color:#c7beaf;line-height:1.7;max-width:650px}
+    .empty-state{display:none;color:#d9cba9;text-align:center;padding:40px;border:1px dashed #ffc24755;border-radius:16px}
+    .service-card.hidden{display:none}
+    @media(max-width:900px){.service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.services-hero{grid-template-columns:1fr .7fr}.service-stats{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:650px){.services-main{width:min(100% - 30px,1320px);padding-top:105px}.services-hero{grid-template-columns:1fr;padding:28px 0 42px}.hero-visual{min-height:250px}.service-grid{grid-template-columns:1fr}.process-grid{grid-template-columns:repeat(2,1fr)}.process-section{padding:24px 17px}.service-cta{padding:27px;display:block}.service-cta .gold-btn{margin-top:22px}.service-stats{gap:9px}.stat{padding:16px 8px}.stat strong{font-size:23px}.service-tools{align-items:stretch}.service-search{width:100%}}
+
+    /* Extended service catalogue: detailed panels, interaction and responsive layouts */
+    .detail-catalog{padding-top:65px}
+    .detail-intro{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:22px;padding:22px 25px;margin:0 0 28px;border:1px solid #bb873d88;border-radius:17px;background:linear-gradient(110deg,#201709e8,#0b0a08ed);box-shadow:0 12px 35px #0007}
+    .detail-intro>div{display:flex;align-items:baseline;gap:10px;padding-right:20px;border-right:1px solid #9b713b88}
+    .detail-intro strong{font:700 38px Cinzel,serif;color:#ffca5a;text-shadow:0 0 18px #ffad2b55}
+    .detail-intro span{font-size:12px;color:#e1d4bd}
+    .detail-intro p{font-size:13px;line-height:1.7;color:#cfc5b5}
+    .detail-list{display:grid;gap:17px}
+    .detail-panel{position:relative;overflow:hidden;padding:25px 28px 17px;border:1px solid #a8793d88;border-radius:18px;background:linear-gradient(115deg,rgba(28,23,15,.96),rgba(8,8,7,.94));box-shadow:0 12px 30px #0006;transition:border-color .3s,transform .3s,box-shadow .3s}
+    .detail-panel:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#ffe6a0,#d88b19,#6d4210);box-shadow:0 0 15px #ffb52d66}
+    .detail-panel.selected{border-color:#ffd16b;box-shadow:0 0 25px #ffb52d25}\n    .detail-panel:hover{border-color:#ffc247;transform:translateY(-3px);box-shadow:0 18px 40px #0008,0 0 20px #ffb52d18}
+    .detail-panel-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:15px}
+    .detail-index{font-size:10px;letter-spacing:2px;color:#c9a05a;font-weight:800}
+    .detail-category{font-size:9px;letter-spacing:1.5px;color:#ffe1a1;border:1px solid #a77a3e;border-radius:20px;padding:6px 10px;background:#211708}
+    .detail-panel-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:35px;align-items:start}
+    .detail-summary h3{font:600 clamp(20px,2vw,27px) Cinzel,serif;color:#ffe0a0;line-height:1.3;margin-bottom:10px}
+    .detail-summary p{font-size:13px;color:#cfc6b8;line-height:1.8;max-width:510px}
+    .detail-link{display:inline-flex;gap:12px;align-items:center;margin-top:17px;font-size:12px;font-weight:800;color:#ffc247;border-bottom:1px solid #ffc24766;padding-bottom:5px;transition:.25s}
+    .detail-link:hover{gap:18px;color:#ffe7a0}
+    .detail-includes h4{font-size:12px;letter-spacing:.8px;color:#f0d8a7;margin-bottom:12px}
+    .detail-includes ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:9px 18px}
+    .detail-includes li{display:flex;align-items:flex-start;gap:9px;color:#d6cebf;font-size:11px;line-height:1.6}
+    .detail-check{color:#ffc247;font-weight:900;flex:0 0 auto}
+    .detail-foot{display:flex;gap:18px;flex-wrap:wrap;border-top:1px solid #9d713b44;margin-top:19px;padding-top:12px;color:#a9987e;font-size:9px;letter-spacing:1.5px}
+    .detail-foot span+span:before{content:"•";color:#ffc247;margin-right:18px}
+    .service-faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:45px;align-items:start}
+    .faq-intro h2{font:700 clamp(28px,3.5vw,42px) Cinzel,serif;color:#ffda8a;line-height:1.2;margin:14px 0}
+    .faq-intro p{font-size:13px;color:#cfc6b8;line-height:1.8}
+    .faq-list{display:grid;gap:10px}
+    .faq-item{border:1px solid #a8793d77;border-radius:13px;background:#100e0be8;overflow:hidden}
+    .faq-question{width:100%;display:flex;justify-content:space-between;align-items:center;gap:15px;padding:17px 19px;text-align:left;color:#f5dfb0;background:transparent;border:0;cursor:pointer;font-weight:700;font-size:13px}
+    .faq-question span:last-child{color:#ffc247;font-size:19px;transition:transform .25s}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+    .faq-answer p{padding:0 19px 17px;color:#c9c0b2;font-size:12px;line-height:1.8}
+    .faq-item.open .faq-answer{max-height:220px}
+    .faq-item.open .faq-question span:last-child{transform:rotate(45deg)}
+    .engagement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .engagement-card{padding:25px;border:1px solid #a8793d77;border-radius:16px;background:linear-gradient(145deg,#1a150de8,#090807ed);transition:.3s}
+    .engagement-card:hover{transform:translateY(-5px);border-color:#ffc247}
+    .engagement-card .engagement-icon{font-size:27px;color:#ffc247}
+    .engagement-card h3{font:600 18px Cinzel,serif;color:#ffe0a0;margin:13px 0 9px}
+    .engagement-card p{font-size:12px;color:#c9c1b5;line-height:1.8}
+    .engagement-card ul{list-style:none;margin-top:14px;display:grid;gap:8px}
+    .engagement-card li{font-size:11px;color:#e0d6c5}
+    .engagement-card li:before{content:"✓";color:#ffc247;margin-right:9px}
+    .assurance-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+    .assurance-item{padding:17px 14px;text-align:center;border:1px solid #9e713b66;border-radius:12px;background:#0e0c09d9}
+    .assurance-item strong{display:block;color:#ffda8a;font:600 15px Cinzel,serif;margin-bottom:6px}
+    .assurance-item span{font-size:10px;color:#bdb3a4;line-height:1.5}
+    .service-note{padding:18px 20px;border-left:3px solid #ffc247;background:linear-gradient(90deg,#ffb52b16,transparent);color:#d6cbb9;font-size:12px;line-height:1.8;margin-top:22px}
+    @media(max-width:900px){.detail-panel-grid{grid-template-columns:1fr;gap:20px}.service-faq{grid-template-columns:1fr;gap:25px}.engagement-grid{grid-template-columns:1fr 1fr}.detail-intro{grid-template-columns:auto 1fr}.detail-intro .gold-btn{grid-column:1/-1;justify-self:start}}
+    @media(max-width:650px){.detail-panel{padding:21px 19px 15px}.detail-includes ul{grid-template-columns:1fr}.detail-intro{grid-template-columns:1fr;gap:12px}.detail-intro>div{border:0;padding:0}.engagement-grid{grid-template-columns:1fr}.assurance-strip{grid-template-columns:1fr 1fr}.detail-foot{gap:8px}.detail-foot span+span:before{margin-right:8px}}
+    @media(prefers-reduced-motion:reduce){.detail-panel,.engagement-card,.detail-link,.faq-answer{transition:none}}
+
+  
+    /* Delivery playbook blocks used by every detailed service entry */
+    .delivery-playbook{margin-top:22px;padding:18px;border:1px solid #8d683955;border-radius:13px;background:linear-gradient(120deg,#0c0b09c9,#17120b99)}
+    .delivery-playbook>h4{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#f2d59b;margin-bottom:15px}
+    .delivery-phases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+    .delivery-phase{padding:13px;border:1px solid #99713c55;border-radius:10px;background:#0a0908b8;min-width:0}
+    .phase-label{display:block;font-size:8px;letter-spacing:1.6px;color:#d49b43;font-weight:900;margin-bottom:8px}
+    .delivery-phase strong{display:block;color:#ffe0a0;font:600 13px Cinzel,serif;line-height:1.4;margin-bottom:7px}
+    .delivery-phase p{font-size:10px;color:#bfb5a5;line-height:1.65;margin-bottom:9px}
+    .delivery-phase ul{list-style:none;display:grid;gap:6px}
+    .delivery-phase li{font-size:9px;color:#d8cebd;line-height:1.5;padding-left:10px;position:relative}
+    .delivery-phase li:before{content:"";position:absolute;left:0;top:5px;width:4px;height:4px;border-radius:50%;background:#ffc247;box-shadow:0 0 6px #ffc247}
+    .delivery-outcome{display:flex;align-items:flex-start;gap:12px;margin-top:12px;padding:10px 12px;border-left:2px solid #ffc247;background:#ffb52b0b}
+    .delivery-outcome strong{font-size:10px;color:#ffda8a;white-space:nowrap}
+    .delivery-outcome span{font-size:10px;color:#c8bead;line-height:1.6}
+    @media(max-width:1050px){.delivery-phases{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:520px){.delivery-phases{grid-template-columns:1fr}.delivery-outcome{display:block}.delivery-outcome span{display:block;margin-top:5px}}
+
+  
+/* Shared footer copied from the homepage */
+/* Responsive Trinetra footer */
+    .site-footer{position:relative;overflow:hidden;margin-top:45px;padding:58px max(28px,calc((100% - 1335px)/2)) 22px;background:linear-gradient(180deg,rgba(10,9,8,.94),rgba(4,4,4,.99));border-top:1px solid #d99b3d88;isolation:isolate}
+    .site-footer:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.2;background:radial-gradient(ellipse at 15% 0%,#ffb52b55,transparent 42%),radial-gradient(ellipse at 85% 30%,#ff8e1c30,transparent 38%)}
+    .footer-glow{position:absolute;top:-1px;left:50%;width:min(720px,80%);height:1px;transform:translateX(-50%);background:#ffd16c;box-shadow:0 0 24px 5px #ffae2b88}
+    .footer-main{display:grid;grid-template-columns:1.65fr 1fr 1.25fr 1.35fr;gap:42px;padding-bottom:42px}
+    .footer-logo{display:inline-flex;align-items:center;gap:12px}
+    .footer-logo img{width:48px;height:48px;object-fit:cover;border-radius:50%;border:1px solid #dca443;box-shadow:0 0 18px #ffb52d44}
+    .footer-logo span{font:700 27px Cinzel,serif;letter-spacing:2px;color:#ffda82;text-shadow:0 0 12px #ff9d1666}
+    .footer-tagline{font-size:10px;letter-spacing:1.7px;color:#f4bd58;margin:12px 0}
+    .footer-about{max-width:330px;color:#c7beb0;font-size:13px;line-height:1.75}
+    .footer-socials{display:flex;gap:9px;margin-top:20px}
+    .footer-socials a{width:34px;height:34px;display:grid;place-items:center;border:1px solid #9b713b;border-radius:50%;color:#f5c66d;background:#17120b;transition:.25s;font-size:13px;font-weight:700}
+    .footer-socials a:hover{background:#ffc247;color:#171006;transform:translateY(-4px);box-shadow:0 0 17px #ffb52d77}
+    .footer-column{display:flex;flex-direction:column;align-items:flex-start;gap:13px}
+    .footer-column h3,.footer-newsletter h3{font-size:15px;color:#ffda8a;margin:5px 0 7px;font-weight:700}
+    .footer-column>a{font-size:13px;color:#c9c1b5;transition:.2s;line-height:1.5}
+    .footer-column>a:hover,.footer-legal a:hover,.back-to-top:hover{color:#ffc247;transform:translateX(3px)}
+    .footer-contact>a{display:flex;gap:10px;align-items:flex-start}
+    .footer-contact>a span{color:#ffc247}
+    .footer-status{display:flex;align-items:center;gap:9px;margin-top:6px;padding:9px 12px;border:1px solid #6d592f;border-radius:30px;color:#d7d0c4;font-size:11px;background:#17130c}
+    .footer-status i{width:7px;height:7px;border-radius:50%;background:#6cff65;box-shadow:0 0 10px #6cff65}
+    .footer-newsletter{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 0;border-top:1px solid #a87a3d55;border-bottom:1px solid #a87a3d55;position:relative}
+    .footer-newsletter h3{font-size:17px;margin:0 0 6px}
+    .footer-newsletter p{color:#c7beb0;font-size:12px}
+    .newsletter-form{display:flex;width:min(470px,48%);padding:4px;border:1px solid #a77c3f;border-radius:10px;background:#15120d}
+    .newsletter-form input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#fff;padding:10px 12px;font:inherit;font-size:12px}
+    .newsletter-form input::placeholder{color:#a99d8b}
+    .newsletter-form button{border:0;border-radius:7px;padding:10px 15px;background:linear-gradient(135deg,#ffdc79,#e9a32a);color:#171006;font-weight:700;font-size:12px;cursor:pointer;white-space:nowrap;transition:.25s}
+    .newsletter-form button:hover{box-shadow:0 0 18px #ffb52d77;transform:translateY(-1px)}
+    .newsletter-message{position:absolute;right:0;bottom:2px;color:#ffd16c!important;font-size:11px!important}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:22px;color:#a99f90;font-size:11px}
+    .footer-legal{display:flex;gap:22px}
+    .footer-legal a,.back-to-top{color:#bdb3a5;transition:.2s}
+    .back-to-top{white-space:nowrap}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:900px){.footer-main{grid-template-columns:1.4fr 1fr 1fr;gap:30px}.footer-contact{grid-column:2/4}.footer-newsletter{align-items:flex-start;flex-direction:column}.newsletter-form{width:100%}}
+    @media(max-width:600px){.site-footer{padding:42px 20px 20px;margin-top:25px}.footer-main{grid-template-columns:1fr 1fr;gap:28px 18px;padding-bottom:30px}.footer-brand{grid-column:1/-1}.footer-contact{grid-column:auto}.footer-logo img{width:42px;height:42px}.footer-logo span{font-size:23px}.footer-column h3{font-size:14px}.footer-column>a{font-size:12px}.footer-newsletter{gap:15px;padding:20px 0 28px}.footer-newsletter h3{font-size:15px}.newsletter-form{flex-direction:column;border:0;background:transparent;padding:0;gap:8px}.newsletter-form input{min-height:44px;border:1px solid #a77c3f;border-radius:8px;background:#15120d}.newsletter-form button{min-height:43px}.newsletter-message{bottom:5px;left:0;right:auto}.footer-bottom{align-items:flex-start;flex-direction:column;gap:13px}.footer-legal{flex-wrap:wrap;gap:14px}.footer-bottom p,.footer-legal a,.back-to-top{font-size:10px}}
+    @media(prefers-reduced-motion:reduce){.footer-socials a,.footer-column>a,.footer-legal a,.back-to-top,.newsletter-form button{transition:none}}
+
+
+
+    .navlinks a.nav-cta{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:10px 15px!important;margin:0 1px;border:1px solid #ffc247;
+      border-radius:999px;background:linear-gradient(120deg,#ffe7a0,#ffb52d 58%,#ff9418);
+      color:#171006!important;font-weight:800!important;font-size:11px!important;
+      letter-spacing:.15px;box-shadow:0 5px 18px #ffad2638;
+      transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
+    }
+    .navlinks a.nav-cta:after{display:none!important}
+    .navlinks a.nav-cta:hover{color:#100c05!important;transform:translateY(-2px);box-shadow:0 9px 24px #ffad2670;filter:brightness(1.06)}
+    @media(max-width:760px){.navlinks a.nav-cta{align-self:flex-start;margin:10px 0 2px;padding:11px 17px!important}}
+    
+
+    .launch-suite-right{
+      display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;
+      padding:11px 16px;border:1px solid #ffc247;border-radius:999px;
+      background:linear-gradient(120deg,#ffe7a0,#ffb52d 58%,#ff9418);
+      color:#171006!important;font-size:11px;font-weight:800;letter-spacing:.15px;
+      box-shadow:0 5px 18px #ffad2638;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
+    }
+    .launch-suite-right:hover{transform:translateY(-2px);box-shadow:0 9px 24px #ffad2670;filter:brightness(1.06)}
+    @media(max-width:1100px){.launch-suite-right{padding:9px 11px;font-size:10px}}
+    @media(max-width:760px){.launch-suite-right{display:none}}
+    
+
+            .launch-suite-mobile{display:none}
+            @media(max-width:760px){.navlinks .launch-suite-mobile{display:block;color:#ffd36b;font-weight:800}}
+            
+</style>
+</head>
+<body>
+
+  <div class="ambient" id="ambient" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="index.html#home" aria-label="Trinetra home"><span class="brand-mark"><img src="assets/trinetra-logo.png" alt="Trinetra emblem"></span><span class="brand-name">TRINETRA</span></a>
+    <nav class="navlinks" id="navlinks" aria-label="Main navigation">
+      <a href="index.html#home">Home</a><a href="about.html">About</a><a class="active" href="service.html">Services</a><a href="solutions.html">Solutions</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+    <a class="launch-suite-mobile" href="launch-defense-suite.html">Launch Defense Suite</a></nav><a class="launch-suite-right" href="launch-defense-suite.html">Launch Defense Suite</a>
+    
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  </header>
+  <main class="services-main" id="top">
+    <section class="services-hero">
+      <div class="hero-copy reveal visible">
+        <span class="eyebrow">TRINETRA · Technology & Cyber Defense</span>
+        <h1>Technology that connects. <span>Security that protects.</span></h1>
+        <p>Explore Trinetra's integrated technology services — from enterprise network engineering and cybersecurity to cloud, software development and intelligent IT operations. We design practical solutions around your business goals.</p>
+        <div class="hero-actions">
+          <a class="gold-btn" href="#service-catalog">Explore Services <span>↘</span></a>
+          <a class="outline-btn" href="index.html#contact">Talk to Our Team <span>↗</span></a>
+        </div>
+      </div>
+      <div class="hero-visual reveal visible" aria-label="Connected technology illustration">
+        <div class="orbit"><div class="orbit-core">T</div><span class="orbit-node n1">⌘</span><span class="orbit-node n2">⬡</span><span class="orbit-node n3">☁</span><span class="orbit-node n4">⌁</span></div>
+      </div>
+    </section>
+
+    <section class="service-stats reveal">
+      <div class="stat"><strong>14+</strong><span>Service capabilities</span></div>
+      <div class="stat"><strong>360°</strong><span>Technology approach</span></div>
+      <div class="stat"><strong>24/7</strong><span>Security mindset</span></div>
+      <div class="stat"><strong>End-to-End</strong><span>Project lifecycle</span></div>
+    </section>
+
+    <section id="service-catalog">
+      <div class="section-heading reveal">
+        <span class="eyebrow">What we do</span>
+        <h2>Our <span>Services</span></h2>
+        <p>Comprehensive solutions inspired by your supplied service-page content, organized to help you find the right expertise quickly.</p>
+      </div>
+      <div class="service-tools reveal">
+        <div class="filter-list" role="group" aria-label="Filter services">
+          <button class="filter-btn active" data-filter="all">All Services</button>
+          <button class="filter-btn" data-filter="network">Networking</button>
+          <button class="filter-btn" data-filter="security">Cybersecurity</button>
+          <button class="filter-btn" data-filter="software">Software</button>
+          <button class="filter-btn" data-filter="cloud">Cloud</button>
+          <button class="filter-btn" data-filter="consulting">Consulting</button>
+        </div>
+        <input class="service-search" id="serviceSearch" type="search" placeholder="Search services..." aria-label="Search services">
+      </div>
+      <div class="service-grid" id="serviceGrid">
+        <article class="service-card reveal" data-category="software">
+      <div class="card-top"><span class="service-icon">⌘</span><span class="service-number">001</span></div>
+      <h3>Custom Software Development</h3><p>Tailored applications built with modern technologies to streamline business processes and improve productivity.</p>
+      <div class="service-tags"><span>Web &amp; mobile apps</span><span>Enterprise platforms</span><span>Workflow automation</span></div>
+      <a class="service-more" href="index.html#contact">Discuss this service <span>↗</span></a>
+    </article>
+<article class="service-card reveal" data-category="network">
+      <div class="card-top"><span class="service-icon">⌁</span><span class="service-number">002</span></div>
+      <h3>Network Configuration &amp; Engineering</h3><p>Design, configuration and optimization of secure enterprise networks across campus, branch and data-centre environments.</p>
+      <div class="service-tags"><span>Cisco routing &amp; switching</span><span>VLANs</span><span>Routing protocols</span><span>Wireless</span></div>
+      <a class="service-more" href="index.html#contact">Discuss this service <span>↗</span></a>
+    </article>
+<article class="service-card reveal" data-category="security">
+      <div class="card-top"><span class="service-icon">⬡</span><span class="service-number">003</span></div>
+      <h3>Firewall &amp; Network Security</h3><p>Enterprise firewall deployment, policy design and ongoing security management.</p>
+      <div class="service-tags"><span>Palo Alto</span><span>FortiGate</span><span>VPN</span><span>IPS/Threat prevention</span></div>
+      <a class="service-more" href="index.html#contact">Discuss this service <span>↗</span></a>
+    </article>
+<article class="service-card reveal" data-category="cloud">
+      <div class="card-top"><span class="service-icon">☁</span><span class="service-number">004</span></div>
+      <h3>Cloud Solutions</h3><p>Cloud migration, deployment and management designed for scalable, resilient operations.</p>
+      <div class="service-tags"><span>AWS</span><span>Azure</span><span>Hybrid cloud</span><span>Cloud security</span></div>
+      <a class="service-more" href="index.html#contact">Discuss this service <span>↗</span></a>
+    </article>
+<article class="service-card reveal" data-category="network">
+      <div class="card-top"><span class="service-icon">◎</span><span class="service-number">005</span></div>
+      <h3>SD-WAN Implementation</h3><p>Modern WAN architecture that improves application performance, resiliency and connectivity across locations.</p>
+      <div class="service-tags"><span>SD-WAN design</span><span>Application steering</span><span>Failover</span></div>
+      <a class="service-more" href="index.html#contact">Discuss this service <span>↗</span></a>
+    </article>
+<article class="service-card reveal" data-category="security">
+      <div class="card-top"><span class="service-icon">⌕</span><span class="service-number">006</span></div>
+      <h3>Cybersecurity Audit</h3><p>Security assessments that identify vulnerabilities, exposure and practical mitigation priorities.</p>
+      <div class="service-tags"><span>Risk assessment</span><span>Vulnerability review</span><span>Compliance</span></div>
+      <a class="service-more" href="index.html#contact">Discuss this service <span>↗</span></a>
+    </article>
+<article class="service-card reveal" data-category="software">
+      <div class="card-top"><span class="service-icon">⟳</span><span class="service-number">007</span></div>
+      <h3>DevOps &amp; Automation</h3><p>Streamline software delivery and infrastructure operations with automated workflows.</p>
+      <div class="service-tags"><span>CI/CD</span><span>Infrastructure as Code</span><span>Monitoring</span></div>
+      <a class="service-more" href="index.html#contact">Discuss this service <span>↗</span></a>
+    </article>
+<article class="service-card reveal" data-category="network">
+      <div class="card-top"><span class="service-icon">⌁</span><span class="service-number">008</span></div>
+      <h3>Network Monitoring</h3><p>Proactive network performance monitoring with alerts, visibility and operational reporting.</p>
+      <div class="service-tags"><span>Availability</span><span>Traffic analytics</span><span>Incident alerts</span></div>
+      <a class="service-more" href="index.html#contact">Discuss this service <span>↗</span></a>
+    </article>
+<article class="service-card reveal" data-category="network">
+      <div class="card-top"><span class="service-icon">☎</span><span class="service-number">009</span></div>
+      <h3>VoIP Solutions</h3><p>Reliable business communication systems with enterprise-ready voice services.</p>
+      <div class="service-tags"><span>IP telephony</span><span>SIP</span><span>QoS</span><span>Voice network</span></div>
+      <a class="service-more" href="index.html#contact">Discuss this service <span>↗</span></a>
+    </article>
+<article class="service-card reveal" data-category="consulting">
+      <div class="card-top"><span class="service-icon">✧</span><span class="service-number">010</span></div>
+      <h3>IT Strategy &amp; Consulting</h3><p>Technology planning and practical guidance aligned with business priorities.</p>
+      <div class="service-tags"><span>Technology roadmaps</span><span>Digital transformation</span><span>Cost optimization</span></div>
+      <a class="service-more" href="index.html#contact">Discuss this service <span>↗</span></a>
+    </article>
+<article class="service-card reveal" data-category="security">
+      <div class="card-top"><span class="service-icon">↻</span><span class="service-number">011</span></div>
+      <h3>Disaster Recovery</h3><p>Backup and recovery planning to reduce downtime and protect critical business information.</p>
+      <div class="service-tags"><span>Backup strategy</span><span>Recovery planning</span><span>Business continuity</span></div>
+      <a class="service-more" href="index.html#contact">Discuss this service <span>↗</span></a>
+    </article>
+<article class="service-card reveal" data-category="network">
+      <div class="card-top"><span class="service-icon">⌁</span><span class="service-number">012</span></div>
+      <h3>Wireless Networking</h3><p>Wireless network design and implementation for secure, consistent coverage.</p>
+      <div class="service-tags"><span>Access points</span><span>WLAN design</span><span>Guest access</span><span>Roaming</span></div>
+      <a class="service-more" href="index.html#contact">Discuss this service <span>↗</span></a>
+    </article>
+<article class="service-card reveal" data-category="software">
+      <div class="card-top"><span class="service-icon">{ }</span><span class="service-number">013</span></div>
+      <h3>API Development</h3><p>Secure, reliable APIs that connect applications, services and business systems.</p>
+      <div class="service-tags"><span>REST APIs</span><span>GraphQL</span><span>Microservices</span></div>
+      <a class="service-more" href="index.html#contact">Discuss this service <span>↗</span></a>
+    </article>
+<article class="service-card reveal" data-category="cloud">
+      <div class="card-top"><span class="service-icon">▤</span><span class="service-number">014</span></div>
+      <h3>Cloud &amp; Enterprise Integration</h3><p>Connect cloud platforms, applications and enterprise systems into cohesive workflows.</p>
+      <div class="service-tags"><span>Hybrid integration</span><span>Identity</span><span>Data exchange</span></div>
+      <a class="service-more" href="index.html#contact">Discuss this service <span>↗</span></a>
+    </article>
+      </div>
+      <div class="empty-state" id="emptyState">No services match your search. Try another keyword or category.</div>
+    </section>
+
+
+    <section class="detail-catalog section" id="service-catalog">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Detailed service catalogue</span>
+        <h2>Explore our <span>technical capabilities</span></h2>
+        <p>Every engagement is scoped around your environment. The service outlines below show common workstreams and deliverables; the final scope is agreed with you before implementation.</p>
+      </div>
+      <div class="detail-intro reveal">
+        <div><strong>24</strong><span>service workstreams</span></div>
+        <p>Choose a capability to understand the typical activities, engineering considerations and handover items involved.</p>
+        <a class="gold-btn" href="index.html#contact">Plan a project ↗</a>
+      </div>
+      <div class="detail-list">
+        <article class="detail-panel reveal" id="service-detail-01" data-detail-category="network">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 01</div>
+            <span class="detail-category">NETWORK</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Enterprise LAN &amp; Campus Networking</h3>
+              <p>Design and support resilient campus networks that connect users, devices and business applications with predictable performance.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>VLAN and subnet planning</span></li>
+              <li><span class="detail-check">✓</span><span>Layer 2 and Layer 3 switching</span></li>
+              <li><span class="detail-check">✓</span><span>STP, RSTP and MST design</span></li>
+              <li><span class="detail-check">✓</span><span>EtherChannel and link redundancy</span></li>
+              <li><span class="detail-check">✓</span><span>Inter-VLAN routing and gateway resilience</span></li>
+              <li><span class="detail-check">✓</span><span>Network diagrams and configuration standards</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 01.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-02" data-detail-category="network">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 02</div>
+            <span class="detail-category">NETWORK</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>WAN, SD-WAN &amp; Branch Connectivity</h3>
+              <p>Connect offices, branches and data centres with resilient wide-area network designs and clear traffic policies.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>WAN topology assessment</span></li>
+              <li><span class="detail-check">✓</span><span>Routing policy and path selection</span></li>
+              <li><span class="detail-check">✓</span><span>SD-WAN readiness and deployment planning</span></li>
+              <li><span class="detail-check">✓</span><span>VPN and site-to-site connectivity</span></li>
+              <li><span class="detail-check">✓</span><span>QoS for business-critical applications</span></li>
+              <li><span class="detail-check">✓</span><span>Failover and recovery validation</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 02.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-03" data-detail-category="network">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 03</div>
+            <span class="detail-category">NETWORK</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Routing &amp; Switching Engineering</h3>
+              <p>Build stable routed and switched environments using standards-based configurations and operational controls.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>OSPF, BGP and EIGRP design support</span></li>
+              <li><span class="detail-check">✓</span><span>Route filtering and redistribution planning</span></li>
+              <li><span class="detail-check">✓</span><span>HSRP, VRRP and gateway redundancy</span></li>
+              <li><span class="detail-check">✓</span><span>Switch stack and core-distribution design</span></li>
+              <li><span class="detail-check">✓</span><span>Configuration backup and rollback plans</span></li>
+              <li><span class="detail-check">✓</span><span>Change validation and handover</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 03.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-04" data-detail-category="network">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 04</div>
+            <span class="detail-category">NETWORK</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Enterprise Wi-Fi &amp; Wireless Security</h3>
+              <p>Deliver reliable wireless coverage with secure access for employees, guests and connected devices.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Wireless site survey planning</span></li>
+              <li><span class="detail-check">✓</span><span>SSID and VLAN mapping</span></li>
+              <li><span class="detail-check">✓</span><span>WPA enterprise security design</span></li>
+              <li><span class="detail-check">✓</span><span>Guest access and captive portal planning</span></li>
+              <li><span class="detail-check">✓</span><span>Roaming and radio optimisation</span></li>
+              <li><span class="detail-check">✓</span><span>Coverage and capacity validation</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 04.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-05" data-detail-category="security">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 05</div>
+            <span class="detail-category">SECURITY</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Next-Generation Firewall Deployment</h3>
+              <p>Establish controlled network boundaries with firewall policies aligned to applications, users and risk.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Firewall readiness assessment</span></li>
+              <li><span class="detail-check">✓</span><span>Zone and interface architecture</span></li>
+              <li><span class="detail-check">✓</span><span>NAT and access policy design</span></li>
+              <li><span class="detail-check">✓</span><span>VPN connectivity</span></li>
+              <li><span class="detail-check">✓</span><span>High availability planning</span></li>
+              <li><span class="detail-check">✓</span><span>Rule review and policy documentation</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 05.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-06" data-detail-category="security">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 06</div>
+            <span class="detail-category">SECURITY</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Zero Trust &amp; Secure Remote Access</h3>
+              <p>Reduce implicit trust and protect access to applications through identity-aware security principles.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Access pathway assessment</span></li>
+              <li><span class="detail-check">✓</span><span>Least-privilege policy design</span></li>
+              <li><span class="detail-check">✓</span><span>Remote access architecture</span></li>
+              <li><span class="detail-check">✓</span><span>Device and user context planning</span></li>
+              <li><span class="detail-check">✓</span><span>Network segmentation strategy</span></li>
+              <li><span class="detail-check">✓</span><span>Access review and audit evidence</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 06.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-07" data-detail-category="security">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 07</div>
+            <span class="detail-category">SECURITY</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Vulnerability Assessment &amp; Hardening</h3>
+              <p>Identify configuration weaknesses and prioritise practical remediation across infrastructure assets.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Asset and scope definition</span></li>
+              <li><span class="detail-check">✓</span><span>Authenticated assessment planning</span></li>
+              <li><span class="detail-check">✓</span><span>Configuration baseline review</span></li>
+              <li><span class="detail-check">✓</span><span>Risk-based remediation register</span></li>
+              <li><span class="detail-check">✓</span><span>Hardening recommendations</span></li>
+              <li><span class="detail-check">✓</span><span>Retest and closure reporting</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 07.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-08" data-detail-category="security">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 08</div>
+            <span class="detail-category">SECURITY</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Security Monitoring &amp; Incident Readiness</h3>
+              <p>Improve visibility and prepare teams to detect, triage and respond to security events.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Log source inventory</span></li>
+              <li><span class="detail-check">✓</span><span>Alert use-case planning</span></li>
+              <li><span class="detail-check">✓</span><span>Escalation and severity matrix</span></li>
+              <li><span class="detail-check">✓</span><span>Incident response runbooks</span></li>
+              <li><span class="detail-check">✓</span><span>Evidence preservation guidance</span></li>
+              <li><span class="detail-check">✓</span><span>Lessons-learned review</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 08.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-09" data-detail-category="cloud">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 09</div>
+            <span class="detail-category">CLOUD</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Cloud Network Architecture</h3>
+              <p>Plan secure connectivity and network controls for cloud workloads and hybrid environments.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Cloud landing-zone network planning</span></li>
+              <li><span class="detail-check">✓</span><span>Virtual network and subnet design</span></li>
+              <li><span class="detail-check">✓</span><span>Routing and private connectivity</span></li>
+              <li><span class="detail-check">✓</span><span>Security group and firewall controls</span></li>
+              <li><span class="detail-check">✓</span><span>Hybrid DNS and identity dependencies</span></li>
+              <li><span class="detail-check">✓</span><span>Resilience and cost review</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 09.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-10" data-detail-category="cloud">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 10</div>
+            <span class="detail-category">CLOUD</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Hybrid Cloud &amp; Data Centre Integration</h3>
+              <p>Connect on-premises infrastructure with cloud platforms through controlled and documented pathways.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Current-state discovery</span></li>
+              <li><span class="detail-check">✓</span><span>Connectivity and routing design</span></li>
+              <li><span class="detail-check">✓</span><span>Workload dependency mapping</span></li>
+              <li><span class="detail-check">✓</span><span>Migration wave planning</span></li>
+              <li><span class="detail-check">✓</span><span>Backup and recovery dependencies</span></li>
+              <li><span class="detail-check">✓</span><span>Cutover and rollback checklist</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 10.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-11" data-detail-category="cloud">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 11</div>
+            <span class="detail-category">CLOUD</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Virtualization &amp; Server Infrastructure</h3>
+              <p>Support stable compute platforms through infrastructure planning, segmentation and lifecycle practices.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Compute and storage requirements</span></li>
+              <li><span class="detail-check">✓</span><span>Virtual network design</span></li>
+              <li><span class="detail-check">✓</span><span>Host and management separation</span></li>
+              <li><span class="detail-check">✓</span><span>Capacity and utilisation review</span></li>
+              <li><span class="detail-check">✓</span><span>Backup integration</span></li>
+              <li><span class="detail-check">✓</span><span>Operational documentation</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 11.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-12" data-detail-category="cloud">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 12</div>
+            <span class="detail-category">CLOUD</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Backup, Business Continuity &amp; DR</h3>
+              <p>Prepare recovery capabilities that help protect critical services and reduce the impact of disruption.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Critical service inventory</span></li>
+              <li><span class="detail-check">✓</span><span>Recovery objectives workshop</span></li>
+              <li><span class="detail-check">✓</span><span>Backup architecture review</span></li>
+              <li><span class="detail-check">✓</span><span>Replication and recovery planning</span></li>
+              <li><span class="detail-check">✓</span><span>Restore test schedule</span></li>
+              <li><span class="detail-check">✓</span><span>Recovery procedure documentation</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 12.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-13" data-detail-category="managed">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 13</div>
+            <span class="detail-category">MANAGED</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Network Operations &amp; Monitoring</h3>
+              <p>Improve day-to-day visibility into network availability, utilisation and service health.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Device and link inventory</span></li>
+              <li><span class="detail-check">✓</span><span>Monitoring coverage assessment</span></li>
+              <li><span class="detail-check">✓</span><span>Threshold and alert planning</span></li>
+              <li><span class="detail-check">✓</span><span>Performance baseline reporting</span></li>
+              <li><span class="detail-check">✓</span><span>Incident trend analysis</span></li>
+              <li><span class="detail-check">✓</span><span>Monthly service review</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 13.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-14" data-detail-category="managed">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 14</div>
+            <span class="detail-category">MANAGED</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Managed IT Support &amp; Service Desk</h3>
+              <p>Provide structured support workflows that help teams resolve technology issues consistently.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Support scope and priority matrix</span></li>
+              <li><span class="detail-check">✓</span><span>Incident and request workflow</span></li>
+              <li><span class="detail-check">✓</span><span>Escalation ownership model</span></li>
+              <li><span class="detail-check">✓</span><span>Knowledge base and SOPs</span></li>
+              <li><span class="detail-check">✓</span><span>Recurring issue analysis</span></li>
+              <li><span class="detail-check">✓</span><span>Service review and improvement plan</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 14.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-15" data-detail-category="managed">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 15</div>
+            <span class="detail-category">MANAGED</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Configuration Management &amp; Compliance</h3>
+              <p>Bring consistency to infrastructure configuration, change records and operational evidence.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Configuration standards</span></li>
+              <li><span class="detail-check">✓</span><span>Approved change workflow</span></li>
+              <li><span class="detail-check">✓</span><span>Backup and version history</span></li>
+              <li><span class="detail-check">✓</span><span>Drift and compliance checks</span></li>
+              <li><span class="detail-check">✓</span><span>Access and credential handling guidance</span></li>
+              <li><span class="detail-check">✓</span><span>Audit-ready documentation</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 15.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-16" data-detail-category="consulting">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 16</div>
+            <span class="detail-category">CONSULTING</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Network Audit &amp; Technology Assessment</h3>
+              <p>Understand the current environment and identify practical opportunities to improve security and reliability.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Stakeholder and scope interviews</span></li>
+              <li><span class="detail-check">✓</span><span>Topology and asset review</span></li>
+              <li><span class="detail-check">✓</span><span>Configuration sampling</span></li>
+              <li><span class="detail-check">✓</span><span>Risk and dependency register</span></li>
+              <li><span class="detail-check">✓</span><span>Prioritised recommendations</span></li>
+              <li><span class="detail-check">✓</span><span>Executive findings presentation</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 16.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-17" data-detail-category="consulting">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 17</div>
+            <span class="detail-category">CONSULTING</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Technology Strategy &amp; IT Roadmaps</h3>
+              <p>Translate business goals into a phased technology plan with clear dependencies and investment priorities.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Business outcome discovery</span></li>
+              <li><span class="detail-check">✓</span><span>Current-state capability review</span></li>
+              <li><span class="detail-check">✓</span><span>Target architecture principles</span></li>
+              <li><span class="detail-check">✓</span><span>Roadmap and milestone planning</span></li>
+              <li><span class="detail-check">✓</span><span>Risk and dependency mapping</span></li>
+              <li><span class="detail-check">✓</span><span>Budget and lifecycle considerations</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 17.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-18" data-detail-category="network">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 18</div>
+            <span class="detail-category">NETWORK</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>High Availability &amp; Resilience Engineering</h3>
+              <p>Reduce single points of failure through carefully planned redundancy and tested recovery paths.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Failure-domain analysis</span></li>
+              <li><span class="detail-check">✓</span><span>Core and edge redundancy</span></li>
+              <li><span class="detail-check">✓</span><span>First-hop gateway resilience</span></li>
+              <li><span class="detail-check">✓</span><span>Dual uplink and path diversity</span></li>
+              <li><span class="detail-check">✓</span><span>Failover test planning</span></li>
+              <li><span class="detail-check">✓</span><span>Recovery validation report</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 18.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-19" data-detail-category="network">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 19</div>
+            <span class="detail-category">NETWORK</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>VoIP, Unified Communications &amp; QoS</h3>
+              <p>Support dependable voice and collaboration traffic across wired, wireless and WAN environments.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Voice VLAN planning</span></li>
+              <li><span class="detail-check">✓</span><span>SIP and IP telephony connectivity</span></li>
+              <li><span class="detail-check">✓</span><span>QoS classification and marking</span></li>
+              <li><span class="detail-check">✓</span><span>Latency and jitter assessment</span></li>
+              <li><span class="detail-check">✓</span><span>Power and PoE readiness</span></li>
+              <li><span class="detail-check">✓</span><span>Call quality validation</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 19.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-20" data-detail-category="software">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 20</div>
+            <span class="detail-category">SOFTWARE</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Application, API &amp; Web Development</h3>
+              <p>Create maintainable digital experiences and integrations that support real business workflows.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Requirements and user journey mapping</span></li>
+              <li><span class="detail-check">✓</span><span>Responsive interface development</span></li>
+              <li><span class="detail-check">✓</span><span>API and integration planning</span></li>
+              <li><span class="detail-check">✓</span><span>Authentication and access controls</span></li>
+              <li><span class="detail-check">✓</span><span>Testing and deployment checklist</span></li>
+              <li><span class="detail-check">✓</span><span>Documentation and handover</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 20.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-21" data-detail-category="software">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 21</div>
+            <span class="detail-category">SOFTWARE</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>DevOps &amp; Infrastructure Automation</h3>
+              <p>Reduce repetitive operational effort through repeatable deployment and configuration workflows.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Workflow discovery</span></li>
+              <li><span class="detail-check">✓</span><span>CI/CD pipeline planning</span></li>
+              <li><span class="detail-check">✓</span><span>Infrastructure as Code approach</span></li>
+              <li><span class="detail-check">✓</span><span>Configuration automation</span></li>
+              <li><span class="detail-check">✓</span><span>Monitoring and release controls</span></li>
+              <li><span class="detail-check">✓</span><span>Rollback and documentation</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 21.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-22" data-detail-category="software">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 22</div>
+            <span class="detail-category">SOFTWARE</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Data Analytics &amp; Operational Dashboards</h3>
+              <p>Turn operational data into understandable dashboards and reports that support better decisions.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Data source mapping</span></li>
+              <li><span class="detail-check">✓</span><span>Data cleaning and validation</span></li>
+              <li><span class="detail-check">✓</span><span>KPI and metric definition</span></li>
+              <li><span class="detail-check">✓</span><span>Dashboard wireframe planning</span></li>
+              <li><span class="detail-check">✓</span><span>Access and refresh controls</span></li>
+              <li><span class="detail-check">✓</span><span>User training and handover</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 22.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-23" data-detail-category="managed">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 23</div>
+            <span class="detail-category">MANAGED</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>Endpoint &amp; Office IT Infrastructure</h3>
+              <p>Support secure and consistent workplace technology across users, endpoints and office locations.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Endpoint inventory</span></li>
+              <li><span class="detail-check">✓</span><span>Device configuration standards</span></li>
+              <li><span class="detail-check">✓</span><span>Patch and update planning</span></li>
+              <li><span class="detail-check">✓</span><span>Access and Wi-Fi readiness</span></li>
+              <li><span class="detail-check">✓</span><span>Peripheral and collaboration support</span></li>
+              <li><span class="detail-check">✓</span><span>Lifecycle and asset records</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 23.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+        <article class="detail-panel reveal" id="service-detail-24" data-detail-category="consulting">
+          <div class="detail-panel-heading">
+            <div class="detail-index">SERVICE 24</div>
+            <span class="detail-category">CONSULTING</span>
+          </div>
+          <div class="detail-panel-grid">
+            <div class="detail-summary">
+              <h3>IT Project Delivery &amp; Technical Implementation</h3>
+              <p>Coordinate technical changes with clear scope, responsibilities, testing and communication.</p>
+              <a class="detail-link" href="index.html#contact">Discuss this requirement <span>↗</span></a>
+            </div>
+            <div class="detail-includes">
+              <h4>What this service can include</h4>
+              <ul>
+              <li><span class="detail-check">✓</span><span>Project scope and assumptions</span></li>
+              <li><span class="detail-check">✓</span><span>Implementation plan and milestones</span></li>
+              <li><span class="detail-check">✓</span><span>Stakeholder and change coordination</span></li>
+              <li><span class="detail-check">✓</span><span>Pre-change health checks</span></li>
+              <li><span class="detail-check">✓</span><span>Acceptance testing</span></li>
+              <li><span class="detail-check">✓</span><span>Handover and closure report</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="delivery-playbook">
+            <h4>Typical delivery workflow</h4>
+            <div class="delivery-phases">
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 01</span>
+                <strong>Discovery &amp; preparation</strong>
+                <p>Confirm the business objective, technical boundaries, stakeholders and access prerequisites for this workstream.</p>
+                <ul>
+                  <li>Confirm in-scope locations, systems and services.</li>
+                  <li>Record dependencies, constraints and assumptions.</li>
+                  <li>Agree the communication and approval contacts.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 02</span>
+                <strong>Design &amp; planning</strong>
+                <p>Translate the findings into an actionable design and a controlled sequence of technical activities.</p>
+                <ul>
+                  <li>Document the proposed approach and prerequisites.</li>
+                  <li>Identify service impact and change dependencies.</li>
+                  <li>Define validation checks and rollback criteria.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 03</span>
+                <strong>Execution &amp; validation</strong>
+                <p>Complete the agreed work in the approved sequence and verify the expected technical and operational outcomes.</p>
+                <ul>
+                  <li>Perform pre-change health and readiness checks.</li>
+                  <li>Execute approved tasks and capture key results.</li>
+                  <li>Validate connectivity, access or service behaviour.</li>
+                </ul>
+              </div>
+              <div class="delivery-phase">
+                <span class="phase-label">PHASE 04</span>
+                <strong>Handover &amp; improvement</strong>
+                <p>Close the engagement with useful records and a clear view of remaining actions or future improvements.</p>
+                <ul>
+                  <li>Share agreed diagrams, notes and configuration records.</li>
+                  <li>List outstanding risks, exceptions and follow-up items.</li>
+                  <li>Review outcomes with the nominated stakeholders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="delivery-outcome">
+              <strong>Expected outcome</strong>
+              <span>A documented, reviewed and validated workstream aligned with the approved scope for service area 24.</span>
+            </div>
+          </div>
+          <div class="detail-foot">
+            <span>TRINETRA · PLAN</span><span>DESIGN</span><span>IMPLEMENT</span><span>VALIDATE</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="engagement-models">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Flexible engagement</span>
+        <h2>Support that fits <span>your delivery model</span></h2>
+        <p>Choose a focused technical engagement or a longer-term operational partnership. Scope, timelines and responsibilities are agreed before work begins.</p>
+      </div>
+      <div class="engagement-grid">
+        <article class="engagement-card reveal"><div class="engagement-icon">⌖</div><h3>Assessment & Advisory</h3><p>Start with a clear understanding of your environment and the steps that matter most.</p><ul><li>Discovery workshop</li><li>Current-state review</li><li>Prioritised action plan</li><li>Findings and recommendations</li></ul></article>
+        <article class="engagement-card reveal"><div class="engagement-icon">⚙</div><h3>Project Implementation</h3><p>Deliver a defined technology change with a controlled plan and measurable acceptance criteria.</p><ul><li>Defined scope and milestones</li><li>Change and rollback planning</li><li>Implementation and testing</li><li>Documentation and handover</li></ul></article>
+        <article class="engagement-card reveal"><div class="engagement-icon">◉</div><h3>Ongoing Operations</h3><p>Improve consistency through recurring support, monitoring and service reviews.</p><ul><li>Agreed support boundaries</li><li>Operational monitoring</li><li>Incident and change workflows</li><li>Periodic service reviews</li></ul></article>
+      </div>
+      <div class="assurance-strip">
+        <div class="assurance-item reveal"><strong>Clear Scope</strong><span>Agreed activities and assumptions</span></div>
+        <div class="assurance-item reveal"><strong>Change Control</strong><span>Planned changes and rollback paths</span></div>
+        <div class="assurance-item reveal"><strong>Validation</strong><span>Testing against agreed outcomes</span></div>
+        <div class="assurance-item reveal"><strong>Handover</strong><span>Useful records and documentation</span></div>
+      </div>
+      <p class="service-note reveal">Service availability, deliverables and response arrangements depend on the final statement of work. TRINETRA will confirm the agreed scope, access requirements, dependencies and acceptance criteria before delivery.</p>
+    </section>
+
+    <section class="section band" id="service-faq">
+      <div class="service-faq">
+        <div class="faq-intro reveal"><span class="eyebrow">Frequently asked questions</span><h2>Before we get <span class="gold">started.</span></h2><p>Some common questions about planning, delivery and support. If your requirement is different, contact our team and we can discuss the right approach.</p><a class="gold-btn" href="index.html#contact">Ask a question ↗</a></div>
+        <div class="faq-list">
+          <article class="faq-item reveal"><button class="faq-question" aria-expanded="false"><span>Can you assess our existing network before proposing changes?</span><span>+</span></button><div class="faq-answer"><p>Yes. An engagement can begin with discovery, topology review, configuration sampling and a discussion of business requirements. The resulting findings can be used to define a practical improvement plan.</p></div></article>
+          <article class="faq-item reveal"><button class="faq-question" aria-expanded="false"><span>Do you support both on-premises and cloud environments?</span><span>+</span></button><div class="faq-answer"><p>Service planning can cover on-premises infrastructure, cloud networking and hybrid connectivity. The exact platforms, access requirements and responsibilities are confirmed during scoping.</p></div></article>
+          <article class="faq-item reveal"><button class="faq-question" aria-expanded="false"><span>Can you work with our existing IT team?</span><span>+</span></button><div class="faq-answer"><p>Yes. Delivery can be coordinated with internal IT teams, application owners, vendors and other stakeholders. Roles, approvals, escalation paths and change windows should be agreed before work starts.</p></div></article>
+          <article class="faq-item reveal"><button class="faq-question" aria-expanded="false"><span>Will we receive documentation after implementation?</span><span>+</span></button><div class="faq-answer"><p>Documentation can be included in the agreed scope. Typical handover items may include diagrams, configuration records, test results, operating notes and recommendations for future maintenance.</p></div></article>
+          <article class="faq-item reveal"><button class="faq-question" aria-expanded="false"><span>How do you plan changes that could affect production services?</span><span>+</span></button><div class="faq-answer"><p>Production changes should be planned with impact assessment, stakeholder approval, pre-change checks, a defined maintenance window where applicable, validation steps and a rollback approach.</p></div></article>
+          <article class="faq-item reveal"><button class="faq-question" aria-expanded="false"><span>Can we request a single service instead of a full project?</span><span>+</span></button><div class="faq-answer"><p>Yes. Work can be scoped as a focused assessment, configuration task, design review, implementation project or ongoing support arrangement, depending on the requirement.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process-section reveal">
+      <div class="section-heading">
+        <span class="eyebrow">How we work</span>
+        <h2>A clear path from <span>idea to impact</span></h2>
+        <p>Our delivery approach keeps each engagement structured, transparent and aligned with your operational requirements.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step"><b>01</b><h3>Discover</h3><p>Understand your environment, requirements, risks and desired outcomes.</p></div>
+        <div class="process-step"><b>02</b><h3>Design</h3><p>Build a practical architecture, scope and implementation roadmap.</p></div>
+        <div class="process-step"><b>03</b><h3>Implement</h3><p>Configure, develop, integrate and validate the agreed solution.</p></div>
+        <div class="process-step"><b>04</b><h3>Optimize</h3><p>Monitor performance, document the environment and plan improvements.</p></div>
+      </div>
+    </section>
+
+    <section class="service-cta reveal">
+      <div><h2>Let's build a stronger digital foundation.</h2><p>Tell us about your network, security or software requirements. Trinetra can help you plan the next step with a solution tailored to your environment.</p></div>
+      <a class="gold-btn" href="index.html#contact">Request a Consultation <span>↗</span></a>
+    </section>
+  </main>
+  <footer class="site-footer" id="footer">
+    <div class="footer-glow"></div>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a class="footer-logo" href="index.html#home">
+          <img src="assets/trinetra-logo.png" alt="Trinetra emblem">
+          <span>TRINETRA</span>
+        </a>
+        <p class="footer-tagline">DIVINE VISION · POWER · PROTECTION</p>
+        <p class="footer-about">Intelligent network security and zero-trust defense for a safer, more resilient digital world.</p>
+        <div class="footer-socials" aria-label="Social media links">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="X">𝕏</a>
+          <a href="#" aria-label="GitHub">⌘</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Explore</h3>
+        <a href="index.html#home">Home</a>
+        <a href="about.html">About Us</a><a href="service.html">Services</a>
+        <a href="solutions.html">Our Solutions</a>
+        
+        <a href="index.html#threat-intel">Threat Intelligence</a>
+        <a href="index.html#architecture">Architecture</a>
+        <a href="index.html#founder">Founder</a>
+        <a href="index.html#resources">Resources</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Solutions</h3>
+        <a href="solutions.html">Network Security</a>
+        <a href="solutions.html">Zero-Trust Access</a>
+        <a href="solutions.html">Quantum-ready Encryption</a>
+        <a href="solutions.html">Security Operations</a>
+        <a href="solutions.html">Cloud Security</a>
+      </div>
+
+      <div class="footer-column footer-contact">
+        <h3>Get in Touch</h3>
+        <a href="contact.html"><span>✉</span> Contact our team</a>
+        <a href="contact.html"><span>⌖</span> Request a security consultation</a>
+        <a href="contact.html"><span>↗</span> Launch Defense Suite</a>
+        <div class="footer-status"><i></i> Security-first. Always.</div>
+      </div>
+    </div>
+
+    <div class="footer-newsletter">
+      <div>
+        <h3>Stay ahead of emerging threats</h3>
+        <p>Get occasional security insights and Trinetra updates.</p>
+      </div>
+      <form id="footerNewsletter" class="newsletter-form">
+        <label class="sr-only" for="newsletterEmail">Email address</label>
+        <input id="newsletterEmail" type="email" placeholder="Enter your email address" required>
+        <button type="submit">Subscribe <span>→</span></button>
+      </form>
+      <p id="newsletterMessage" class="newsletter-message" role="status"></p>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> TRINETRA. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#footer">Privacy Policy</a>
+        <a href="#footer">Terms of Service</a>
+        <a href="#footer">Cookie Policy</a>
+      </div>
+      <a class="back-to-top" href="index.html#home">Back to top ↑</a>
+    </div>
+  </footer>
+  <a class="back-to-top" id="backtop" href="#top" aria-label="Back to top">↑</a>
+  <script>
+    const ambient=document.getElementById('ambient');
+    for(let i=0;i<28;i++){const s=document.createElement('i');s.className='spark';s.style.left=Math.random()*100+'%';s.style.top=(25+Math.random()*75)+'%';s.style.animationDelay=(Math.random()*7)+'s';s.style.animationDuration=(4+Math.random()*5)+'s';ambient.appendChild(s);}
+    const menuBtn=document.getElementById('menuBtn'),nav=document.getElementById('navlinks');
+    menuBtn.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',open);menuBtn.textContent=open?'×':'☰';});
+    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menuBtn.textContent='☰';menuBtn.setAttribute('aria-expanded','false');}));
+    const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target);}}),{threshold:.1});
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el=>revealObserver.observe(el));
+    document.getElementById('year').textContent=new Date().getFullYear();
+    const filters=[...document.querySelectorAll('.filter-btn')], search=document.getElementById('serviceSearch');
+    let activeFilter='all';
+    function applyFilters(){const q=search.value.trim().toLowerCase();let shown=0;document.querySelectorAll('.service-card').forEach(card=>{const matchCategory=activeFilter==='all'||card.dataset.category===activeFilter;const matchText=card.textContent.toLowerCase().includes(q);const visible=matchCategory&&matchText;card.classList.toggle('hidden',!visible);if(visible)shown++;});document.getElementById('emptyState').style.display=shown?'none':'block';}
+    filters.forEach(btn=>btn.addEventListener('click',()=>{filters.forEach(b=>b.classList.remove('active'));btn.classList.add('active');activeFilter=btn.dataset.filter;applyFilters();}));
+    search.addEventListener('input',applyFilters);
+
+    // Accessible FAQ accordion: only one answer remains open at a time.
+    document.querySelectorAll('.faq-question').forEach(button=>{
+      button.addEventListener('click',()=>{
+        const item=button.closest('.faq-item');
+        const wasOpen=item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(row=>{
+          row.classList.remove('open');
+          row.querySelector('.faq-question').setAttribute('aria-expanded','false');
+        });
+        if(!wasOpen){
+          item.classList.add('open');
+          button.setAttribute('aria-expanded','true');
+        }
+      });
+    });
+    // Highlight a detailed service panel when opened through a direct anchor.
+    document.querySelectorAll('.detail-link').forEach(link=>{
+      link.addEventListener('click',()=>{
+        link.closest('.detail-panel').classList.add('selected');
+      });
+    });
+
+        const backtop=document.getElementById('backtop');window.addEventListener('scroll',()=>backtop.classList.toggle('show',window.scrollY>500),{passive:true});
+  </script>
+
+
+<script>
+(function(){
+  var yearNode=document.getElementById('year');
+  if(yearNode) yearNode.textContent=new Date().getFullYear();
+  var form=document.getElementById('footerNewsletter');
+  if(form && !form.dataset.footerBound){
+    form.dataset.footerBound='true';
+    form.addEventListener('submit',function(event){
+      event.preventDefault();
+      var email=form.querySelector('input[type="email"]');
+      if(!email || !email.checkValidity()){ if(email) email.reportValidity(); return; }
+      var msg=document.getElementById('newsletterMessage');
+      if(msg) msg.textContent='Thanks for your interest! Connect a mailing-list service to enable subscriptions.';
+      form.reset();
+    });
+  }
+})();
+</script>
+
+<script src="assets/trinetra-customizer.js"></script>
+<script src="assets/newsletter-subscriptions.js"></script>
+  <script src="assets/trinetra-ai-chat.js" defer></script>
+<script src="assets/member-auth.js" defer></script>
+</body>
+</html>

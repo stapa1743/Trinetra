@@ -1,0 +1,2947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090806">
+  <meta name="description" content="Trinetra insights on network security, zero trust, routing, cloud defense and cyber threat intelligence.">
+  <meta name="keywords" content="Trinetra, cybersecurity blog, network security, zero trust, routing, cloud security, threat intelligence">
+  <title>Insights & Cybersecurity Blog | TRINETRA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/trinetra-logo.png">
+  <style>
+
+    :root{
+      --gold:#ffc247;--gold2:#ff9d16;--gold3:#ffe7a0;--ink:#080807;
+      --panel:rgba(13,13,12,.78);--line:rgba(255,190,66,.42);--white:#f8f5ed;
+      --muted:#c8c1b4;--green:#66ff5e;--cyan:#27d8ff;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:100px}
+    body{font-family:Inter,Arial,sans-serif;background:#080807;color:var(--white);overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;z-index:-3;background:
+      linear-gradient(90deg,rgba(5,5,5,.36),rgba(5,5,5,.12) 55%,rgba(5,5,5,.2)),
+      url("assets/trinetra-background.png") center center/cover no-repeat;transform:scale(1.015)}
+    body:after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:
+      radial-gradient(ellipse at 70% 28%,transparent 0 23%,rgba(0,0,0,.16) 65%),
+      linear-gradient(180deg,rgba(0,0,0,.16),transparent 25%,rgba(0,0,0,.38))}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .ambient{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
+    .spark{position:absolute;width:3px;height:3px;border-radius:50%;background:#ffd36b;box-shadow:0 0 12px 3px #ff9f20;opacity:0;animation:floatSpark 6s linear infinite}
+    @keyframes floatSpark{0%{transform:translateY(30px) scale(.5);opacity:0}20%{opacity:.9}80%{opacity:.7}100%{transform:translateY(-120px) scale(1.3);opacity:0}}
+    .topbar{position:fixed;z-index:1000;top:8px;left:50%;transform:translateX(-50%);width:min(1450px,calc(100% - 44px));height:66px;padding:0 28px;
+      display:flex;align-items:center;justify-content:space-between;gap:24px;border:1px solid rgba(255,190,66,.48);
+      border-radius:19px;background:rgba(9,9,8,.84);backdrop-filter:blur(18px);box-shadow:0 8px 35px #0009,0 0 22px #ffad2630}
+    .brand{display:flex;align-items:center;gap:12px;min-width:max-content}
+    .brand-mark{width:48px;height:48px;display:grid;place-items:center;overflow:hidden;border-radius:50%;border:1px solid var(--gold);color:var(--gold3);
+      background:radial-gradient(circle,#68400d,#17100a 70%);box-shadow:0 0 18px #ffb52d55;font-size:25px}
+    .brand-mark img{width:100%;height:100%;display:block;object-fit:cover;border-radius:50%}
+    .brand-name{font:700 27px Cinzel,serif;letter-spacing:2px;color:#ffda82;text-shadow:0 0 13px #ff9d16aa}
+    .navlinks{display:flex;align-items:center;gap:clamp(17px,2.5vw,43px);margin-left:auto}
+    .navlinks a{font-size:14px;color:#f4f0e8;position:relative;padding:23px 0;transition:.25s}
+    .navlinks a:after{content:"";position:absolute;left:50%;bottom:13px;width:0;height:2px;background:var(--gold);box-shadow:0 0 10px var(--gold);transition:.3s;transform:translateX(-50%)}
+    .navlinks a:hover,.navlinks a.active{color:#ffd45f}.navlinks a:hover:after,.navlinks a.active:after{width:100%}
+    .launch{display:flex;align-items:center;gap:9px;border:1px solid var(--gold);border-radius:30px;padding:11px 18px;color:#ffd65c;background:#281a08;white-space:nowrap;
+      box-shadow:inset 0 0 13px #ffb72b18,0 0 15px #ffb72b18;transition:.3s}
+    .launch:hover{background:#ffc247;color:#171006;box-shadow:0 0 25px #ffb72b99;transform:translateY(-2px)}
+    .menu-btn{display:none;background:none;border:0;color:white;font-size:27px;cursor:pointer}
+    main{width:min(1335px,calc(100% - 56px));margin:0 auto}
+    .hero{min-height:auto;padding:112px 0 22px;display:flex;align-items:flex-start;position:relative}
+    .hero-copy{width:min(610px,52%);position:relative;z-index:2;padding-top:3px}
+    .eyebrow{display:flex;align-items:center;gap:17px;color:#f7ead0;letter-spacing:3px;font-size:13px;text-transform:uppercase;margin-bottom:13px}
+    .eyebrow:before,.eyebrow:after{content:"";height:1px;width:40px;background:linear-gradient(90deg,transparent,var(--gold))}
+    .eyebrow:after{background:linear-gradient(90deg,var(--gold),transparent)}
+    h1{font:800 clamp(58px,7vw,105px)/.98 Cinzel,serif;letter-spacing:2px;color:#ffd77a;
+      background:linear-gradient(180deg,#fff2b8 0%,#ffc13d 45%,#b96b0c 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+      filter:drop-shadow(0 5px 14px #ff9b2470);animation:titleGlow 4s ease-in-out infinite alternate}
+    @keyframes titleGlow{to{filter:drop-shadow(0 5px 24px #ffb52da8)}}
+    .tagline{font-weight:800;font-size:clamp(15px,1.7vw,23px);letter-spacing:1.2px;color:#ffbd35;margin:9px 0 15px}
+    .hero h2{font-size:clamp(24px,2.25vw,34px);line-height:1.18;font-weight:600;max-width:560px;margin-bottom:14px}
+    .intro{color:#ded8ce;line-height:1.55;font-size:15px;max-width:560px}
+    .actions{display:flex;flex-wrap:wrap;gap:16px;margin:23px 0 18px}
+    .btn{min-height:50px;padding:0 24px;border-radius:11px;display:inline-flex;align-items:center;justify-content:center;gap:11px;font-weight:700;transition:.3s;cursor:pointer}
+    .btn-primary{background:linear-gradient(135deg,#ffdb6c,#e99b16);color:#171006;border:1px solid #ffca42;box-shadow:0 0 22px #ffae2b70,inset 0 1px #fff8}
+    .btn-primary:hover{transform:translateY(-4px);box-shadow:0 8px 30px #ffae2baa}
+    .btn-outline{border:1px solid #ddd0b8;background:#171512b8;color:#fff;box-shadow:inset 0 0 15px #fff1}
+    .btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-4px)}
+    .quick-stats{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+    .quick-stats span{padding:10px 14px;border:1px solid #7c6a4b66;border-radius:30px;background:#11100dc9;font-size:13px;color:#eee}
+    .quick-stats b{color:var(--green);margin-left:4px}
+    .modules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) 2.65fr;gap:18px;align-items:stretch;margin:0 0 18px}
+    .module,.telemetry,.metric-strip{border:1px solid rgba(255,206,126,.55);background:linear-gradient(145deg,rgba(36,34,30,.88),rgba(9,9,8,.88));
+      backdrop-filter:blur(12px);box-shadow:0 9px 26px #0008,inset 0 1px #fff2;position:relative;overflow:hidden}
+    .module{min-height:151px;border-radius:16px;padding:20px 21px;display:flex;flex-direction:column;justify-content:space-between;transition:.35s}
+    .module:before,.telemetry:before{content:"";position:absolute;inset:-1px;background:linear-gradient(110deg,transparent 25%,#ffc24718 50%,transparent 75%);transform:translateX(-110%);transition:.65s}
+    .module:hover:before,.telemetry:hover:before{transform:translateX(110%)}
+    .module:hover{transform:translateY(-7px);border-color:#ffc247;box-shadow:0 12px 35px #ff9d1640,inset 0 0 25px #ffb52b1c}
+    .module.featured{background:linear-gradient(145deg,rgba(135,82,11,.93),rgba(34,22,8,.95));border-color:#ffc247;box-shadow:0 0 22px #ffae2b4a}
+    .module-icon{font-size:34px;color:#ffca4b;text-shadow:0 0 15px #ffae2b}
+    .module strong{font-size:17px;line-height:1.35;font-weight:600}
+    .module .arrow{position:absolute;right:19px;bottom:20px;font-size:23px;color:#fff}
+    .telemetry{border-radius:16px;padding:17px 20px;min-height:151px}
+    .telemetry-head{display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:13px}
+    .live{font-size:11px;color:#b8ffad;background:#123010;border:1px solid #3c9e34;border-radius:20px;padding:5px 10px}
+    .live:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#5cff4d;margin-right:6px;box-shadow:0 0 9px #5cff4d}
+    .telemetry-body{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;align-items:center}
+    .bars{height:83px;display:flex;align-items:end;gap:3px;border-bottom:1px solid #a58a4c55;padding:0 3px}
+    .bars i{display:block;flex:1;min-width:2px;background:linear-gradient(0deg,#ffad26,#ffe28a);border-radius:3px 3px 0 0;box-shadow:0 0 8px #ffae2b66;animation:barPulse 1.4s ease-in-out infinite alternate;transform-origin:bottom}
+    .bars i:nth-child(3n){background:linear-gradient(0deg,#08a9dc,#53e9ff);box-shadow:0 0 8px #00cfff66}
+    @keyframes barPulse{to{transform:scaleY(.55);opacity:.72}}
+    .telemetry-data{display:grid;gap:8px;font-size:12px;color:#e7e2d9}
+    .telemetry-data div{display:flex;justify-content:space-between;gap:10px}.telemetry-data b{color:#ffd46d}
+    .metric-strip{border-radius:17px;padding:15px 24px;display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:48px}
+    .metric{display:flex;align-items:center;justify-content:center;gap:17px;padding:0 12px;border-right:1px solid #bd862f99}
+    .metric:last-child{border:0}.metric-icon{font-size:34px;color:#ffc247;text-shadow:0 0 15px #ffae2b}
+    .metric strong{display:block;font-size:22px}.metric small{color:#d8d0c3;font-size:13px}
+    .section{padding:85px 0;scroll-margin-top:80px}
+    .section-heading{text-align:center;margin-bottom:38px}
+    .section-heading .eyebrow{justify-content:center}
+    .section-heading h2{font:700 clamp(30px,4vw,48px) Cinzel,serif;color:#ffdb8b;text-shadow:0 0 20px #ff9c2e55}
+    .section-heading p{color:#d0c8bb;margin:12px auto 0;max-width:650px;line-height:1.6}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .feature-card{padding:27px;border:1px solid #b8863b77;border-radius:16px;background:linear-gradient(145deg,#17140fcf,#080807e8);backdrop-filter:blur(10px);transition:.35s}
+    .feature-card:hover{transform:translateY(-8px);border-color:#ffd16b;box-shadow:0 12px 35px #ff9d162c}
+    .feature-card .module-icon{font-size:36px}.feature-card h3{font-size:19px;margin:15px 0 9px}.feature-card p{color:#c9c1b5;font-size:14px;line-height:1.65}
+    .architecture{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+    .architecture-visual{min-height:290px;border:1px solid #bd873e88;border-radius:20px;background:radial-gradient(circle at center,#8b4c0c55,transparent 58%),#0b0a08d9;display:grid;place-items:center;position:relative;overflow:hidden}
+    .orbit{width:190px;height:190px;border:1px solid #ffbc43;border-radius:50%;display:grid;place-items:center;box-shadow:0 0 35px #ff9f2d66,inset 0 0 30px #ff9f2d33;animation:spin 18s linear infinite}
+    .orbit:before,.orbit:after{content:"";position:absolute;width:245px;height:245px;border:1px dashed #ffbd4d88;border-radius:50%;animation:spin 24s linear infinite reverse}
+    .orbit:after{width:300px;height:300px;border-color:#ffbd4d44}
+    .orbit span{font-size:75px;color:#ffd16c;text-shadow:0 0 28px #ff9e1b}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .architecture-copy h3{font:600 28px Cinzel,serif;color:#ffda8a;margin-bottom:15px}.architecture-copy p{line-height:1.7;color:#d3cbbf;margin-bottom:18px}
+    .architecture-copy li{list-style:none;margin:12px 0;color:#eee}.architecture-copy li:before{content:"✦";color:#ffc247;margin-right:11px}
+    .contact-box{max-width:760px;margin:auto;padding:34px;border:1px solid #d29a43aa;border-radius:18px;background:#0c0b09e8;box-shadow:0 0 35px #ff9e1c1b}
+    .contact-box form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .contact-box input,.contact-box textarea{width:100%;padding:14px 15px;color:#fff;background:#17140f;border:1px solid #80602f;border-radius:9px;outline:none}
+    .contact-box input:focus,.contact-box textarea:focus{border-color:#ffc247;box-shadow:0 0 0 3px #ffc24720}
+    .contact-box textarea{grid-column:1/-1;min-height:120px;resize:vertical}
+    .contact-box button{grid-column:1/-1;justify-self:start}
+
+
+    /* Founder & Technical Director */
+    .founder-section{position:relative;display:grid;grid-template-columns:minmax(280px,.88fr) minmax(0,1.35fr);gap:clamp(30px,5vw,76px);align-items:center;padding:88px 0;scroll-margin-top:90px}
+    .founder-photo-wrap{position:relative;max-width:470px;margin-inline:auto;width:100%;padding:12px;border:1px solid #dba94d99;border-radius:25px;background:linear-gradient(145deg,#ffcf6b2b,#100d08);box-shadow:0 22px 65px #0009,0 0 32px #ffb52b1c}
+    .founder-photo-wrap:before{content:"";position:absolute;inset:-8px;border:1px solid #ffbf4d55;border-radius:30px;pointer-events:none}
+    .founder-photo{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 28%;border-radius:17px;filter:saturate(1.04);transition:transform .7s ease,filter .7s ease}
+    .founder-photo-wrap:hover .founder-photo{transform:scale(1.018);filter:saturate(1.16)}
+    .founder-photo-caption{position:absolute;left:24px;right:24px;bottom:24px;padding:15px 17px;border:1px solid #ffcf6b66;border-radius:13px;background:#090806d9;backdrop-filter:blur(12px);text-align:left}
+    .founder-photo-caption strong{display:block;color:#ffe0a0;font:700 17px Cinzel,serif;letter-spacing:.5px}
+    .founder-photo-caption span{display:block;color:#d8c9ae;font-size:11px;letter-spacing:1.7px;text-transform:uppercase;margin-top:5px}
+    .founder-copy .eyebrow{margin-bottom:13px}
+    .founder-copy h2{font:700 clamp(30px,4vw,47px)/1.15 Cinzel,serif;color:#ffdb8b;text-shadow:0 0 20px #ff9c2e55;margin-bottom:20px}
+    .founder-copy h2 span{display:block;color:#ffc247}
+    .founder-intro{font-size:15px;line-height:1.85;color:#ded5c7;margin-bottom:25px}
+    .founder-copy h3{font:600 20px Cinzel,serif;color:#ffda8a;margin:0 0 17px}
+    .founder-skills{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;list-style:none}
+    .founder-skills li{display:flex;align-items:flex-start;gap:10px;color:#e7dfd2;font-size:13px;line-height:1.55;padding:12px;border:1px solid #a77c3f45;border-radius:11px;background:linear-gradient(135deg,#1c170fbd,#090807b8);transition:transform .25s,border-color .25s,background .25s}
+    .founder-skills li:hover{transform:translateY(-3px);border-color:#ffc247a8;background:#251b0d}
+    .founder-skills svg{width:17px;height:17px;flex:0 0 17px;margin-top:1px;color:#ffc247}
+    .founder-note{margin-top:22px;padding:15px 18px;border-left:3px solid #ffc247;background:linear-gradient(90deg,#ffb52b17,transparent);color:#d7cbb8;font-size:13px;line-height:1.7}
+    @media(max-width:850px){.founder-section{grid-template-columns:minmax(230px,.8fr) minmax(0,1.2fr);gap:28px}.founder-skills{grid-template-columns:1fr}}
+    @media(max-width:650px){.founder-section{grid-template-columns:1fr;padding:62px 0}.founder-photo-wrap{max-width:390px}.founder-copy h2{font-size:32px}.founder-intro{font-size:14px}.founder-skills{grid-template-columns:1fr 1fr;gap:9px}.founder-skills li{font-size:12px;padding:10px}}
+    @media(max-width:420px){.founder-skills{grid-template-columns:1fr}}
+    @media(prefers-reduced-motion:reduce){.founder-photo,.founder-skills li{transition:none}}
+
+    /* Responsive Trinetra footer */
+    .site-footer{position:relative;overflow:hidden;margin-top:45px;padding:58px max(28px,calc((100% - 1335px)/2)) 22px;background:linear-gradient(180deg,rgba(10,9,8,.94),rgba(4,4,4,.99));border-top:1px solid #d99b3d88;isolation:isolate}
+    .site-footer:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.2;background:radial-gradient(ellipse at 15% 0%,#ffb52b55,transparent 42%),radial-gradient(ellipse at 85% 30%,#ff8e1c30,transparent 38%)}
+    .footer-glow{position:absolute;top:-1px;left:50%;width:min(720px,80%);height:1px;transform:translateX(-50%);background:#ffd16c;box-shadow:0 0 24px 5px #ffae2b88}
+    .footer-main{display:grid;grid-template-columns:1.65fr 1fr 1.25fr 1.35fr;gap:42px;padding-bottom:42px}
+    .footer-logo{display:inline-flex;align-items:center;gap:12px}
+    .footer-logo img{width:48px;height:48px;object-fit:cover;border-radius:50%;border:1px solid #dca443;box-shadow:0 0 18px #ffb52d44}
+    .footer-logo span{font:700 27px Cinzel,serif;letter-spacing:2px;color:#ffda82;text-shadow:0 0 12px #ff9d1666}
+    .footer-tagline{font-size:10px;letter-spacing:1.7px;color:#f4bd58;margin:12px 0}
+    .footer-about{max-width:330px;color:#c7beb0;font-size:13px;line-height:1.75}
+    .footer-socials{display:flex;gap:9px;margin-top:20px}
+    .footer-socials a{width:34px;height:34px;display:grid;place-items:center;border:1px solid #9b713b;border-radius:50%;color:#f5c66d;background:#17120b;transition:.25s;font-size:13px;font-weight:700}
+    .footer-socials a:hover{background:#ffc247;color:#171006;transform:translateY(-4px);box-shadow:0 0 17px #ffb52d77}
+    .footer-column{display:flex;flex-direction:column;align-items:flex-start;gap:13px}
+    .footer-column h3,.footer-newsletter h3{font-size:15px;color:#ffda8a;margin:5px 0 7px;font-weight:700}
+    .footer-column>a{font-size:13px;color:#c9c1b5;transition:.2s;line-height:1.5}
+    .footer-column>a:hover,.footer-legal a:hover,.back-to-top:hover{color:#ffc247;transform:translateX(3px)}
+    .footer-contact>a{display:flex;gap:10px;align-items:flex-start}
+    .footer-contact>a span{color:#ffc247}
+    .footer-status{display:flex;align-items:center;gap:9px;margin-top:6px;padding:9px 12px;border:1px solid #6d592f;border-radius:30px;color:#d7d0c4;font-size:11px;background:#17130c}
+    .footer-status i{width:7px;height:7px;border-radius:50%;background:#6cff65;box-shadow:0 0 10px #6cff65}
+    .footer-newsletter{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 0;border-top:1px solid #a87a3d55;border-bottom:1px solid #a87a3d55;position:relative}
+    .footer-newsletter h3{font-size:17px;margin:0 0 6px}
+    .footer-newsletter p{color:#c7beb0;font-size:12px}
+    .newsletter-form{display:flex;width:min(470px,48%);padding:4px;border:1px solid #a77c3f;border-radius:10px;background:#15120d}
+    .newsletter-form input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#fff;padding:10px 12px;font:inherit;font-size:12px}
+    .newsletter-form input::placeholder{color:#a99d8b}
+    .newsletter-form button{border:0;border-radius:7px;padding:10px 15px;background:linear-gradient(135deg,#ffdc79,#e9a32a);color:#171006;font-weight:700;font-size:12px;cursor:pointer;white-space:nowrap;transition:.25s}
+    .newsletter-form button:hover{box-shadow:0 0 18px #ffb52d77;transform:translateY(-1px)}
+    .newsletter-message{position:absolute;right:0;bottom:2px;color:#ffd16c!important;font-size:11px!important}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:22px;color:#a99f90;font-size:11px}
+    .footer-legal{display:flex;gap:22px}
+    .footer-legal a,.back-to-top{color:#bdb3a5;transition:.2s}
+    .back-to-top{white-space:nowrap}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:900px){.footer-main{grid-template-columns:1.4fr 1fr 1fr;gap:30px}.footer-contact{grid-column:2/4}.footer-newsletter{align-items:flex-start;flex-direction:column}.newsletter-form{width:100%}}
+    @media(max-width:600px){.site-footer{padding:42px 20px 20px;margin-top:25px}.footer-main{grid-template-columns:1fr 1fr;gap:28px 18px;padding-bottom:30px}.footer-brand{grid-column:1/-1}.footer-contact{grid-column:auto}.footer-logo img{width:42px;height:42px}.footer-logo span{font-size:23px}.footer-column h3{font-size:14px}.footer-column>a{font-size:12px}.footer-newsletter{gap:15px;padding:20px 0 28px}.footer-newsletter h3{font-size:15px}.newsletter-form{flex-direction:column;border:0;background:transparent;padding:0;gap:8px}.newsletter-form input{min-height:44px;border:1px solid #a77c3f;border-radius:8px;background:#15120d}.newsletter-form button{min-height:43px}.newsletter-message{bottom:5px;left:0;right:auto}.footer-bottom{align-items:flex-start;flex-direction:column;gap:13px}.footer-legal{flex-wrap:wrap;gap:14px}.footer-bottom p,.footer-legal a,.back-to-top{font-size:10px}}
+    @media(prefers-reduced-motion:reduce){.footer-socials a,.footer-column>a,.footer-legal a,.back-to-top,.newsletter-form button{transition:none}}
+
+    .reveal{opacity:0;transform:translateY(25px);transition:opacity .8s ease,transform .8s ease}.reveal.visible{opacity:1;transform:none}
+    .backtop{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;border:1px solid #ffc247;background:#171108;color:#ffd16c;font-size:20px;z-index:90;opacity:0;pointer-events:none;transition:.3s}
+    .backtop.show{opacity:1;pointer-events:auto}
+    @media(max-width:1050px){
+      .topbar{padding:0 18px}.navlinks{gap:18px}.navlinks a{font-size:13px}.launch{padding:10px 13px;font-size:12px}
+      .modules{grid-template-columns:repeat(4,1fr)}.telemetry{grid-column:1/-1}.hero-copy{width:58%}
+    }
+    @media(max-width:760px){
+      html{scroll-padding-top:80px}.topbar{top:0;left:0;transform:none;width:100%;height:64px;border-radius:0;padding:0 16px}
+      .brand-mark{width:40px;height:40px;font-size:21px}.brand-name{font-size:21px}.menu-btn{display:block;margin-left:auto}
+      .launch{display:none}.navlinks{display:none;position:absolute;top:68px;left:0;right:0;padding:12px 18px 18px;background:rgba(8,8,7,.97);border:1px solid #a87831;border-radius:14px;flex-direction:column;align-items:stretch;gap:0}
+      .navlinks.open{display:flex}.navlinks a{padding:13px 7px;border-bottom:1px solid #ffffff12}.navlinks a:after{display:none}
+      main{width:calc(100% - 32px)}.hero{padding-top:100px;min-height:auto;padding-bottom:28px}.hero-copy{width:100%;max-width:570px}
+      .hero:after{content:"";position:absolute;inset:90px -16px 0;background:linear-gradient(90deg,#080807d9,#08080770);z-index:0;pointer-events:none}
+      .hero-copy{z-index:1}.eyebrow{font-size:10px;letter-spacing:2px}h1{font-size:clamp(50px,13vw,78px)}
+      .intro{font-size:14px}.actions{gap:10px}.btn{min-height:47px;padding:0 16px;font-size:13px}
+      .quick-stats span{font-size:11px;padding:8px 10px}.modules{grid-template-columns:repeat(2,1fr);gap:12px}
+      .module{min-height:135px;padding:17px}.module strong{font-size:15px}.telemetry{grid-column:1/-1}
+      .metric-strip{grid-template-columns:repeat(2,1fr);gap:18px;padding:20px 12px;margin-bottom:35px}
+      .metric{justify-content:flex-start;border:0;padding:0 8px}.metric-icon{font-size:27px}.metric strong{font-size:18px}.metric small{font-size:11px}
+      .section{padding:60px 0}.feature-grid{grid-template-columns:1fr}.architecture{grid-template-columns:1fr}.architecture-visual{min-height:250px}
+      .contact-box{padding:20px}.contact-box form{grid-template-columns:1fr}.contact-box textarea,.contact-box button{grid-column:auto}
+    }
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+  
+    /* Extended TRINETRA home-page experience */
+    .home-intro{padding-top:100px;padding-bottom:100px}
+    .home-intro-grid{display:grid;grid-template-columns:1fr .9fr;gap:65px;align-items:center}
+    .home-intro-copy h2,.principles-copy h2,.faq-home-intro h2{font:700 clamp(30px,4vw,48px) Cinzel,serif;line-height:1.2;color:#fff1d2;margin:17px 0}
+    .home-intro-copy p,.principles-copy p,.faq-home-intro p{font-size:13px;line-height:1.95;color:#cfc5b5;margin-bottom:14px}
+    .home-text-link{display:inline-flex;gap:12px;align-items:center;margin-top:13px;padding-bottom:6px;border-bottom:1px solid #ffc24788;color:#ffc247;font-size:12px;font-weight:800;transition:.25s}
+    .home-text-link:hover{gap:19px;color:#ffe6a4}
+    .home-intro-visual{position:relative;min-height:400px;display:grid;place-items:center}
+    .intro-ring{position:absolute;width:min(360px,90%);aspect-ratio:1;border:1px solid #ffc24755;border-radius:50%;box-shadow:0 0 45px #ffb52d16,inset 0 0 40px #ffb52d0c}
+    .intro-ring-one{animation:homeOrbit 28s linear infinite}.intro-ring-two{width:min(270px,68%);border-style:dashed;border-color:#27d8ff55;animation:homeOrbit 22s linear infinite reverse}
+    @keyframes homeOrbit{to{transform:rotate(360deg)}}
+    .intro-core{position:relative;z-index:2;width:175px;height:175px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 25%,#4c3512,#15110a 68%);border:1px solid #ffc247;box-shadow:0 0 35px #ffb52d55,0 0 90px #ffb52d18}
+    .intro-core span{font-size:11px;letter-spacing:5px;color:#e8c77e}.intro-core strong{font:700 27px Cinzel,serif;letter-spacing:3px;color:#ffdc91}.intro-core small{font-size:7px;letter-spacing:1px;color:#cdbb94;margin-top:8px}
+    .intro-orbit-label{position:absolute;z-index:3;padding:9px 13px;border:1px solid #ffc24777;border-radius:9px;background:#100e0beF;color:#ffe1a0;font-size:9px;letter-spacing:1.5px;font-weight:900;box-shadow:0 7px 20px #0008}
+    .label-a{top:12%;left:3%}.label-b{top:17%;right:0}.label-c{bottom:13%;left:11%}
+    .capability-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .capability-card{position:relative;overflow:hidden;padding:26px 24px;border:1px solid #a8793d77;border-radius:18px;background:linear-gradient(145deg,#1b160deF,#090807f2);box-shadow:0 15px 35px #0006;transition:.35s}
+    .capability-card:after{content:"";position:absolute;width:150px;height:150px;right:-75px;bottom:-95px;border-radius:50%;background:#ffb52d20;filter:blur(35px);transition:.3s}
+    .capability-card:hover{transform:translateY(-7px);border-color:#ffc247;box-shadow:0 20px 45px #0009,0 0 20px #ffb52d18}
+    .capability-card:hover:after{background:#ffb52d45}
+    .capability-icon{width:49px;height:49px;display:grid;place-items:center;border:1px solid #ffc24777;border-radius:14px;color:#ffc247;background:#ffbd3014;font-size:24px;margin-bottom:17px}
+    .capability-number{font-size:8px;letter-spacing:1.7px;color:#c49a56;font-weight:900}
+    .capability-card h3{font:600 19px Cinzel,serif;color:#ffe0a0;margin:9px 0}
+    .capability-card p{font-size:11px;line-height:1.8;color:#c9c0b2;min-height:60px}
+    .capability-card ul{list-style:none;display:grid;gap:7px;margin:17px 0}
+    .capability-card li{font-size:10px;color:#ded4c3}.capability-card li:before{content:"✓";color:#ffc247;margin-right:8px}
+    .capability-card>a{display:inline-block;margin-top:6px;color:#ffc247;font-size:10px;font-weight:800;border-bottom:1px solid #ffc24766;padding-bottom:5px}
+    .approach-timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+    .approach-step{display:flex;gap:14px;align-items:flex-start;padding:22px 17px;border-left:1px solid #c18a36;background:linear-gradient(90deg,#1b150be0,#0b0a08a8);border-radius:0 12px 12px 0}
+    .approach-step>span{font:700 27px Cinzel,serif;color:#ffc247}
+    .approach-step h3{font:600 16px Cinzel,serif;color:#ffe0a0;margin:4px 0 8px}
+    .approach-step p{font-size:10px;line-height:1.8;color:#c9c0b2}
+    .industry-grid-home{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+    .industry-tile{padding:21px 15px;text-align:center;border:1px solid #a8793d66;border-radius:14px;background:#0d0c09df;transition:.3s}
+    .industry-tile:hover{transform:translateY(-5px);border-color:#ffc247;background:#171208}
+    .industry-tile>span{display:block;font-size:26px;margin-bottom:10px}
+    .industry-tile strong{display:block;font-size:11px;color:#ffe0a0;margin-bottom:6px}
+    .industry-tile small{font-size:9px;color:#bdb3a4;line-height:1.5}
+    .home-principles-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start}
+    .principles-list{display:grid;gap:10px}
+    .principle-row{display:flex;gap:17px;padding:17px;border:1px solid #9d713b55;border-radius:13px;background:#0c0b09df}
+    .principle-row>b{font:700 25px Cinzel,serif;color:#ffc247}
+    .principle-row h3{font:600 15px Cinzel,serif;color:#ffe0a0;margin-bottom:6px}
+    .principle-row p{font-size:10px;line-height:1.8;color:#c8bead}
+    .scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+    .scenario-card{padding:24px;border:1px solid #a8793d77;border-radius:17px;background:linear-gradient(145deg,#1a150de8,#090807ed);transition:.3s}
+    .scenario-card:hover{transform:translateY(-5px);border-color:#ffc247}
+    .scenario-label{font-size:8px;letter-spacing:1.4px;color:#c89b54;font-weight:900}
+    .scenario-card h3{font:600 18px Cinzel,serif;color:#ffe0a0;margin:13px 0}
+    .scenario-card p{font-size:11px;line-height:1.8;color:#c9c0b2;min-height:60px}
+    .scenario-flow{display:flex;align-items:center;justify-content:space-between;gap:5px;margin:18px 0;padding:10px;border:1px solid #8e693d55;border-radius:9px;background:#090807a8}
+    .scenario-flow span{font-size:8px;color:#f1d99f}.scenario-flow i{font-style:normal;color:#ffc247}
+    .scenario-card>a{font-size:10px;font-weight:800;color:#ffc247}
+    .faq-home-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:55px;align-items:start}
+    .home-faq-list{display:grid;gap:9px}
+    .home-faq-item{border:1px solid #a8793d77;border-radius:12px;background:#100e0be8;overflow:hidden}
+    .home-faq-question{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 18px;border:0;background:transparent;color:#f5dfb0;text-align:left;font-size:11px;font-weight:800;cursor:pointer}
+    .home-faq-question b{font-size:18px;color:#ffc247;transition:transform .25s}
+    .home-faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+    .home-faq-answer p{padding:0 18px 16px;font-size:10px;line-height:1.8;color:#c9c0b2}
+    .home-faq-item.open .home-faq-answer{max-height:180px}
+    .home-faq-item.open .home-faq-question b{transform:rotate(45deg)}
+    @media(max-width:1000px){.capability-grid{grid-template-columns:repeat(2,1fr)}.approach-timeline{grid-template-columns:repeat(2,1fr)}.home-intro-grid{gap:25px}.scenario-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:720px){.home-intro-grid,.home-principles-grid,.faq-home-grid{grid-template-columns:1fr;gap:30px}.home-intro-visual{min-height:320px}.capability-grid{grid-template-columns:1fr}.industry-grid-home{grid-template-columns:repeat(2,1fr)}.scenario-grid{grid-template-columns:1fr}.approach-timeline{grid-template-columns:1fr}.capability-card p,.scenario-card p{min-height:unset}}
+    @media(max-width:430px){.home-intro{padding-top:65px;padding-bottom:65px}.intro-core{width:145px;height:145px}.intro-core strong{font-size:23px}.industry-grid-home{gap:9px}.industry-tile{padding:17px 10px}.home-intro-visual{min-height:285px}}
+    @media(prefers-reduced-motion:reduce){.intro-ring,.capability-card,.industry-tile,.scenario-card,.home-text-link{animation:none!important;transition:none!important}}
+
+  
+    /* Detailed home capability spotlights */
+    .home-spotlight-section{padding-top:85px;padding-bottom:95px;background:linear-gradient(180deg,#08080755,#080807e8)}
+    .spotlight-list{display:grid;gap:17px}
+    .home-spotlight{padding:24px 26px 17px;border:1px solid #a8793d77;border-radius:17px;background:linear-gradient(115deg,#1a150deF,#090807f5);box-shadow:0 14px 32px #0006;transition:.3s}
+    .home-spotlight:hover{border-color:#ffc247;transform:translateY(-3px);box-shadow:0 20px 42px #0009,0 0 20px #ffb52d18}
+    .spotlight-header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:13px}
+    .spotlight-number{font-size:9px;font-weight:900;letter-spacing:1.8px;color:#d0a15b}
+    .spotlight-mark{font-size:8px;letter-spacing:1.2px;color:#9e8a6b}
+    .home-spotlight h3{font:600 clamp(19px,2vw,25px) Cinzel,serif;color:#ffe0a0;margin-bottom:8px}
+    .spotlight-summary{font-size:11px;color:#cfc5b5;line-height:1.8;max-width:900px}
+    .spotlight-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:18px}
+    .spotlight-detail{padding:15px;border:1px solid #98703c55;border-radius:12px;background:#090807a8}
+    .spotlight-detail h4{font-size:11px;letter-spacing:.8px;color:#f0d8a7;margin-bottom:9px}
+    .spotlight-detail p{font-size:10px;color:#bfb5a5;line-height:1.7;margin-bottom:10px}
+    .spotlight-detail ul,.spotlight-detail ol{padding-left:17px;display:grid;gap:6px}
+    .spotlight-detail li{font-size:9px;line-height:1.6;color:#d6cbbb}
+    .spotlight-detail li::marker{color:#ffc247}
+    .spotlight-detail li strong{color:#ffdf9a}
+    .spotlight-footer{display:flex;gap:18px;flex-wrap:wrap;border-top:1px solid #9d713b44;margin-top:15px;padding-top:11px}
+    .spotlight-footer span{font-size:8px;letter-spacing:1.4px;color:#b29b76}
+    .spotlight-footer span+span:before{content:"•";color:#ffc247;margin-right:18px}
+    @media(max-width:760px){.spotlight-detail-grid{grid-template-columns:1fr}.home-spotlight{padding:20px 17px 15px}}
+    @media(max-width:430px){.spotlight-header{align-items:flex-start;flex-direction:column}.spotlight-footer{gap:8px}.spotlight-footer span+span:before{margin-right:8px}}
+
+  
+    /* Repeatable quality framework included with each capability spotlight */
+    .spotlight-quality{margin-top:14px;padding:15px;border:1px solid #8d683944;border-radius:12px;background:linear-gradient(120deg,#151108c9,#080807e8)}
+    .quality-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+    .quality-heading span:first-child{font-size:8px;letter-spacing:1.5px;font-weight:900;color:#f0d59d}
+    .quality-heading span:last-child{font-size:8px;letter-spacing:1.2px;color:#c99b50}
+    .quality-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+    .quality-card{padding:11px;border:1px solid #99713c4c;border-radius:9px;background:#090807b8}
+    .quality-card h5{font:600 11px Cinzel,serif;color:#ffe0a0;margin-bottom:8px}
+    .quality-card ul{list-style:none;display:grid;gap:6px}
+    .quality-card li{font-size:8px;line-height:1.6;color:#d0c6b7;padding-left:10px;position:relative}
+    .quality-card li:before{content:"";position:absolute;left:0;top:5px;width:4px;height:4px;border-radius:50%;background:#ffc247}
+    .quality-record{display:flex;gap:12px;align-items:flex-start;margin-top:10px;padding:9px 11px;border-left:2px solid #c18a36;background:#ffb52b0b}
+    .quality-record strong{font-size:8px;letter-spacing:.8px;color:#ffda8a;white-space:nowrap}
+    .quality-record span{font-size:8px;line-height:1.6;color:#bfb5a5}
+    @media(max-width:950px){.quality-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:520px){.quality-grid{grid-template-columns:1fr}.quality-record{display:block}.quality-record span{display:block;margin-top:5px}}
+
+  
+    .spotlight-engagement-boundary{margin-top:10px;padding:12px 14px;border:1px dashed #a8793d66;border-radius:10px;background:#0a0908a8}
+    .spotlight-engagement-boundary h5{font:600 10px Cinzel,serif;color:#ffdf9a;margin-bottom:6px}
+    .spotlight-engagement-boundary p{font-size:8px;line-height:1.7;color:#bfb5a5}
+    .boundary-meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+    .boundary-meta span{font-size:7px;letter-spacing:1px;color:#c69b59}
+    @media(max-width:520px){.boundary-meta{gap:7px;flex-direction:column}}
+
+  
+    /* Home page finishing details: focus visibility, selection and print behaviour */
+    .home-spotlight a:focus-visible,
+    .capability-card a:focus-visible,
+    .home-text-link:focus-visible,
+    .home-faq-question:focus-visible{
+      outline:2px solid #ffe09a;
+      outline-offset:4px;
+      border-radius:5px;
+    }
+    .home-spotlight ::selection,
+    .capability-card ::selection{
+      color:#100d07;
+      background:#ffd16b;
+    }
+    .home-spotlight,
+    .capability-card,
+    .scenario-card,
+    .principle-row,
+    .industry-tile{
+      scroll-margin-top:105px;
+    }
+    @media print{
+      .home-spotlight,
+      .capability-card,
+      .scenario-card,
+      .principle-row,
+      .industry-tile{
+        break-inside:avoid;
+        box-shadow:none;
+        background:#fff;
+        color:#111;
+      }
+      .home-spotlight p,
+      .capability-card p,
+      .scenario-card p,
+      .principle-row p{
+        color:#333;
+      }
+    }
+
+  
+    .home-contact-cta{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:30px;border:1px solid rgba(255,190,66,.5);border-radius:20px;background:linear-gradient(120deg,rgba(26,20,10,.92),rgba(8,8,7,.9));box-shadow:0 18px 45px #0007}
+    .home-contact-copy{max-width:650px}.home-contact-copy h3{font:700 clamp(21px,2.5vw,30px) Cinzel,serif;color:#ffe2a0;margin:10px 0}.home-contact-copy p{color:#c8c1b4;font-size:13px;line-height:1.8}
+    @media(max-width:650px){.home-contact-cta{align-items:flex-start;flex-direction:column;padding:22px}.home-contact-cta .btn{width:100%}}
+
+  
+
+/* =========================================================
+   TRINETRA BLOG EXPERIENCE — responsive editorial interface
+   ========================================================= */
+:root {
+  --blog-gold: #ffc247;
+  --blog-gold-soft: #ffe6a0;
+  --blog-ink: #080807;
+  --blog-panel: rgba(12, 12, 11, .86);
+  --blog-border: rgba(255, 194, 71, .34);
+  --blog-muted: #c9c1b3;
+  --blog-radius: 22px;
+  --blog-shadow: 0 18px 55px rgba(0, 0, 0, .42);
+}
+body.blog-page {
+  min-height: 100vh;
+  background: #080807;
+  color: #f8f5ed;
+}
+body.blog-page::before {
+  background:
+    linear-gradient(90deg, rgba(4,4,4,.72), rgba(5,5,5,.44) 55%, rgba(4,4,4,.72)),
+    url("assets/trinetra-background.png") center center / cover fixed no-repeat;
+}
+.blog-page .topbar { z-index: 1001; }
+.blog-page main { width: min(1320px, calc(100% - 48px)); }
+.blog-main { padding-top: 100px; }
+.blog-hero {
+  min-height: 510px;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: center;
+  padding: clamp(45px, 8vw, 105px) clamp(24px, 6vw, 82px);
+  margin: 24px 0 42px;
+  overflow: hidden;
+  border: 1px solid rgba(255,194,71,.48);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(255,173,38,.19), transparent 34%),
+    linear-gradient(110deg, rgba(8,8,7,.96), rgba(14,12,8,.72));
+  box-shadow: var(--blog-shadow), inset 0 1px rgba(255,255,255,.08);
+}
+.blog-hero::before {
+  content: "";
+  position: absolute;
+  inset: -35%;
+  z-index: -1;
+  background: conic-gradient(from 20deg, transparent, rgba(255,194,71,.13), transparent 28%);
+  animation: blogOrbit 18s linear infinite;
+}
+.blog-hero::after {
+  content: "";
+  position: absolute;
+  right: -70px;
+  top: 50%;
+  width: min(42vw, 490px);
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  border: 1px solid rgba(255,194,71,.25);
+  box-shadow: 0 0 0 28px rgba(255,194,71,.025), 0 0 0 58px rgba(255,194,71,.02), inset 0 0 65px rgba(255,194,71,.08);
+  pointer-events: none;
+}
+@keyframes blogOrbit { to { transform: rotate(360deg); } }
+.blog-hero-content { max-width: 760px; position: relative; z-index: 2; }
+.blog-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 14px;
+  margin-bottom: 22px;
+  color: #ffdb85;
+  border: 1px solid rgba(255,194,71,.45);
+  border-radius: 999px;
+  background: rgba(255,194,71,.08);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.3px;
+  text-transform: uppercase;
+}
+.blog-kicker::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #75ff8b;
+  box-shadow: 0 0 12px #75ff8b;
+}
+.blog-hero h1 {
+  max-width: 850px;
+  margin: 0 0 20px;
+  font: 800 clamp(42px, 6.7vw, 86px)/1.04 Cinzel, Georgia, serif;
+  letter-spacing: 1px;
+  background: linear-gradient(180deg, #fff2c5 0%, #ffc247 52%, #bd7414 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 5px 18px rgba(255,157,22,.3));
+}
+.blog-hero p {
+  max-width: 660px;
+  color: #e0d9cc;
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.85;
+}
+.blog-hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
+.blog-button {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 21px;
+  border-radius: 12px;
+  border: 1px solid var(--blog-gold);
+  background: linear-gradient(135deg, #ffdf83, #e99a18);
+  color: #171006;
+  font-weight: 800;
+  transition: transform .25s, box-shadow .25s, background .25s;
+  cursor: pointer;
+}
+.blog-button:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(255,174,43,.32); }
+.blog-button.secondary { color: #ffe2a0; background: rgba(14,13,11,.76); }
+.blog-button.secondary:hover { background: rgba(255,194,71,.12); }
+.blog-section { margin: 62px 0; }
+.blog-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 25px;
+}
+.blog-section-heading h2 {
+  color: #ffe1a0;
+  font: 700 clamp(26px, 3vw, 38px)/1.2 Cinzel, Georgia, serif;
+}
+.blog-section-heading p { color: var(--blog-muted); margin-top: 9px; line-height: 1.7; }
+.blog-label {
+  color: var(--blog-gold);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.blog-toolbar {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto;
+  gap: 16px;
+  padding: 17px;
+  border: 1px solid var(--blog-border);
+  border-radius: 18px;
+  background: rgba(8,8,7,.78);
+  box-shadow: 0 10px 35px #0006;
+  backdrop-filter: blur(14px);
+}
+.blog-search-wrap { position: relative; }
+.blog-search-wrap span {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  color: #ffc247;
+  font-size: 19px;
+}
+.blog-search {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 16px 0 47px;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 11px;
+  outline: none;
+  background: rgba(255,255,255,.055);
+  font: inherit;
+}
+.blog-search:focus { border-color: #ffc247; box-shadow: 0 0 0 3px rgba(255,194,71,.12); }
+.blog-categories { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.blog-filter {
+  min-height: 42px;
+  padding: 0 15px;
+  border: 1px solid rgba(255,194,71,.27);
+  border-radius: 999px;
+  background: rgba(255,255,255,.04);
+  color: #e8dfd0;
+  cursor: pointer;
+  transition: .25s;
+  font-size: 12px;
+  font-weight: 700;
+}
+.blog-filter:hover, .blog-filter.active {
+  color: #1a1205;
+  border-color: #ffc247;
+  background: #ffc247;
+  box-shadow: 0 0 18px rgba(255,194,71,.2);
+}
+.blog-layout { display: grid; grid-template-columns: minmax(0, 1fr) 310px; gap: 27px; align-items: start; }
+.blog-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.blog-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255,194,71,.25);
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(24,22,18,.94), rgba(8,8,7,.96));
+  box-shadow: 0 14px 35px rgba(0,0,0,.34);
+  transition: transform .35s, border-color .35s, box-shadow .35s;
+}
+.blog-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255,194,71,.75);
+  box-shadow: 0 22px 48px rgba(0,0,0,.5), 0 0 24px rgba(255,194,71,.08);
+}
+.blog-card-image {
+  position: relative;
+  min-height: 205px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 65% 35%, rgba(255,194,71,.3), transparent 30%),
+    linear-gradient(135deg, #282012, #080807 72%);
+}
+.blog-card-image::before, .blog-card-image::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(255,194,71,.3);
+  border-radius: 50%;
+  inset: 18% 25%;
+  transform: rotate(-25deg);
+}
+.blog-card-image::after { inset: 28% 15%; transform: rotate(35deg); border-color: rgba(39,216,255,.24); }
+.blog-card-image .image-symbol {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #ffcf6a;
+  font-size: 58px;
+  text-shadow: 0 0 28px rgba(255,174,43,.7);
+  transition: transform .5s;
+}
+.blog-card:hover .image-symbol { transform: scale(1.18) rotate(-5deg); }
+.blog-card-image .image-number {
+  position: absolute;
+  right: 17px;
+  bottom: 12px;
+  color: rgba(255,224,160,.45);
+  font: 700 45px Cinzel, serif;
+}
+.blog-card-body { display: flex; flex: 1; flex-direction: column; padding: 23px; }
+.blog-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 9px 14px; color: #aaa293; font-size: 11px; }
+.blog-meta .category { color: #ffd16c; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+.blog-card h3 { margin: 15px 0 11px; color: #fff0cf; font: 700 21px/1.35 Cinzel, Georgia, serif; }
+.blog-card p { color: #c9c1b3; font-size: 13px; line-height: 1.8; }
+.blog-card-bottom { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: auto; padding-top: 22px; }
+.blog-read { color: #ffcf67; font-size: 12px; font-weight: 800; letter-spacing: .5px; }
+.blog-read span { display: inline-block; transition: transform .2s; }
+.blog-read:hover span { transform: translateX(5px); }
+.blog-readtime { color: #8e877b; font-size: 11px; }
+.blog-sidebar { display: grid; gap: 19px; position: sticky; top: 95px; }
+.sidebar-panel {
+  padding: 23px;
+  border: 1px solid var(--blog-border);
+  border-radius: 18px;
+  background: rgba(10,10,9,.83);
+  box-shadow: 0 12px 30px #0006;
+  backdrop-filter: blur(12px);
+}
+.sidebar-panel h3 { color: #ffe0a0; font: 700 18px Cinzel, Georgia, serif; margin-bottom: 15px; }
+.sidebar-panel p { color: #bfb7a9; font-size: 12px; line-height: 1.8; }
+.sidebar-links { display: grid; gap: 12px; }
+.sidebar-links a { display: flex; justify-content: space-between; gap: 12px; color: #ddd4c4; font-size: 12px; transition: color .2s; }
+.sidebar-links a:hover { color: #ffc247; }
+.sidebar-links span { color: #a18b61; }
+.trending-item { display: grid; grid-template-columns: 36px 1fr; gap: 12px; margin: 15px 0; }
+.trending-index { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid #9a7132; border-radius: 10px; color: #ffc247; font: 700 15px Cinzel, serif; }
+.trending-item a { color: #e9dfcf; font-size: 12px; line-height: 1.55; }
+.trending-item small { display: block; color: #938b7e; margin-top: 4px; }
+.blog-newsletter {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, .8fr);
+  align-items: center;
+  gap: 28px;
+  padding: clamp(25px, 4vw, 48px);
+  border: 1px solid rgba(255,194,71,.46);
+  border-radius: 24px;
+  background: radial-gradient(circle at 10% 0%, rgba(255,194,71,.15), transparent 38%), rgba(9,9,8,.9);
+  box-shadow: var(--blog-shadow);
+}
+.blog-newsletter h2 { color: #ffe2a0; font: 700 clamp(24px, 3vw, 35px) Cinzel, serif; margin-bottom: 10px; }
+.blog-newsletter p { color: #c9c1b3; font-size: 13px; line-height: 1.8; }
+.blog-newsletter-form { display: flex; gap: 8px; }
+.blog-newsletter-form input {
+  flex: 1;
+  min-width: 0;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid rgba(255,194,71,.3);
+  border-radius: 10px;
+  color: #fff;
+  outline: none;
+  background: rgba(255,255,255,.06);
+}
+.blog-newsletter-form input:focus { border-color: #ffc247; }
+.blog-newsletter-form button {
+  padding: 0 17px;
+  border: 0;
+  border-radius: 10px;
+  color: #1a1205;
+  background: linear-gradient(135deg, #ffe08a, #e99b19);
+  font-weight: 800;
+  cursor: pointer;
+}
+.blog-newsletter-message { grid-column: 2; min-height: 18px; color: #9cffaa; font-size: 12px; }
+.blog-empty { display: none; grid-column: 1/-1; padding: 45px 20px; text-align: center; color: #d5c7ad; border: 1px dashed rgba(255,194,71,.35); border-radius: 18px; }
+.blog-empty.show { display: block; }
+.blog-pagination { display: flex; justify-content: center; gap: 9px; margin: 32px 0 0; }
+.blog-pagination button { width: 42px; height: 42px; border: 1px solid rgba(255,194,71,.32); border-radius: 11px; background: rgba(0,0,0,.4); color: #f8e7c5; cursor: pointer; }
+.blog-pagination button.active, .blog-pagination button:hover { background: #ffc247; color: #1a1205; }
+.blog-featured {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  overflow: hidden;
+  border: 1px solid rgba(255,194,71,.4);
+  border-radius: 24px;
+  background: rgba(10,10,9,.86);
+  box-shadow: var(--blog-shadow);
+}
+.blog-featured-art {
+  min-height: 330px;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle, rgba(255,194,71,.2), transparent 42%), linear-gradient(135deg,#1e180d,#080807);
+  position: relative;
+}
+.blog-featured-art::before, .blog-featured-art::after { content: ""; position: absolute; width: 220px; height: 220px; border: 1px solid rgba(255,194,71,.38); border-radius: 50%; box-shadow: 0 0 45px rgba(255,194,71,.1); }
+.blog-featured-art::after { width: 285px; height: 115px; transform: rotate(-28deg); border-color: rgba(39,216,255,.3); }
+.blog-featured-art span { z-index: 1; color: #ffd477; font-size: 80px; text-shadow: 0 0 35px #ff9d16; }
+.blog-featured-copy { padding: clamp(25px, 4vw, 50px); display: flex; flex-direction: column; justify-content: center; }
+.blog-featured-copy h3 { color: #fff0cf; font: 700 clamp(24px, 3vw, 35px)/1.3 Cinzel, serif; margin: 12px 0; }
+.blog-featured-copy p { color: #c9c1b3; line-height: 1.8; font-size: 14px; }
+.blog-featured-copy .blog-button { align-self: flex-start; margin-top: 22px; }
+.reveal-blog { opacity: 0; transform: translateY(25px); transition: opacity .7s ease, transform .7s ease; }
+.reveal-blog.is-visible { opacity: 1; transform: translateY(0); }
+.blog-progress { position: fixed; z-index: 1200; top: 0; left: 0; width: 0; height: 3px; background: linear-gradient(90deg,#ff9d16,#fff0a6); box-shadow: 0 0 12px #ffc247; }
+.blog-top-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 900;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255,194,71,.7);
+  border-radius: 50%;
+  color: #1a1205;
+  background: linear-gradient(135deg,#ffe08a,#e99b19);
+  box-shadow: 0 8px 25px #0008, 0 0 18px rgba(255,194,71,.25);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: .25s;
+}
+.blog-top-button.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.blog-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  place-items: center;
+  padding: 20px;
+  background: rgba(0,0,0,.82);
+  backdrop-filter: blur(10px);
+}
+.blog-modal.open { display: grid; }
+.blog-modal-card {
+  width: min(720px, 100%);
+  max-height: min(82vh, 850px);
+  overflow: auto;
+  padding: clamp(22px, 4vw, 42px);
+  border: 1px solid rgba(255,194,71,.5);
+  border-radius: 22px;
+  background: #11100d;
+  box-shadow: 0 25px 90px #000;
+}
+.blog-modal-card h2 { color: #ffe0a0; font: 700 clamp(24px,4vw,36px) Cinzel,serif; margin: 13px 0; }
+.blog-modal-card p { color: #d0c7b8; line-height: 1.9; margin: 12px 0; }
+.blog-modal-close { float: right; width: 38px; height: 38px; border: 1px solid #87632d; border-radius: 50%; background: transparent; color: #ffc247; cursor: pointer; font-size: 20px; }
+.blog-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.blog-tags span { padding: 7px 11px; border: 1px solid rgba(255,194,71,.25); border-radius: 99px; color: #e8c77f; font-size: 10px; }
+.blog-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 25px 0 0; }
+.blog-stat { padding: 18px; border: 1px solid rgba(255,194,71,.25); border-radius: 15px; background: rgba(255,255,255,.035); }
+.blog-stat strong { display: block; color: #ffc247; font: 700 25px Cinzel,serif; }
+.blog-stat span { color: #aaa293; font-size: 11px; }
+.blog-toc { display: grid; gap: 10px; margin-top: 15px; }
+.blog-toc a { padding: 11px 13px; border-left: 2px solid #bd8731; color: #d8cbb4; background: rgba(255,255,255,.035); font-size: 12px; }
+.blog-toc a:hover { color: #ffc247; border-color: #ffc247; }
+.blog-quote { margin: 18px 0; padding: 18px 20px; border-left: 3px solid #ffc247; background: rgba(255,194,71,.07); color: #f5d99e; line-height: 1.8; font-family: Georgia,serif; font-size: 16px; }
+.blog-card[hidden] { display: none !important; }
+@media (max-width: 1050px) {
+  .blog-layout { grid-template-columns: minmax(0,1fr) 270px; gap: 18px; }
+  .blog-grid { gap: 16px; }
+  .blog-toolbar { grid-template-columns: 1fr; }
+  .blog-categories { justify-content: flex-start; }
+  .blog-hero::after { opacity: .5; right: -160px; }
+}
+@media (max-width: 820px) {
+  .blog-page main { width: min(100% - 32px, 700px); }
+  .blog-main { padding-top: 90px; }
+  .blog-layout { grid-template-columns: 1fr; }
+  .blog-sidebar { position: static; grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .blog-sidebar .sidebar-panel:first-child { grid-column: 1/-1; }
+  .blog-featured { grid-template-columns: 1fr; }
+  .blog-featured-art { min-height: 250px; }
+  .blog-newsletter { grid-template-columns: 1fr; }
+  .blog-newsletter-message { grid-column: 1; }
+}
+@media (max-width: 620px) {
+  .blog-page main { width: calc(100% - 24px); }
+  .blog-hero { min-height: 480px; margin-top: 16px; padding: 38px 22px; border-radius: 22px; }
+  .blog-hero::after { width: 260px; right: -145px; top: 72%; }
+  .blog-hero h1 { font-size: clamp(40px, 13vw, 62px); }
+  .blog-section { margin: 45px 0; }
+  .blog-section-heading { display: block; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .blog-card-image { min-height: 190px; }
+  .blog-sidebar { grid-template-columns: 1fr; }
+  .blog-sidebar .sidebar-panel:first-child { grid-column: auto; }
+  .blog-newsletter-form { flex-direction: column; }
+  .blog-newsletter-form button { min-height: 46px; }
+  .blog-stats { grid-template-columns: 1fr; }
+  .blog-categories { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 5px; }
+  .blog-filter { white-space: nowrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .reveal-blog { opacity: 1; transform: none; }
+}
+
+
+/* Documented spacing, radius, stacking and responsive helper utilities. */
+.blog-gap-0 { gap: 0px; }
+.blog-radius-0 { border-radius: 0px; }
+.blog-z-0 { z-index: 0; }
+.blog-opacity-0 { opacity: 0.00; }
+.blog-gap-1 { gap: 1px; }
+.blog-radius-1 { border-radius: 1px; }
+.blog-z-1 { z-index: 1; }
+.blog-opacity-1 { opacity: 0.01; }
+.blog-gap-2 { gap: 2px; }
+.blog-radius-2 { border-radius: 2px; }
+.blog-z-2 { z-index: 2; }
+.blog-opacity-2 { opacity: 0.02; }
+.blog-gap-3 { gap: 3px; }
+.blog-radius-3 { border-radius: 3px; }
+.blog-z-3 { z-index: 3; }
+.blog-opacity-3 { opacity: 0.03; }
+.blog-gap-4 { gap: 4px; }
+.blog-radius-4 { border-radius: 4px; }
+.blog-z-4 { z-index: 4; }
+.blog-opacity-4 { opacity: 0.04; }
+.blog-gap-5 { gap: 5px; }
+.blog-radius-5 { border-radius: 5px; }
+.blog-z-5 { z-index: 5; }
+.blog-opacity-5 { opacity: 0.05; }
+.blog-gap-6 { gap: 6px; }
+.blog-radius-6 { border-radius: 6px; }
+.blog-z-6 { z-index: 6; }
+.blog-opacity-6 { opacity: 0.06; }
+.blog-gap-7 { gap: 7px; }
+.blog-radius-7 { border-radius: 7px; }
+.blog-z-7 { z-index: 7; }
+.blog-opacity-7 { opacity: 0.07; }
+.blog-gap-8 { gap: 8px; }
+.blog-radius-8 { border-radius: 8px; }
+.blog-z-8 { z-index: 8; }
+.blog-opacity-8 { opacity: 0.08; }
+.blog-gap-9 { gap: 9px; }
+.blog-radius-9 { border-radius: 9px; }
+.blog-z-9 { z-index: 9; }
+.blog-opacity-9 { opacity: 0.09; }
+.blog-gap-10 { gap: 10px; }
+.blog-radius-10 { border-radius: 10px; }
+.blog-z-10 { z-index: 10; }
+.blog-opacity-10 { opacity: 0.10; }
+.blog-gap-11 { gap: 11px; }
+.blog-radius-11 { border-radius: 11px; }
+.blog-z-11 { z-index: 11; }
+.blog-opacity-11 { opacity: 0.11; }
+.blog-gap-12 { gap: 12px; }
+.blog-radius-12 { border-radius: 12px; }
+.blog-z-12 { z-index: 12; }
+.blog-opacity-12 { opacity: 0.12; }
+.blog-gap-13 { gap: 13px; }
+.blog-radius-13 { border-radius: 13px; }
+.blog-z-13 { z-index: 13; }
+.blog-opacity-13 { opacity: 0.13; }
+.blog-gap-14 { gap: 14px; }
+.blog-radius-14 { border-radius: 14px; }
+.blog-z-14 { z-index: 14; }
+.blog-opacity-14 { opacity: 0.14; }
+.blog-gap-15 { gap: 15px; }
+.blog-radius-15 { border-radius: 15px; }
+.blog-z-15 { z-index: 15; }
+.blog-opacity-15 { opacity: 0.15; }
+.blog-gap-16 { gap: 16px; }
+.blog-radius-16 { border-radius: 16px; }
+.blog-z-16 { z-index: 16; }
+.blog-opacity-16 { opacity: 0.16; }
+.blog-gap-17 { gap: 17px; }
+.blog-radius-17 { border-radius: 17px; }
+.blog-z-17 { z-index: 17; }
+.blog-opacity-17 { opacity: 0.17; }
+.blog-gap-18 { gap: 18px; }
+.blog-radius-18 { border-radius: 18px; }
+.blog-z-18 { z-index: 18; }
+.blog-opacity-18 { opacity: 0.18; }
+.blog-gap-19 { gap: 19px; }
+.blog-radius-19 { border-radius: 19px; }
+.blog-z-19 { z-index: 19; }
+.blog-opacity-19 { opacity: 0.19; }
+.blog-gap-20 { gap: 20px; }
+.blog-radius-20 { border-radius: 20px; }
+.blog-z-20 { z-index: 20; }
+.blog-opacity-20 { opacity: 0.20; }
+.blog-gap-21 { gap: 21px; }
+.blog-radius-21 { border-radius: 21px; }
+.blog-z-21 { z-index: 21; }
+.blog-opacity-21 { opacity: 0.21; }
+.blog-gap-22 { gap: 22px; }
+.blog-radius-22 { border-radius: 22px; }
+.blog-z-22 { z-index: 22; }
+.blog-opacity-22 { opacity: 0.22; }
+.blog-gap-23 { gap: 23px; }
+.blog-radius-23 { border-radius: 23px; }
+.blog-z-23 { z-index: 23; }
+.blog-opacity-23 { opacity: 0.23; }
+.blog-gap-24 { gap: 24px; }
+.blog-radius-24 { border-radius: 24px; }
+.blog-z-24 { z-index: 24; }
+.blog-opacity-24 { opacity: 0.24; }
+.blog-gap-25 { gap: 25px; }
+.blog-radius-25 { border-radius: 25px; }
+.blog-z-25 { z-index: 25; }
+.blog-opacity-25 { opacity: 0.25; }
+.blog-gap-26 { gap: 26px; }
+.blog-radius-26 { border-radius: 26px; }
+.blog-z-26 { z-index: 26; }
+.blog-opacity-26 { opacity: 0.26; }
+.blog-gap-27 { gap: 27px; }
+.blog-radius-27 { border-radius: 27px; }
+.blog-z-27 { z-index: 27; }
+.blog-opacity-27 { opacity: 0.27; }
+.blog-gap-28 { gap: 28px; }
+.blog-radius-28 { border-radius: 28px; }
+.blog-z-28 { z-index: 28; }
+.blog-opacity-28 { opacity: 0.28; }
+.blog-gap-29 { gap: 29px; }
+.blog-radius-29 { border-radius: 29px; }
+.blog-z-29 { z-index: 29; }
+.blog-opacity-29 { opacity: 0.29; }
+.blog-gap-30 { gap: 30px; }
+.blog-radius-30 { border-radius: 30px; }
+.blog-z-30 { z-index: 30; }
+.blog-opacity-30 { opacity: 0.30; }
+.blog-gap-31 { gap: 31px; }
+.blog-radius-31 { border-radius: 31px; }
+.blog-z-31 { z-index: 31; }
+.blog-opacity-31 { opacity: 0.31; }
+.blog-gap-32 { gap: 32px; }
+.blog-radius-32 { border-radius: 32px; }
+.blog-z-32 { z-index: 32; }
+.blog-opacity-32 { opacity: 0.32; }
+.blog-gap-33 { gap: 33px; }
+.blog-radius-33 { border-radius: 33px; }
+.blog-z-33 { z-index: 33; }
+.blog-opacity-33 { opacity: 0.33; }
+.blog-gap-34 { gap: 34px; }
+.blog-radius-34 { border-radius: 34px; }
+.blog-z-34 { z-index: 34; }
+.blog-opacity-34 { opacity: 0.34; }
+.blog-gap-35 { gap: 35px; }
+.blog-radius-35 { border-radius: 35px; }
+.blog-z-35 { z-index: 35; }
+.blog-opacity-35 { opacity: 0.35; }
+.blog-gap-36 { gap: 36px; }
+.blog-radius-36 { border-radius: 36px; }
+.blog-z-36 { z-index: 36; }
+.blog-opacity-36 { opacity: 0.36; }
+.blog-gap-37 { gap: 37px; }
+.blog-radius-37 { border-radius: 37px; }
+.blog-z-37 { z-index: 37; }
+.blog-opacity-37 { opacity: 0.37; }
+.blog-gap-38 { gap: 38px; }
+.blog-radius-38 { border-radius: 38px; }
+.blog-z-38 { z-index: 38; }
+.blog-opacity-38 { opacity: 0.38; }
+.blog-gap-39 { gap: 39px; }
+.blog-radius-39 { border-radius: 39px; }
+.blog-z-39 { z-index: 39; }
+.blog-opacity-39 { opacity: 0.39; }
+.blog-gap-40 { gap: 40px; }
+.blog-radius-40 { border-radius: 40px; }
+.blog-z-40 { z-index: 40; }
+.blog-opacity-40 { opacity: 0.40; }
+.blog-gap-41 { gap: 41px; }
+.blog-radius-41 { border-radius: 41px; }
+.blog-z-41 { z-index: 41; }
+.blog-opacity-41 { opacity: 0.41; }
+.blog-gap-42 { gap: 42px; }
+.blog-radius-42 { border-radius: 42px; }
+.blog-z-42 { z-index: 42; }
+.blog-opacity-42 { opacity: 0.42; }
+.blog-gap-43 { gap: 43px; }
+.blog-radius-43 { border-radius: 43px; }
+.blog-z-43 { z-index: 43; }
+.blog-opacity-43 { opacity: 0.43; }
+.blog-gap-44 { gap: 44px; }
+.blog-radius-44 { border-radius: 44px; }
+.blog-z-44 { z-index: 44; }
+.blog-opacity-44 { opacity: 0.44; }
+.blog-gap-45 { gap: 45px; }
+.blog-radius-45 { border-radius: 45px; }
+.blog-z-45 { z-index: 45; }
+.blog-opacity-45 { opacity: 0.45; }
+.blog-gap-46 { gap: 46px; }
+.blog-radius-46 { border-radius: 46px; }
+.blog-z-46 { z-index: 46; }
+.blog-opacity-46 { opacity: 0.46; }
+.blog-gap-47 { gap: 47px; }
+.blog-radius-47 { border-radius: 47px; }
+.blog-z-47 { z-index: 47; }
+.blog-opacity-47 { opacity: 0.47; }
+.blog-gap-48 { gap: 48px; }
+.blog-radius-48 { border-radius: 48px; }
+.blog-z-48 { z-index: 48; }
+.blog-opacity-48 { opacity: 0.48; }
+.blog-gap-49 { gap: 49px; }
+.blog-radius-49 { border-radius: 49px; }
+.blog-z-49 { z-index: 49; }
+.blog-opacity-49 { opacity: 0.49; }
+.blog-gap-50 { gap: 50px; }
+.blog-radius-50 { border-radius: 50px; }
+.blog-z-50 { z-index: 50; }
+.blog-opacity-50 { opacity: 0.50; }
+.blog-gap-51 { gap: 51px; }
+.blog-radius-51 { border-radius: 51px; }
+.blog-z-51 { z-index: 51; }
+.blog-opacity-51 { opacity: 0.51; }
+.blog-gap-52 { gap: 52px; }
+.blog-radius-52 { border-radius: 52px; }
+.blog-z-52 { z-index: 52; }
+.blog-opacity-52 { opacity: 0.52; }
+.blog-gap-53 { gap: 53px; }
+.blog-radius-53 { border-radius: 53px; }
+.blog-z-53 { z-index: 53; }
+.blog-opacity-53 { opacity: 0.53; }
+.blog-gap-54 { gap: 54px; }
+.blog-radius-54 { border-radius: 54px; }
+.blog-z-54 { z-index: 54; }
+.blog-opacity-54 { opacity: 0.54; }
+.blog-gap-55 { gap: 55px; }
+.blog-radius-55 { border-radius: 55px; }
+.blog-z-55 { z-index: 55; }
+.blog-opacity-55 { opacity: 0.55; }
+.blog-gap-56 { gap: 56px; }
+.blog-radius-56 { border-radius: 56px; }
+.blog-z-56 { z-index: 56; }
+.blog-opacity-56 { opacity: 0.56; }
+.blog-gap-57 { gap: 57px; }
+.blog-radius-57 { border-radius: 57px; }
+.blog-z-57 { z-index: 57; }
+.blog-opacity-57 { opacity: 0.57; }
+.blog-gap-58 { gap: 58px; }
+.blog-radius-58 { border-radius: 58px; }
+.blog-z-58 { z-index: 58; }
+.blog-opacity-58 { opacity: 0.58; }
+.blog-gap-59 { gap: 59px; }
+.blog-radius-59 { border-radius: 59px; }
+.blog-z-59 { z-index: 59; }
+.blog-opacity-59 { opacity: 0.59; }
+.blog-gap-60 { gap: 60px; }
+.blog-radius-60 { border-radius: 60px; }
+.blog-z-60 { z-index: 60; }
+.blog-opacity-60 { opacity: 0.60; }
+.blog-gap-61 { gap: 61px; }
+.blog-radius-61 { border-radius: 61px; }
+.blog-z-61 { z-index: 61; }
+.blog-opacity-61 { opacity: 0.61; }
+.blog-gap-62 { gap: 62px; }
+.blog-radius-62 { border-radius: 62px; }
+.blog-z-62 { z-index: 62; }
+.blog-opacity-62 { opacity: 0.62; }
+.blog-gap-63 { gap: 63px; }
+.blog-radius-63 { border-radius: 63px; }
+.blog-z-63 { z-index: 63; }
+.blog-opacity-63 { opacity: 0.63; }
+.blog-gap-64 { gap: 64px; }
+.blog-radius-64 { border-radius: 64px; }
+.blog-z-64 { z-index: 64; }
+.blog-opacity-64 { opacity: 0.64; }
+.blog-gap-65 { gap: 65px; }
+.blog-radius-65 { border-radius: 65px; }
+.blog-z-65 { z-index: 65; }
+.blog-opacity-65 { opacity: 0.65; }
+.blog-gap-66 { gap: 66px; }
+.blog-radius-66 { border-radius: 66px; }
+.blog-z-66 { z-index: 66; }
+.blog-opacity-66 { opacity: 0.66; }
+.blog-gap-67 { gap: 67px; }
+.blog-radius-67 { border-radius: 67px; }
+.blog-z-67 { z-index: 67; }
+.blog-opacity-67 { opacity: 0.67; }
+.blog-gap-68 { gap: 68px; }
+.blog-radius-68 { border-radius: 68px; }
+.blog-z-68 { z-index: 68; }
+.blog-opacity-68 { opacity: 0.68; }
+.blog-gap-69 { gap: 69px; }
+.blog-radius-69 { border-radius: 69px; }
+.blog-z-69 { z-index: 69; }
+.blog-opacity-69 { opacity: 0.69; }
+.blog-gap-70 { gap: 70px; }
+.blog-radius-70 { border-radius: 70px; }
+.blog-z-70 { z-index: 70; }
+.blog-opacity-70 { opacity: 0.70; }
+.blog-gap-71 { gap: 71px; }
+.blog-radius-71 { border-radius: 71px; }
+.blog-z-71 { z-index: 71; }
+.blog-opacity-71 { opacity: 0.71; }
+.blog-gap-72 { gap: 72px; }
+.blog-radius-72 { border-radius: 72px; }
+.blog-z-72 { z-index: 72; }
+.blog-opacity-72 { opacity: 0.72; }
+.blog-gap-73 { gap: 73px; }
+.blog-radius-73 { border-radius: 73px; }
+.blog-z-73 { z-index: 73; }
+.blog-opacity-73 { opacity: 0.73; }
+.blog-gap-74 { gap: 74px; }
+.blog-radius-74 { border-radius: 74px; }
+.blog-z-74 { z-index: 74; }
+.blog-opacity-74 { opacity: 0.74; }
+.blog-gap-75 { gap: 75px; }
+.blog-radius-75 { border-radius: 75px; }
+.blog-z-75 { z-index: 75; }
+.blog-opacity-75 { opacity: 0.75; }
+.blog-gap-76 { gap: 76px; }
+.blog-radius-76 { border-radius: 76px; }
+.blog-z-76 { z-index: 76; }
+.blog-opacity-76 { opacity: 0.76; }
+.blog-gap-77 { gap: 77px; }
+.blog-radius-77 { border-radius: 77px; }
+.blog-z-77 { z-index: 77; }
+.blog-opacity-77 { opacity: 0.77; }
+.blog-gap-78 { gap: 78px; }
+.blog-radius-78 { border-radius: 78px; }
+.blog-z-78 { z-index: 78; }
+.blog-opacity-78 { opacity: 0.78; }
+.blog-gap-79 { gap: 79px; }
+.blog-radius-79 { border-radius: 79px; }
+.blog-z-79 { z-index: 79; }
+.blog-opacity-79 { opacity: 0.79; }
+.blog-gap-80 { gap: 80px; }
+.blog-radius-80 { border-radius: 80px; }
+.blog-z-80 { z-index: 80; }
+.blog-opacity-80 { opacity: 0.80; }
+.blog-gap-81 { gap: 81px; }
+.blog-radius-81 { border-radius: 81px; }
+.blog-z-81 { z-index: 81; }
+.blog-opacity-81 { opacity: 0.81; }
+.blog-gap-82 { gap: 82px; }
+.blog-radius-82 { border-radius: 82px; }
+.blog-z-82 { z-index: 82; }
+.blog-opacity-82 { opacity: 0.82; }
+.blog-gap-83 { gap: 83px; }
+.blog-radius-83 { border-radius: 83px; }
+.blog-z-83 { z-index: 83; }
+.blog-opacity-83 { opacity: 0.83; }
+.blog-gap-84 { gap: 84px; }
+.blog-radius-84 { border-radius: 84px; }
+.blog-z-84 { z-index: 84; }
+.blog-opacity-84 { opacity: 0.84; }
+.blog-gap-85 { gap: 85px; }
+.blog-radius-85 { border-radius: 85px; }
+.blog-z-85 { z-index: 85; }
+.blog-opacity-85 { opacity: 0.85; }
+.blog-gap-86 { gap: 86px; }
+.blog-radius-86 { border-radius: 86px; }
+.blog-z-86 { z-index: 86; }
+.blog-opacity-86 { opacity: 0.86; }
+.blog-gap-87 { gap: 87px; }
+.blog-radius-87 { border-radius: 87px; }
+.blog-z-87 { z-index: 87; }
+.blog-opacity-87 { opacity: 0.87; }
+.blog-gap-88 { gap: 88px; }
+.blog-radius-88 { border-radius: 88px; }
+.blog-z-88 { z-index: 88; }
+.blog-opacity-88 { opacity: 0.88; }
+.blog-gap-89 { gap: 89px; }
+.blog-radius-89 { border-radius: 89px; }
+.blog-z-89 { z-index: 89; }
+.blog-opacity-89 { opacity: 0.89; }
+.blog-gap-90 { gap: 90px; }
+.blog-radius-90 { border-radius: 90px; }
+.blog-z-90 { z-index: 90; }
+.blog-opacity-90 { opacity: 0.90; }
+.blog-gap-91 { gap: 91px; }
+.blog-radius-91 { border-radius: 91px; }
+.blog-z-91 { z-index: 91; }
+.blog-opacity-91 { opacity: 0.91; }
+.blog-gap-92 { gap: 92px; }
+.blog-radius-92 { border-radius: 92px; }
+.blog-z-92 { z-index: 92; }
+.blog-opacity-92 { opacity: 0.92; }
+.blog-gap-93 { gap: 93px; }
+.blog-radius-93 { border-radius: 93px; }
+.blog-z-93 { z-index: 93; }
+.blog-opacity-93 { opacity: 0.93; }
+.blog-gap-94 { gap: 94px; }
+.blog-radius-94 { border-radius: 94px; }
+.blog-z-94 { z-index: 94; }
+.blog-opacity-94 { opacity: 0.94; }
+.blog-gap-95 { gap: 95px; }
+.blog-radius-95 { border-radius: 95px; }
+.blog-z-95 { z-index: 95; }
+.blog-opacity-95 { opacity: 0.95; }
+.blog-gap-96 { gap: 96px; }
+.blog-radius-96 { border-radius: 96px; }
+.blog-z-96 { z-index: 96; }
+.blog-opacity-96 { opacity: 0.96; }
+.blog-gap-97 { gap: 97px; }
+.blog-radius-97 { border-radius: 97px; }
+.blog-z-97 { z-index: 97; }
+.blog-opacity-97 { opacity: 0.97; }
+.blog-gap-98 { gap: 98px; }
+.blog-radius-98 { border-radius: 98px; }
+.blog-z-98 { z-index: 98; }
+.blog-opacity-98 { opacity: 0.98; }
+.blog-gap-99 { gap: 99px; }
+.blog-radius-99 { border-radius: 99px; }
+.blog-z-99 { z-index: 99; }
+.blog-opacity-99 { opacity: 0.99; }
+.blog-gap-100 { gap: 100px; }
+.blog-radius-100 { border-radius: 100px; }
+.blog-z-100 { z-index: 100; }
+.blog-opacity-100 { opacity: 1.00; }
+@media (max-width: 620px) {
+  .blog-sm-gap-0 { gap: 0px; }
+  .blog-sm-radius-0 { border-radius: 0px; }
+  .blog-sm-gap-1 { gap: 1px; }
+  .blog-sm-radius-1 { border-radius: 1px; }
+  .blog-sm-gap-2 { gap: 2px; }
+  .blog-sm-radius-2 { border-radius: 2px; }
+  .blog-sm-gap-3 { gap: 3px; }
+  .blog-sm-radius-3 { border-radius: 3px; }
+  .blog-sm-gap-4 { gap: 4px; }
+  .blog-sm-radius-4 { border-radius: 4px; }
+  .blog-sm-gap-5 { gap: 5px; }
+  .blog-sm-radius-5 { border-radius: 5px; }
+  .blog-sm-gap-6 { gap: 6px; }
+  .blog-sm-radius-6 { border-radius: 6px; }
+  .blog-sm-gap-7 { gap: 7px; }
+  .blog-sm-radius-7 { border-radius: 7px; }
+  .blog-sm-gap-8 { gap: 8px; }
+  .blog-sm-radius-8 { border-radius: 8px; }
+  .blog-sm-gap-9 { gap: 9px; }
+  .blog-sm-radius-9 { border-radius: 9px; }
+  .blog-sm-gap-10 { gap: 10px; }
+  .blog-sm-radius-10 { border-radius: 10px; }
+  .blog-sm-gap-11 { gap: 11px; }
+  .blog-sm-radius-11 { border-radius: 11px; }
+  .blog-sm-gap-12 { gap: 12px; }
+  .blog-sm-radius-12 { border-radius: 12px; }
+  .blog-sm-gap-13 { gap: 13px; }
+  .blog-sm-radius-13 { border-radius: 13px; }
+  .blog-sm-gap-14 { gap: 14px; }
+  .blog-sm-radius-14 { border-radius: 14px; }
+  .blog-sm-gap-15 { gap: 15px; }
+  .blog-sm-radius-15 { border-radius: 15px; }
+  .blog-sm-gap-16 { gap: 16px; }
+  .blog-sm-radius-16 { border-radius: 16px; }
+  .blog-sm-gap-17 { gap: 17px; }
+  .blog-sm-radius-17 { border-radius: 17px; }
+  .blog-sm-gap-18 { gap: 18px; }
+  .blog-sm-radius-18 { border-radius: 18px; }
+  .blog-sm-gap-19 { gap: 19px; }
+  .blog-sm-radius-19 { border-radius: 19px; }
+  .blog-sm-gap-20 { gap: 20px; }
+  .blog-sm-radius-20 { border-radius: 20px; }
+  .blog-sm-gap-21 { gap: 21px; }
+  .blog-sm-radius-21 { border-radius: 21px; }
+  .blog-sm-gap-22 { gap: 22px; }
+  .blog-sm-radius-22 { border-radius: 22px; }
+  .blog-sm-gap-23 { gap: 23px; }
+  .blog-sm-radius-23 { border-radius: 23px; }
+  .blog-sm-gap-24 { gap: 24px; }
+  .blog-sm-radius-24 { border-radius: 24px; }
+  .blog-sm-gap-25 { gap: 25px; }
+  .blog-sm-radius-25 { border-radius: 25px; }
+  .blog-sm-gap-26 { gap: 26px; }
+  .blog-sm-radius-26 { border-radius: 26px; }
+  .blog-sm-gap-27 { gap: 27px; }
+  .blog-sm-radius-27 { border-radius: 27px; }
+  .blog-sm-gap-28 { gap: 28px; }
+  .blog-sm-radius-28 { border-radius: 28px; }
+  .blog-sm-gap-29 { gap: 29px; }
+  .blog-sm-radius-29 { border-radius: 29px; }
+  .blog-sm-gap-30 { gap: 30px; }
+  .blog-sm-radius-30 { border-radius: 30px; }
+  .blog-sm-gap-31 { gap: 31px; }
+  .blog-sm-radius-31 { border-radius: 31px; }
+  .blog-sm-gap-32 { gap: 32px; }
+  .blog-sm-radius-32 { border-radius: 32px; }
+  .blog-sm-gap-33 { gap: 33px; }
+  .blog-sm-radius-33 { border-radius: 33px; }
+  .blog-sm-gap-34 { gap: 34px; }
+  .blog-sm-radius-34 { border-radius: 34px; }
+  .blog-sm-gap-35 { gap: 35px; }
+  .blog-sm-radius-35 { border-radius: 35px; }
+  .blog-sm-gap-36 { gap: 36px; }
+  .blog-sm-radius-36 { border-radius: 36px; }
+  .blog-sm-gap-37 { gap: 37px; }
+  .blog-sm-radius-37 { border-radius: 37px; }
+  .blog-sm-gap-38 { gap: 38px; }
+  .blog-sm-radius-38 { border-radius: 38px; }
+  .blog-sm-gap-39 { gap: 39px; }
+  .blog-sm-radius-39 { border-radius: 39px; }
+  .blog-sm-gap-40 { gap: 40px; }
+  .blog-sm-radius-40 { border-radius: 40px; }
+  .blog-sm-gap-41 { gap: 41px; }
+  .blog-sm-radius-41 { border-radius: 41px; }
+  .blog-sm-gap-42 { gap: 42px; }
+  .blog-sm-radius-42 { border-radius: 42px; }
+  .blog-sm-gap-43 { gap: 43px; }
+  .blog-sm-radius-43 { border-radius: 43px; }
+  .blog-sm-gap-44 { gap: 44px; }
+  .blog-sm-radius-44 { border-radius: 44px; }
+  .blog-sm-gap-45 { gap: 45px; }
+  .blog-sm-radius-45 { border-radius: 45px; }
+  .blog-sm-gap-46 { gap: 46px; }
+  .blog-sm-radius-46 { border-radius: 46px; }
+  .blog-sm-gap-47 { gap: 47px; }
+  .blog-sm-radius-47 { border-radius: 47px; }
+  .blog-sm-gap-48 { gap: 48px; }
+  .blog-sm-radius-48 { border-radius: 48px; }
+  .blog-sm-gap-49 { gap: 49px; }
+  .blog-sm-radius-49 { border-radius: 49px; }
+  .blog-sm-gap-50 { gap: 50px; }
+  .blog-sm-radius-50 { border-radius: 50px; }
+  .blog-sm-gap-51 { gap: 51px; }
+  .blog-sm-radius-51 { border-radius: 51px; }
+  .blog-sm-gap-52 { gap: 52px; }
+  .blog-sm-radius-52 { border-radius: 52px; }
+  .blog-sm-gap-53 { gap: 53px; }
+  .blog-sm-radius-53 { border-radius: 53px; }
+  .blog-sm-gap-54 { gap: 54px; }
+  .blog-sm-radius-54 { border-radius: 54px; }
+  .blog-sm-gap-55 { gap: 55px; }
+  .blog-sm-radius-55 { border-radius: 55px; }
+  .blog-sm-gap-56 { gap: 56px; }
+  .blog-sm-radius-56 { border-radius: 56px; }
+  .blog-sm-gap-57 { gap: 57px; }
+  .blog-sm-radius-57 { border-radius: 57px; }
+  .blog-sm-gap-58 { gap: 58px; }
+  .blog-sm-radius-58 { border-radius: 58px; }
+  .blog-sm-gap-59 { gap: 59px; }
+  .blog-sm-radius-59 { border-radius: 59px; }
+  .blog-sm-gap-60 { gap: 60px; }
+  .blog-sm-radius-60 { border-radius: 60px; }
+  .blog-sm-gap-61 { gap: 61px; }
+  .blog-sm-radius-61 { border-radius: 61px; }
+  .blog-sm-gap-62 { gap: 62px; }
+  .blog-sm-radius-62 { border-radius: 62px; }
+  .blog-sm-gap-63 { gap: 63px; }
+  .blog-sm-radius-63 { border-radius: 63px; }
+  .blog-sm-gap-64 { gap: 64px; }
+  .blog-sm-radius-64 { border-radius: 64px; }
+  .blog-sm-gap-65 { gap: 65px; }
+  .blog-sm-radius-65 { border-radius: 65px; }
+  .blog-sm-gap-66 { gap: 66px; }
+  .blog-sm-radius-66 { border-radius: 66px; }
+  .blog-sm-gap-67 { gap: 67px; }
+  .blog-sm-radius-67 { border-radius: 67px; }
+  .blog-sm-gap-68 { gap: 68px; }
+  .blog-sm-radius-68 { border-radius: 68px; }
+  .blog-sm-gap-69 { gap: 69px; }
+  .blog-sm-radius-69 { border-radius: 69px; }
+  .blog-sm-gap-70 { gap: 70px; }
+  .blog-sm-radius-70 { border-radius: 70px; }
+  .blog-sm-gap-71 { gap: 71px; }
+  .blog-sm-radius-71 { border-radius: 71px; }
+  .blog-sm-gap-72 { gap: 72px; }
+  .blog-sm-radius-72 { border-radius: 72px; }
+  .blog-sm-gap-73 { gap: 73px; }
+  .blog-sm-radius-73 { border-radius: 73px; }
+  .blog-sm-gap-74 { gap: 74px; }
+  .blog-sm-radius-74 { border-radius: 74px; }
+  .blog-sm-gap-75 { gap: 75px; }
+  .blog-sm-radius-75 { border-radius: 75px; }
+  .blog-sm-gap-76 { gap: 76px; }
+  .blog-sm-radius-76 { border-radius: 76px; }
+  .blog-sm-gap-77 { gap: 77px; }
+  .blog-sm-radius-77 { border-radius: 77px; }
+  .blog-sm-gap-78 { gap: 78px; }
+  .blog-sm-radius-78 { border-radius: 78px; }
+  .blog-sm-gap-79 { gap: 79px; }
+  .blog-sm-radius-79 { border-radius: 79px; }
+  .blog-sm-gap-80 { gap: 80px; }
+  .blog-sm-radius-80 { border-radius: 80px; }
+  .blog-sm-gap-81 { gap: 81px; }
+  .blog-sm-radius-81 { border-radius: 81px; }
+  .blog-sm-gap-82 { gap: 82px; }
+  .blog-sm-radius-82 { border-radius: 82px; }
+  .blog-sm-gap-83 { gap: 83px; }
+  .blog-sm-radius-83 { border-radius: 83px; }
+  .blog-sm-gap-84 { gap: 84px; }
+  .blog-sm-radius-84 { border-radius: 84px; }
+  .blog-sm-gap-85 { gap: 85px; }
+  .blog-sm-radius-85 { border-radius: 85px; }
+  .blog-sm-gap-86 { gap: 86px; }
+  .blog-sm-radius-86 { border-radius: 86px; }
+  .blog-sm-gap-87 { gap: 87px; }
+  .blog-sm-radius-87 { border-radius: 87px; }
+  .blog-sm-gap-88 { gap: 88px; }
+  .blog-sm-radius-88 { border-radius: 88px; }
+  .blog-sm-gap-89 { gap: 89px; }
+  .blog-sm-radius-89 { border-radius: 89px; }
+  .blog-sm-gap-90 { gap: 90px; }
+  .blog-sm-radius-90 { border-radius: 90px; }
+  .blog-sm-gap-91 { gap: 91px; }
+  .blog-sm-radius-91 { border-radius: 91px; }
+  .blog-sm-gap-92 { gap: 92px; }
+  .blog-sm-radius-92 { border-radius: 92px; }
+  .blog-sm-gap-93 { gap: 93px; }
+  .blog-sm-radius-93 { border-radius: 93px; }
+  .blog-sm-gap-94 { gap: 94px; }
+  .blog-sm-radius-94 { border-radius: 94px; }
+  .blog-sm-gap-95 { gap: 95px; }
+  .blog-sm-radius-95 { border-radius: 95px; }
+  .blog-sm-gap-96 { gap: 96px; }
+  .blog-sm-radius-96 { border-radius: 96px; }
+  .blog-sm-gap-97 { gap: 97px; }
+  .blog-sm-radius-97 { border-radius: 97px; }
+  .blog-sm-gap-98 { gap: 98px; }
+  .blog-sm-radius-98 { border-radius: 98px; }
+  .blog-sm-gap-99 { gap: 99px; }
+  .blog-sm-radius-99 { border-radius: 99px; }
+  .blog-sm-gap-100 { gap: 100px; }
+  .blog-sm-radius-100 { border-radius: 100px; }
+}
+@media (max-width: 820px) {
+  .blog-md-gap-0 { gap: 0px; }
+  .blog-md-radius-0 { border-radius: 0px; }
+  .blog-md-gap-1 { gap: 1px; }
+  .blog-md-radius-1 { border-radius: 1px; }
+  .blog-md-gap-2 { gap: 2px; }
+  .blog-md-radius-2 { border-radius: 2px; }
+  .blog-md-gap-3 { gap: 3px; }
+  .blog-md-radius-3 { border-radius: 3px; }
+  .blog-md-gap-4 { gap: 4px; }
+  .blog-md-radius-4 { border-radius: 4px; }
+  .blog-md-gap-5 { gap: 5px; }
+  .blog-md-radius-5 { border-radius: 5px; }
+  .blog-md-gap-6 { gap: 6px; }
+  .blog-md-radius-6 { border-radius: 6px; }
+  .blog-md-gap-7 { gap: 7px; }
+  .blog-md-radius-7 { border-radius: 7px; }
+  .blog-md-gap-8 { gap: 8px; }
+  .blog-md-radius-8 { border-radius: 8px; }
+  .blog-md-gap-9 { gap: 9px; }
+  .blog-md-radius-9 { border-radius: 9px; }
+  .blog-md-gap-10 { gap: 10px; }
+  .blog-md-radius-10 { border-radius: 10px; }
+  .blog-md-gap-11 { gap: 11px; }
+  .blog-md-radius-11 { border-radius: 11px; }
+  .blog-md-gap-12 { gap: 12px; }
+  .blog-md-radius-12 { border-radius: 12px; }
+  .blog-md-gap-13 { gap: 13px; }
+  .blog-md-radius-13 { border-radius: 13px; }
+  .blog-md-gap-14 { gap: 14px; }
+  .blog-md-radius-14 { border-radius: 14px; }
+  .blog-md-gap-15 { gap: 15px; }
+  .blog-md-radius-15 { border-radius: 15px; }
+  .blog-md-gap-16 { gap: 16px; }
+  .blog-md-radius-16 { border-radius: 16px; }
+  .blog-md-gap-17 { gap: 17px; }
+  .blog-md-radius-17 { border-radius: 17px; }
+  .blog-md-gap-18 { gap: 18px; }
+  .blog-md-radius-18 { border-radius: 18px; }
+  .blog-md-gap-19 { gap: 19px; }
+  .blog-md-radius-19 { border-radius: 19px; }
+  .blog-md-gap-20 { gap: 20px; }
+  .blog-md-radius-20 { border-radius: 20px; }
+  .blog-md-gap-21 { gap: 21px; }
+  .blog-md-radius-21 { border-radius: 21px; }
+  .blog-md-gap-22 { gap: 22px; }
+  .blog-md-radius-22 { border-radius: 22px; }
+  .blog-md-gap-23 { gap: 23px; }
+  .blog-md-radius-23 { border-radius: 23px; }
+  .blog-md-gap-24 { gap: 24px; }
+  .blog-md-radius-24 { border-radius: 24px; }
+  .blog-md-gap-25 { gap: 25px; }
+  .blog-md-radius-25 { border-radius: 25px; }
+  .blog-md-gap-26 { gap: 26px; }
+  .blog-md-radius-26 { border-radius: 26px; }
+  .blog-md-gap-27 { gap: 27px; }
+  .blog-md-radius-27 { border-radius: 27px; }
+  .blog-md-gap-28 { gap: 28px; }
+  .blog-md-radius-28 { border-radius: 28px; }
+  .blog-md-gap-29 { gap: 29px; }
+  .blog-md-radius-29 { border-radius: 29px; }
+  .blog-md-gap-30 { gap: 30px; }
+  .blog-md-radius-30 { border-radius: 30px; }
+  .blog-md-gap-31 { gap: 31px; }
+  .blog-md-radius-31 { border-radius: 31px; }
+  .blog-md-gap-32 { gap: 32px; }
+  .blog-md-radius-32 { border-radius: 32px; }
+  .blog-md-gap-33 { gap: 33px; }
+  .blog-md-radius-33 { border-radius: 33px; }
+  .blog-md-gap-34 { gap: 34px; }
+  .blog-md-radius-34 { border-radius: 34px; }
+  .blog-md-gap-35 { gap: 35px; }
+  .blog-md-radius-35 { border-radius: 35px; }
+  .blog-md-gap-36 { gap: 36px; }
+  .blog-md-radius-36 { border-radius: 36px; }
+  .blog-md-gap-37 { gap: 37px; }
+  .blog-md-radius-37 { border-radius: 37px; }
+  .blog-md-gap-38 { gap: 38px; }
+  .blog-md-radius-38 { border-radius: 38px; }
+  .blog-md-gap-39 { gap: 39px; }
+  .blog-md-radius-39 { border-radius: 39px; }
+  .blog-md-gap-40 { gap: 40px; }
+  .blog-md-radius-40 { border-radius: 40px; }
+  .blog-md-gap-41 { gap: 41px; }
+  .blog-md-radius-41 { border-radius: 41px; }
+  .blog-md-gap-42 { gap: 42px; }
+  .blog-md-radius-42 { border-radius: 42px; }
+  .blog-md-gap-43 { gap: 43px; }
+  .blog-md-radius-43 { border-radius: 43px; }
+  .blog-md-gap-44 { gap: 44px; }
+  .blog-md-radius-44 { border-radius: 44px; }
+  .blog-md-gap-45 { gap: 45px; }
+  .blog-md-radius-45 { border-radius: 45px; }
+  .blog-md-gap-46 { gap: 46px; }
+  .blog-md-radius-46 { border-radius: 46px; }
+  .blog-md-gap-47 { gap: 47px; }
+  .blog-md-radius-47 { border-radius: 47px; }
+  .blog-md-gap-48 { gap: 48px; }
+  .blog-md-radius-48 { border-radius: 48px; }
+  .blog-md-gap-49 { gap: 49px; }
+  .blog-md-radius-49 { border-radius: 49px; }
+  .blog-md-gap-50 { gap: 50px; }
+  .blog-md-radius-50 { border-radius: 50px; }
+  .blog-md-gap-51 { gap: 51px; }
+  .blog-md-radius-51 { border-radius: 51px; }
+  .blog-md-gap-52 { gap: 52px; }
+  .blog-md-radius-52 { border-radius: 52px; }
+  .blog-md-gap-53 { gap: 53px; }
+  .blog-md-radius-53 { border-radius: 53px; }
+  .blog-md-gap-54 { gap: 54px; }
+  .blog-md-radius-54 { border-radius: 54px; }
+  .blog-md-gap-55 { gap: 55px; }
+  .blog-md-radius-55 { border-radius: 55px; }
+  .blog-md-gap-56 { gap: 56px; }
+  .blog-md-radius-56 { border-radius: 56px; }
+  .blog-md-gap-57 { gap: 57px; }
+  .blog-md-radius-57 { border-radius: 57px; }
+  .blog-md-gap-58 { gap: 58px; }
+  .blog-md-radius-58 { border-radius: 58px; }
+  .blog-md-gap-59 { gap: 59px; }
+  .blog-md-radius-59 { border-radius: 59px; }
+  .blog-md-gap-60 { gap: 60px; }
+  .blog-md-radius-60 { border-radius: 60px; }
+  .blog-md-gap-61 { gap: 61px; }
+  .blog-md-radius-61 { border-radius: 61px; }
+  .blog-md-gap-62 { gap: 62px; }
+  .blog-md-radius-62 { border-radius: 62px; }
+  .blog-md-gap-63 { gap: 63px; }
+  .blog-md-radius-63 { border-radius: 63px; }
+  .blog-md-gap-64 { gap: 64px; }
+  .blog-md-radius-64 { border-radius: 64px; }
+  .blog-md-gap-65 { gap: 65px; }
+  .blog-md-radius-65 { border-radius: 65px; }
+  .blog-md-gap-66 { gap: 66px; }
+  .blog-md-radius-66 { border-radius: 66px; }
+  .blog-md-gap-67 { gap: 67px; }
+  .blog-md-radius-67 { border-radius: 67px; }
+  .blog-md-gap-68 { gap: 68px; }
+  .blog-md-radius-68 { border-radius: 68px; }
+  .blog-md-gap-69 { gap: 69px; }
+  .blog-md-radius-69 { border-radius: 69px; }
+  .blog-md-gap-70 { gap: 70px; }
+  .blog-md-radius-70 { border-radius: 70px; }
+  .blog-md-gap-71 { gap: 71px; }
+  .blog-md-radius-71 { border-radius: 71px; }
+  .blog-md-gap-72 { gap: 72px; }
+  .blog-md-radius-72 { border-radius: 72px; }
+  .blog-md-gap-73 { gap: 73px; }
+  .blog-md-radius-73 { border-radius: 73px; }
+  .blog-md-gap-74 { gap: 74px; }
+  .blog-md-radius-74 { border-radius: 74px; }
+  .blog-md-gap-75 { gap: 75px; }
+  .blog-md-radius-75 { border-radius: 75px; }
+  .blog-md-gap-76 { gap: 76px; }
+  .blog-md-radius-76 { border-radius: 76px; }
+  .blog-md-gap-77 { gap: 77px; }
+  .blog-md-radius-77 { border-radius: 77px; }
+  .blog-md-gap-78 { gap: 78px; }
+  .blog-md-radius-78 { border-radius: 78px; }
+  .blog-md-gap-79 { gap: 79px; }
+  .blog-md-radius-79 { border-radius: 79px; }
+  .blog-md-gap-80 { gap: 80px; }
+  .blog-md-radius-80 { border-radius: 80px; }
+  .blog-md-gap-81 { gap: 81px; }
+  .blog-md-radius-81 { border-radius: 81px; }
+  .blog-md-gap-82 { gap: 82px; }
+  .blog-md-radius-82 { border-radius: 82px; }
+  .blog-md-gap-83 { gap: 83px; }
+  .blog-md-radius-83 { border-radius: 83px; }
+  .blog-md-gap-84 { gap: 84px; }
+  .blog-md-radius-84 { border-radius: 84px; }
+  .blog-md-gap-85 { gap: 85px; }
+  .blog-md-radius-85 { border-radius: 85px; }
+  .blog-md-gap-86 { gap: 86px; }
+  .blog-md-radius-86 { border-radius: 86px; }
+  .blog-md-gap-87 { gap: 87px; }
+  .blog-md-radius-87 { border-radius: 87px; }
+  .blog-md-gap-88 { gap: 88px; }
+  .blog-md-radius-88 { border-radius: 88px; }
+  .blog-md-gap-89 { gap: 89px; }
+  .blog-md-radius-89 { border-radius: 89px; }
+  .blog-md-gap-90 { gap: 90px; }
+  .blog-md-radius-90 { border-radius: 90px; }
+  .blog-md-gap-91 { gap: 91px; }
+  .blog-md-radius-91 { border-radius: 91px; }
+  .blog-md-gap-92 { gap: 92px; }
+  .blog-md-radius-92 { border-radius: 92px; }
+  .blog-md-gap-93 { gap: 93px; }
+  .blog-md-radius-93 { border-radius: 93px; }
+  .blog-md-gap-94 { gap: 94px; }
+  .blog-md-radius-94 { border-radius: 94px; }
+  .blog-md-gap-95 { gap: 95px; }
+  .blog-md-radius-95 { border-radius: 95px; }
+  .blog-md-gap-96 { gap: 96px; }
+  .blog-md-radius-96 { border-radius: 96px; }
+  .blog-md-gap-97 { gap: 97px; }
+  .blog-md-radius-97 { border-radius: 97px; }
+  .blog-md-gap-98 { gap: 98px; }
+  .blog-md-radius-98 { border-radius: 98px; }
+  .blog-md-gap-99 { gap: 99px; }
+  .blog-md-radius-99 { border-radius: 99px; }
+  .blog-md-gap-100 { gap: 100px; }
+  .blog-md-radius-100 { border-radius: 100px; }
+}
+@media (max-width: 1050px) {
+  .blog-lg-gap-0 { gap: 0px; }
+  .blog-lg-radius-0 { border-radius: 0px; }
+  .blog-lg-gap-1 { gap: 1px; }
+  .blog-lg-radius-1 { border-radius: 1px; }
+  .blog-lg-gap-2 { gap: 2px; }
+  .blog-lg-radius-2 { border-radius: 2px; }
+  .blog-lg-gap-3 { gap: 3px; }
+  .blog-lg-radius-3 { border-radius: 3px; }
+  .blog-lg-gap-4 { gap: 4px; }
+  .blog-lg-radius-4 { border-radius: 4px; }
+  .blog-lg-gap-5 { gap: 5px; }
+  .blog-lg-radius-5 { border-radius: 5px; }
+  .blog-lg-gap-6 { gap: 6px; }
+  .blog-lg-radius-6 { border-radius: 6px; }
+  .blog-lg-gap-7 { gap: 7px; }
+  .blog-lg-radius-7 { border-radius: 7px; }
+  .blog-lg-gap-8 { gap: 8px; }
+  .blog-lg-radius-8 { border-radius: 8px; }
+  .blog-lg-gap-9 { gap: 9px; }
+  .blog-lg-radius-9 { border-radius: 9px; }
+  .blog-lg-gap-10 { gap: 10px; }
+  .blog-lg-radius-10 { border-radius: 10px; }
+  .blog-lg-gap-11 { gap: 11px; }
+  .blog-lg-radius-11 { border-radius: 11px; }
+  .blog-lg-gap-12 { gap: 12px; }
+  .blog-lg-radius-12 { border-radius: 12px; }
+  .blog-lg-gap-13 { gap: 13px; }
+  .blog-lg-radius-13 { border-radius: 13px; }
+  .blog-lg-gap-14 { gap: 14px; }
+  .blog-lg-radius-14 { border-radius: 14px; }
+  .blog-lg-gap-15 { gap: 15px; }
+  .blog-lg-radius-15 { border-radius: 15px; }
+  .blog-lg-gap-16 { gap: 16px; }
+  .blog-lg-radius-16 { border-radius: 16px; }
+  .blog-lg-gap-17 { gap: 17px; }
+  .blog-lg-radius-17 { border-radius: 17px; }
+  .blog-lg-gap-18 { gap: 18px; }
+  .blog-lg-radius-18 { border-radius: 18px; }
+  .blog-lg-gap-19 { gap: 19px; }
+  .blog-lg-radius-19 { border-radius: 19px; }
+  .blog-lg-gap-20 { gap: 20px; }
+  .blog-lg-radius-20 { border-radius: 20px; }
+  .blog-lg-gap-21 { gap: 21px; }
+  .blog-lg-radius-21 { border-radius: 21px; }
+  .blog-lg-gap-22 { gap: 22px; }
+  .blog-lg-radius-22 { border-radius: 22px; }
+  .blog-lg-gap-23 { gap: 23px; }
+  .blog-lg-radius-23 { border-radius: 23px; }
+  .blog-lg-gap-24 { gap: 24px; }
+  .blog-lg-radius-24 { border-radius: 24px; }
+  .blog-lg-gap-25 { gap: 25px; }
+  .blog-lg-radius-25 { border-radius: 25px; }
+  .blog-lg-gap-26 { gap: 26px; }
+  .blog-lg-radius-26 { border-radius: 26px; }
+  .blog-lg-gap-27 { gap: 27px; }
+  .blog-lg-radius-27 { border-radius: 27px; }
+  .blog-lg-gap-28 { gap: 28px; }
+  .blog-lg-radius-28 { border-radius: 28px; }
+  .blog-lg-gap-29 { gap: 29px; }
+  .blog-lg-radius-29 { border-radius: 29px; }
+  .blog-lg-gap-30 { gap: 30px; }
+  .blog-lg-radius-30 { border-radius: 30px; }
+  .blog-lg-gap-31 { gap: 31px; }
+  .blog-lg-radius-31 { border-radius: 31px; }
+  .blog-lg-gap-32 { gap: 32px; }
+  .blog-lg-radius-32 { border-radius: 32px; }
+  .blog-lg-gap-33 { gap: 33px; }
+  .blog-lg-radius-33 { border-radius: 33px; }
+  .blog-lg-gap-34 { gap: 34px; }
+  .blog-lg-radius-34 { border-radius: 34px; }
+  .blog-lg-gap-35 { gap: 35px; }
+  .blog-lg-radius-35 { border-radius: 35px; }
+  .blog-lg-gap-36 { gap: 36px; }
+  .blog-lg-radius-36 { border-radius: 36px; }
+  .blog-lg-gap-37 { gap: 37px; }
+  .blog-lg-radius-37 { border-radius: 37px; }
+  .blog-lg-gap-38 { gap: 38px; }
+  .blog-lg-radius-38 { border-radius: 38px; }
+  .blog-lg-gap-39 { gap: 39px; }
+  .blog-lg-radius-39 { border-radius: 39px; }
+  .blog-lg-gap-40 { gap: 40px; }
+  .blog-lg-radius-40 { border-radius: 40px; }
+  .blog-lg-gap-41 { gap: 41px; }
+  .blog-lg-radius-41 { border-radius: 41px; }
+  .blog-lg-gap-42 { gap: 42px; }
+  .blog-lg-radius-42 { border-radius: 42px; }
+  .blog-lg-gap-43 { gap: 43px; }
+  .blog-lg-radius-43 { border-radius: 43px; }
+  .blog-lg-gap-44 { gap: 44px; }
+  .blog-lg-radius-44 { border-radius: 44px; }
+  .blog-lg-gap-45 { gap: 45px; }
+  .blog-lg-radius-45 { border-radius: 45px; }
+  .blog-lg-gap-46 { gap: 46px; }
+  .blog-lg-radius-46 { border-radius: 46px; }
+  .blog-lg-gap-47 { gap: 47px; }
+  .blog-lg-radius-47 { border-radius: 47px; }
+  .blog-lg-gap-48 { gap: 48px; }
+  .blog-lg-radius-48 { border-radius: 48px; }
+  .blog-lg-gap-49 { gap: 49px; }
+  .blog-lg-radius-49 { border-radius: 49px; }
+  .blog-lg-gap-50 { gap: 50px; }
+  .blog-lg-radius-50 { border-radius: 50px; }
+  .blog-lg-gap-51 { gap: 51px; }
+  .blog-lg-radius-51 { border-radius: 51px; }
+  .blog-lg-gap-52 { gap: 52px; }
+  .blog-lg-radius-52 { border-radius: 52px; }
+  .blog-lg-gap-53 { gap: 53px; }
+  .blog-lg-radius-53 { border-radius: 53px; }
+  .blog-lg-gap-54 { gap: 54px; }
+  .blog-lg-radius-54 { border-radius: 54px; }
+  .blog-lg-gap-55 { gap: 55px; }
+  .blog-lg-radius-55 { border-radius: 55px; }
+  .blog-lg-gap-56 { gap: 56px; }
+  .blog-lg-radius-56 { border-radius: 56px; }
+  .blog-lg-gap-57 { gap: 57px; }
+  .blog-lg-radius-57 { border-radius: 57px; }
+  .blog-lg-gap-58 { gap: 58px; }
+  .blog-lg-radius-58 { border-radius: 58px; }
+  .blog-lg-gap-59 { gap: 59px; }
+  .blog-lg-radius-59 { border-radius: 59px; }
+  .blog-lg-gap-60 { gap: 60px; }
+  .blog-lg-radius-60 { border-radius: 60px; }
+  .blog-lg-gap-61 { gap: 61px; }
+  .blog-lg-radius-61 { border-radius: 61px; }
+  .blog-lg-gap-62 { gap: 62px; }
+  .blog-lg-radius-62 { border-radius: 62px; }
+  .blog-lg-gap-63 { gap: 63px; }
+  .blog-lg-radius-63 { border-radius: 63px; }
+  .blog-lg-gap-64 { gap: 64px; }
+  .blog-lg-radius-64 { border-radius: 64px; }
+  .blog-lg-gap-65 { gap: 65px; }
+  .blog-lg-radius-65 { border-radius: 65px; }
+  .blog-lg-gap-66 { gap: 66px; }
+  .blog-lg-radius-66 { border-radius: 66px; }
+  .blog-lg-gap-67 { gap: 67px; }
+  .blog-lg-radius-67 { border-radius: 67px; }
+  .blog-lg-gap-68 { gap: 68px; }
+  .blog-lg-radius-68 { border-radius: 68px; }
+  .blog-lg-gap-69 { gap: 69px; }
+  .blog-lg-radius-69 { border-radius: 69px; }
+  .blog-lg-gap-70 { gap: 70px; }
+  .blog-lg-radius-70 { border-radius: 70px; }
+  .blog-lg-gap-71 { gap: 71px; }
+  .blog-lg-radius-71 { border-radius: 71px; }
+  .blog-lg-gap-72 { gap: 72px; }
+  .blog-lg-radius-72 { border-radius: 72px; }
+  .blog-lg-gap-73 { gap: 73px; }
+  .blog-lg-radius-73 { border-radius: 73px; }
+  .blog-lg-gap-74 { gap: 74px; }
+  .blog-lg-radius-74 { border-radius: 74px; }
+  .blog-lg-gap-75 { gap: 75px; }
+  .blog-lg-radius-75 { border-radius: 75px; }
+  .blog-lg-gap-76 { gap: 76px; }
+  .blog-lg-radius-76 { border-radius: 76px; }
+  .blog-lg-gap-77 { gap: 77px; }
+  .blog-lg-radius-77 { border-radius: 77px; }
+  .blog-lg-gap-78 { gap: 78px; }
+  .blog-lg-radius-78 { border-radius: 78px; }
+  .blog-lg-gap-79 { gap: 79px; }
+  .blog-lg-radius-79 { border-radius: 79px; }
+  .blog-lg-gap-80 { gap: 80px; }
+  .blog-lg-radius-80 { border-radius: 80px; }
+  .blog-lg-gap-81 { gap: 81px; }
+  .blog-lg-radius-81 { border-radius: 81px; }
+  .blog-lg-gap-82 { gap: 82px; }
+  .blog-lg-radius-82 { border-radius: 82px; }
+  .blog-lg-gap-83 { gap: 83px; }
+  .blog-lg-radius-83 { border-radius: 83px; }
+  .blog-lg-gap-84 { gap: 84px; }
+  .blog-lg-radius-84 { border-radius: 84px; }
+  .blog-lg-gap-85 { gap: 85px; }
+  .blog-lg-radius-85 { border-radius: 85px; }
+  .blog-lg-gap-86 { gap: 86px; }
+  .blog-lg-radius-86 { border-radius: 86px; }
+  .blog-lg-gap-87 { gap: 87px; }
+  .blog-lg-radius-87 { border-radius: 87px; }
+  .blog-lg-gap-88 { gap: 88px; }
+  .blog-lg-radius-88 { border-radius: 88px; }
+  .blog-lg-gap-89 { gap: 89px; }
+  .blog-lg-radius-89 { border-radius: 89px; }
+  .blog-lg-gap-90 { gap: 90px; }
+  .blog-lg-radius-90 { border-radius: 90px; }
+  .blog-lg-gap-91 { gap: 91px; }
+  .blog-lg-radius-91 { border-radius: 91px; }
+  .blog-lg-gap-92 { gap: 92px; }
+  .blog-lg-radius-92 { border-radius: 92px; }
+  .blog-lg-gap-93 { gap: 93px; }
+  .blog-lg-radius-93 { border-radius: 93px; }
+  .blog-lg-gap-94 { gap: 94px; }
+  .blog-lg-radius-94 { border-radius: 94px; }
+  .blog-lg-gap-95 { gap: 95px; }
+  .blog-lg-radius-95 { border-radius: 95px; }
+  .blog-lg-gap-96 { gap: 96px; }
+  .blog-lg-radius-96 { border-radius: 96px; }
+  .blog-lg-gap-97 { gap: 97px; }
+  .blog-lg-radius-97 { border-radius: 97px; }
+  .blog-lg-gap-98 { gap: 98px; }
+  .blog-lg-radius-98 { border-radius: 98px; }
+  .blog-lg-gap-99 { gap: 99px; }
+  .blog-lg-radius-99 { border-radius: 99px; }
+  .blog-lg-gap-100 { gap: 100px; }
+  .blog-lg-radius-100 { border-radius: 100px; }
+}
+@media (max-width: 1320px) {
+  .blog-xl-gap-0 { gap: 0px; }
+  .blog-xl-radius-0 { border-radius: 0px; }
+  .blog-xl-gap-1 { gap: 1px; }
+  .blog-xl-radius-1 { border-radius: 1px; }
+  .blog-xl-gap-2 { gap: 2px; }
+  .blog-xl-radius-2 { border-radius: 2px; }
+  .blog-xl-gap-3 { gap: 3px; }
+  .blog-xl-radius-3 { border-radius: 3px; }
+  .blog-xl-gap-4 { gap: 4px; }
+  .blog-xl-radius-4 { border-radius: 4px; }
+  .blog-xl-gap-5 { gap: 5px; }
+  .blog-xl-radius-5 { border-radius: 5px; }
+  .blog-xl-gap-6 { gap: 6px; }
+  .blog-xl-radius-6 { border-radius: 6px; }
+  .blog-xl-gap-7 { gap: 7px; }
+  .blog-xl-radius-7 { border-radius: 7px; }
+  .blog-xl-gap-8 { gap: 8px; }
+  .blog-xl-radius-8 { border-radius: 8px; }
+  .blog-xl-gap-9 { gap: 9px; }
+  .blog-xl-radius-9 { border-radius: 9px; }
+  .blog-xl-gap-10 { gap: 10px; }
+  .blog-xl-radius-10 { border-radius: 10px; }
+  .blog-xl-gap-11 { gap: 11px; }
+  .blog-xl-radius-11 { border-radius: 11px; }
+  .blog-xl-gap-12 { gap: 12px; }
+  .blog-xl-radius-12 { border-radius: 12px; }
+  .blog-xl-gap-13 { gap: 13px; }
+  .blog-xl-radius-13 { border-radius: 13px; }
+  .blog-xl-gap-14 { gap: 14px; }
+  .blog-xl-radius-14 { border-radius: 14px; }
+  .blog-xl-gap-15 { gap: 15px; }
+  .blog-xl-radius-15 { border-radius: 15px; }
+  .blog-xl-gap-16 { gap: 16px; }
+  .blog-xl-radius-16 { border-radius: 16px; }
+  .blog-xl-gap-17 { gap: 17px; }
+  .blog-xl-radius-17 { border-radius: 17px; }
+  .blog-xl-gap-18 { gap: 18px; }
+  .blog-xl-radius-18 { border-radius: 18px; }
+  .blog-xl-gap-19 { gap: 19px; }
+  .blog-xl-radius-19 { border-radius: 19px; }
+  .blog-xl-gap-20 { gap: 20px; }
+  .blog-xl-radius-20 { border-radius: 20px; }
+  .blog-xl-gap-21 { gap: 21px; }
+  .blog-xl-radius-21 { border-radius: 21px; }
+  .blog-xl-gap-22 { gap: 22px; }
+  .blog-xl-radius-22 { border-radius: 22px; }
+  .blog-xl-gap-23 { gap: 23px; }
+  .blog-xl-radius-23 { border-radius: 23px; }
+  .blog-xl-gap-24 { gap: 24px; }
+  .blog-xl-radius-24 { border-radius: 24px; }
+  .blog-xl-gap-25 { gap: 25px; }
+  .blog-xl-radius-25 { border-radius: 25px; }
+  .blog-xl-gap-26 { gap: 26px; }
+  .blog-xl-radius-26 { border-radius: 26px; }
+  .blog-xl-gap-27 { gap: 27px; }
+  .blog-xl-radius-27 { border-radius: 27px; }
+  .blog-xl-gap-28 { gap: 28px; }
+  .blog-xl-radius-28 { border-radius: 28px; }
+  .blog-xl-gap-29 { gap: 29px; }
+  .blog-xl-radius-29 { border-radius: 29px; }
+  .blog-xl-gap-30 { gap: 30px; }
+  .blog-xl-radius-30 { border-radius: 30px; }
+  .blog-xl-gap-31 { gap: 31px; }
+  .blog-xl-radius-31 { border-radius: 31px; }
+  .blog-xl-gap-32 { gap: 32px; }
+  .blog-xl-radius-32 { border-radius: 32px; }
+  .blog-xl-gap-33 { gap: 33px; }
+  .blog-xl-radius-33 { border-radius: 33px; }
+  .blog-xl-gap-34 { gap: 34px; }
+  .blog-xl-radius-34 { border-radius: 34px; }
+  .blog-xl-gap-35 { gap: 35px; }
+  .blog-xl-radius-35 { border-radius: 35px; }
+  .blog-xl-gap-36 { gap: 36px; }
+  .blog-xl-radius-36 { border-radius: 36px; }
+  .blog-xl-gap-37 { gap: 37px; }
+  .blog-xl-radius-37 { border-radius: 37px; }
+  .blog-xl-gap-38 { gap: 38px; }
+  .blog-xl-radius-38 { border-radius: 38px; }
+  .blog-xl-gap-39 { gap: 39px; }
+  .blog-xl-radius-39 { border-radius: 39px; }
+  .blog-xl-gap-40 { gap: 40px; }
+  .blog-xl-radius-40 { border-radius: 40px; }
+  .blog-xl-gap-41 { gap: 41px; }
+  .blog-xl-radius-41 { border-radius: 41px; }
+  .blog-xl-gap-42 { gap: 42px; }
+  .blog-xl-radius-42 { border-radius: 42px; }
+  .blog-xl-gap-43 { gap: 43px; }
+  .blog-xl-radius-43 { border-radius: 43px; }
+  .blog-xl-gap-44 { gap: 44px; }
+  .blog-xl-radius-44 { border-radius: 44px; }
+  .blog-xl-gap-45 { gap: 45px; }
+  .blog-xl-radius-45 { border-radius: 45px; }
+  .blog-xl-gap-46 { gap: 46px; }
+  .blog-xl-radius-46 { border-radius: 46px; }
+  .blog-xl-gap-47 { gap: 47px; }
+  .blog-xl-radius-47 { border-radius: 47px; }
+  .blog-xl-gap-48 { gap: 48px; }
+  .blog-xl-radius-48 { border-radius: 48px; }
+  .blog-xl-gap-49 { gap: 49px; }
+  .blog-xl-radius-49 { border-radius: 49px; }
+  .blog-xl-gap-50 { gap: 50px; }
+  .blog-xl-radius-50 { border-radius: 50px; }
+  .blog-xl-gap-51 { gap: 51px; }
+  .blog-xl-radius-51 { border-radius: 51px; }
+  .blog-xl-gap-52 { gap: 52px; }
+  .blog-xl-radius-52 { border-radius: 52px; }
+  .blog-xl-gap-53 { gap: 53px; }
+  .blog-xl-radius-53 { border-radius: 53px; }
+  .blog-xl-gap-54 { gap: 54px; }
+  .blog-xl-radius-54 { border-radius: 54px; }
+  .blog-xl-gap-55 { gap: 55px; }
+  .blog-xl-radius-55 { border-radius: 55px; }
+  .blog-xl-gap-56 { gap: 56px; }
+  .blog-xl-radius-56 { border-radius: 56px; }
+  .blog-xl-gap-57 { gap: 57px; }
+  .blog-xl-radius-57 { border-radius: 57px; }
+  .blog-xl-gap-58 { gap: 58px; }
+  .blog-xl-radius-58 { border-radius: 58px; }
+  .blog-xl-gap-59 { gap: 59px; }
+  .blog-xl-radius-59 { border-radius: 59px; }
+  .blog-xl-gap-60 { gap: 60px; }
+  .blog-xl-radius-60 { border-radius: 60px; }
+  .blog-xl-gap-61 { gap: 61px; }
+  .blog-xl-radius-61 { border-radius: 61px; }
+  .blog-xl-gap-62 { gap: 62px; }
+  .blog-xl-radius-62 { border-radius: 62px; }
+  .blog-xl-gap-63 { gap: 63px; }
+  .blog-xl-radius-63 { border-radius: 63px; }
+  .blog-xl-gap-64 { gap: 64px; }
+  .blog-xl-radius-64 { border-radius: 64px; }
+  .blog-xl-gap-65 { gap: 65px; }
+  .blog-xl-radius-65 { border-radius: 65px; }
+  .blog-xl-gap-66 { gap: 66px; }
+  .blog-xl-radius-66 { border-radius: 66px; }
+  .blog-xl-gap-67 { gap: 67px; }
+  .blog-xl-radius-67 { border-radius: 67px; }
+  .blog-xl-gap-68 { gap: 68px; }
+  .blog-xl-radius-68 { border-radius: 68px; }
+  .blog-xl-gap-69 { gap: 69px; }
+  .blog-xl-radius-69 { border-radius: 69px; }
+  .blog-xl-gap-70 { gap: 70px; }
+  .blog-xl-radius-70 { border-radius: 70px; }
+  .blog-xl-gap-71 { gap: 71px; }
+  .blog-xl-radius-71 { border-radius: 71px; }
+  .blog-xl-gap-72 { gap: 72px; }
+  .blog-xl-radius-72 { border-radius: 72px; }
+  .blog-xl-gap-73 { gap: 73px; }
+  .blog-xl-radius-73 { border-radius: 73px; }
+  .blog-xl-gap-74 { gap: 74px; }
+  .blog-xl-radius-74 { border-radius: 74px; }
+  .blog-xl-gap-75 { gap: 75px; }
+  .blog-xl-radius-75 { border-radius: 75px; }
+  .blog-xl-gap-76 { gap: 76px; }
+  .blog-xl-radius-76 { border-radius: 76px; }
+  .blog-xl-gap-77 { gap: 77px; }
+  .blog-xl-radius-77 { border-radius: 77px; }
+  .blog-xl-gap-78 { gap: 78px; }
+  .blog-xl-radius-78 { border-radius: 78px; }
+  .blog-xl-gap-79 { gap: 79px; }
+  .blog-xl-radius-79 { border-radius: 79px; }
+  .blog-xl-gap-80 { gap: 80px; }
+  .blog-xl-radius-80 { border-radius: 80px; }
+  .blog-xl-gap-81 { gap: 81px; }
+  .blog-xl-radius-81 { border-radius: 81px; }
+  .blog-xl-gap-82 { gap: 82px; }
+  .blog-xl-radius-82 { border-radius: 82px; }
+  .blog-xl-gap-83 { gap: 83px; }
+  .blog-xl-radius-83 { border-radius: 83px; }
+  .blog-xl-gap-84 { gap: 84px; }
+  .blog-xl-radius-84 { border-radius: 84px; }
+  .blog-xl-gap-85 { gap: 85px; }
+  .blog-xl-radius-85 { border-radius: 85px; }
+  .blog-xl-gap-86 { gap: 86px; }
+  .blog-xl-radius-86 { border-radius: 86px; }
+  .blog-xl-gap-87 { gap: 87px; }
+  .blog-xl-radius-87 { border-radius: 87px; }
+  .blog-xl-gap-88 { gap: 88px; }
+  .blog-xl-radius-88 { border-radius: 88px; }
+  .blog-xl-gap-89 { gap: 89px; }
+  .blog-xl-radius-89 { border-radius: 89px; }
+  .blog-xl-gap-90 { gap: 90px; }
+  .blog-xl-radius-90 { border-radius: 90px; }
+  .blog-xl-gap-91 { gap: 91px; }
+  .blog-xl-radius-91 { border-radius: 91px; }
+  .blog-xl-gap-92 { gap: 92px; }
+  .blog-xl-radius-92 { border-radius: 92px; }
+  .blog-xl-gap-93 { gap: 93px; }
+  .blog-xl-radius-93 { border-radius: 93px; }
+  .blog-xl-gap-94 { gap: 94px; }
+  .blog-xl-radius-94 { border-radius: 94px; }
+  .blog-xl-gap-95 { gap: 95px; }
+  .blog-xl-radius-95 { border-radius: 95px; }
+  .blog-xl-gap-96 { gap: 96px; }
+  .blog-xl-radius-96 { border-radius: 96px; }
+  .blog-xl-gap-97 { gap: 97px; }
+  .blog-xl-radius-97 { border-radius: 97px; }
+  .blog-xl-gap-98 { gap: 98px; }
+  .blog-xl-radius-98 { border-radius: 98px; }
+  .blog-xl-gap-99 { gap: 99px; }
+  .blog-xl-radius-99 { border-radius: 99px; }
+  .blog-xl-gap-100 { gap: 100px; }
+  .blog-xl-radius-100 { border-radius: 100px; }
+}
+  
+/* ===== TRINETRA modern motion layer ===== */
+.blog-hero { animation: blogHeroEnter 1s cubic-bezier(.2,.75,.25,1) both; }
+.blog-hero h1 { animation: blogTitleRise 1.05s .12s cubic-bezier(.2,.75,.25,1) both; }
+.blog-kicker::before { animation: blogPulse 2.2s ease-in-out infinite; }
+.blog-card {
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  position: relative;
+  isolation: isolate;
+}
+.blog-card::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+  opacity:0;
+  background:radial-gradient(360px circle at var(--pointer-x,50%) var(--pointer-y,50%),rgba(255,194,71,.15),transparent 55%);
+  transition:opacity .35s ease;
+}
+.blog-card:hover::after { opacity:1; }
+.blog-card.is-motion-ready {
+  opacity:0;
+  transform:translate3d(0,42px,0) scale(.975);
+  transition:opacity .75s cubic-bezier(.2,.75,.25,1),transform .75s cubic-bezier(.2,.75,.25,1);
+  transition-delay:var(--motion-delay,0ms);
+}
+.blog-card.is-motion-ready.is-in-view {
+  opacity:1;
+  transform:translate3d(0,0,0) scale(1);
+}
+.blog-card:hover { transform:translateY(-9px) scale(1.012); }
+.blog-card-image .image-symbol { animation: symbolFloat 5s ease-in-out infinite; }
+.blog-button,.blog-filter,.blog-top-button { position:relative; overflow:hidden; }
+.blog-button::after {
+  content:"";
+  position:absolute;
+  top:-70%;left:-45%;
+  width:28%;height:240%;
+  transform:rotate(25deg) translateX(-220%);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);
+  transition:transform .7s ease;
+}
+.blog-button:hover::after { transform:rotate(25deg) translateX(650%); }
+.blog-filter { transition:transform .25s ease,background .25s ease,border-color .25s ease,box-shadow .25s ease; }
+.blog-filter:hover { transform:translateY(-3px); box-shadow:0 8px 22px rgba(255,180,45,.13); }
+.blog-sidebar .sidebar-panel { transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease; }
+.blog-sidebar .sidebar-panel:hover { transform:translateY(-5px); border-color:rgba(255,194,71,.65); box-shadow:0 16px 34px rgba(0,0,0,.3),0 0 22px rgba(255,194,71,.08); }
+@keyframes blogHeroEnter { from{opacity:0;transform:translateY(28px) scale(.985);filter:blur(5px)} to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)} }
+@keyframes blogTitleRise { from{opacity:0;transform:translateY(24px);letter-spacing:5px} to{opacity:1;transform:translateY(0);letter-spacing:1px} }
+@keyframes blogPulse { 0%,100%{box-shadow:0 0 0 0 rgba(255,194,71,.5)} 50%{box-shadow:0 0 0 7px rgba(255,194,71,0)} }
+@keyframes symbolFloat { 0%,100%{translate:0 0} 50%{translate:0 -8px} }
+@media (prefers-reduced-motion: reduce) {
+  .blog-hero,.blog-hero h1,.blog-kicker::before,.blog-card-image .image-symbol { animation:none!important; }
+  .blog-card,.blog-card.is-motion-ready,.blog-card.is-motion-ready.is-in-view { opacity:1!important;transform:none!important;transition:none!important; }
+  .blog-button::after { display:none; }
+}
+
+
+    .navlinks a.nav-cta{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:10px 15px!important;margin:0 1px;border:1px solid #ffc247;
+      border-radius:999px;background:linear-gradient(120deg,#ffe7a0,#ffb52d 58%,#ff9418);
+      color:#171006!important;font-weight:800!important;font-size:11px!important;
+      letter-spacing:.15px;box-shadow:0 5px 18px #ffad2638;
+      transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
+    }
+    .navlinks a.nav-cta:after{display:none!important}
+    .navlinks a.nav-cta:hover{color:#100c05!important;transform:translateY(-2px);box-shadow:0 9px 24px #ffad2670;filter:brightness(1.06)}
+    @media(max-width:760px){.navlinks a.nav-cta{align-self:flex-start;margin:10px 0 2px;padding:11px 17px!important}}
+    
+
+    .launch-suite-right{
+      display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;
+      padding:11px 16px;border:1px solid #ffc247;border-radius:999px;
+      background:linear-gradient(120deg,#ffe7a0,#ffb52d 58%,#ff9418);
+      color:#171006!important;font-size:11px;font-weight:800;letter-spacing:.15px;
+      box-shadow:0 5px 18px #ffad2638;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
+    }
+    .launch-suite-right:hover{transform:translateY(-2px);box-shadow:0 9px 24px #ffad2670;filter:brightness(1.06)}
+    @media(max-width:1100px){.launch-suite-right{padding:9px 11px;font-size:10px}}
+    @media(max-width:760px){.launch-suite-right{display:none}}
+    
+
+            .launch-suite-mobile{display:none}
+            @media(max-width:760px){.navlinks .launch-suite-mobile{display:block;color:#ffd36b;font-weight:800}}
+            
+</style>
+</head>
+<body class="blog-page">
+  <div class="blog-progress" id="blogProgress"></div>
+  <div class="ambient" id="ambient" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Trinetra home"><span class="brand-mark"><img src="assets/trinetra-logo.png" alt="Trinetra emblem"></span><span class="brand-name">TRINETRA</span></a>
+    <nav class="navlinks" id="navlinks" aria-label="Main navigation">
+      <a href="index.html#home">Home</a><a href="about.html">About</a><a href="service.html">Services</a><a href="solutions.html">Solutions</a><a class="active" href="blog.html">Blog</a><a href="contact.html">Contact</a>
+    <a class="launch-suite-mobile" href="launch-defense-suite.html">Launch Defense Suite</a></nav><a class="launch-suite-right" href="launch-defense-suite.html">Launch Defense Suite</a>
+    
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  </header>
+  <main class="blog-main" id="home">
+    <section class="blog-hero">
+      <div class="blog-hero-content">
+        <span class="blog-kicker">Trinetra Knowledge Centre</span>
+        <h1>Intelligence for a Safer Digital World.</h1>
+        <p>Explore practical ideas, technical explainers and security perspectives for the people who build, protect and operate modern digital infrastructure.</p>
+        <div class="blog-hero-actions">
+          <a class="blog-button" href="#latest-articles">Explore Articles <span>↓</span></a>
+          <a class="blog-button secondary" href="contact.html">Talk to Our Experts <span>↗</span></a>
+        </div>
+        <div class="blog-stats">
+          <div class="blog-stat"><strong>24+</strong><span>Technical insights</span></div>
+          <div class="blog-stat"><strong>06</strong><span>Knowledge categories</span></div>
+          <div class="blog-stat"><strong>01</strong><span>Security-first mindset</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-section reveal-blog" id="featured">
+      <div class="blog-section-heading">
+        <div><div class="blog-label">Editor's selection</div><h2>Featured Insight</h2><p>A starting point for building a stronger and more resilient security posture.</p></div>
+      </div>
+      <article class="blog-featured">
+        <div class="blog-featured-art" aria-hidden="true"><span>⬡</span></div>
+        <div class="blog-featured-copy">
+          <div class="blog-meta"><span class="category">Network Security</span><span>•</span><span>9 min read</span></div>
+          <h3>Designing Defense in Depth for the Modern Enterprise</h3>
+          <p>No single control can protect every layer. Discover how identity, segmentation, endpoint protection, monitoring and response work together as a coordinated defense strategy.</p>
+          <a class="blog-button" href="article.html?post=0" data-read-post="0">Read the featured insight <span>→</span></a>
+        </div>
+      </article>
+    </section>
+
+    <section class="blog-section" id="latest-articles">
+      <div class="blog-section-heading">
+        <div><div class="blog-label">Research, explainers & perspectives</div><h2>Latest Articles</h2><p>Search the library or choose a topic to find the insight you need.</p></div>
+      </div>
+      <div class="blog-toolbar">
+        <div class="blog-search-wrap"><span aria-hidden="true">⌕</span><input class="blog-search" id="blogSearch" type="search" placeholder="Search network security, OSPF, cloud..." aria-label="Search articles"></div>
+        <div class="blog-categories" id="blogCategories" aria-label="Filter articles by category">
+          <button class="blog-filter active" type="button" data-filter="all">All topics</button>
+          <button class="blog-filter" type="button" data-filter="network security">Network Security</button>
+          <button class="blog-filter" type="button" data-filter="zero trust">Zero Trust</button>
+          <button class="blog-filter" type="button" data-filter="routing">Routing</button>
+          <button class="blog-filter" type="button" data-filter="threat intelligence">Threat Intelligence</button>
+          <button class="blog-filter" type="button" data-filter="cloud security">Cloud Security</button>
+        </div>
+      </div>
+      <div class="blog-layout" style="margin-top:24px">
+        <div>
+          <div class="blog-grid" id="blogGrid">
+            
+      <article class="blog-card reveal-blog" data-category="network security" data-search="the modern network security blueprint for growing enterprises a practical look at layered defense, visibility, segmentation and the operating habits that make enterprise networks resilient. network security">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">🛡</span>
+          <span class="image-number">01</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Network Security</span>
+            <span>•</span>
+            <time datetime="2026-11-02">Nov 2, 2026</time>
+          </div>
+          <h3>The Modern Network Security Blueprint for Growing Enterprises</h3>
+          <p>A practical look at layered defense, visibility, segmentation and the operating habits that make enterprise networks resilient.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=0" data-read-post="0">Read article <span>→</span></a>
+            <span class="blog-readtime">8 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="zero trust" data-search="zero trust architecture: start with identity, not perimeter understand why identity, device posture and least-privilege access belong at the center of a modern security program. zero trust">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">◈</span>
+          <span class="image-number">02</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Zero Trust</span>
+            <span>•</span>
+            <time datetime="2026-11-03">Nov 3, 2026</time>
+          </div>
+          <h3>Zero Trust Architecture: Start With Identity, Not Perimeter</h3>
+          <p>Understand why identity, device posture and least-privilege access belong at the center of a modern security program.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=1" data-read-post="1">Read article <span>→</span></a>
+            <span class="blog-readtime">7 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="routing" data-search="ospf neighbor formation explained step by step explore the ospf neighbor states, hello and dead timers, area matching and the checks that help isolate adjacency problems. routing">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">⌁</span>
+          <span class="image-number">03</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Routing</span>
+            <span>•</span>
+            <time datetime="2026-11-04">Nov 4, 2026</time>
+          </div>
+          <h3>OSPF Neighbor Formation Explained Step by Step</h3>
+          <p>Explore the OSPF neighbor states, hello and dead timers, area matching and the checks that help isolate adjacency problems.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=2" data-read-post="2">Read article <span>→</span></a>
+            <span class="blog-readtime">6 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="threat intelligence" data-search="from threat signals to actionable intelligence learn how security teams turn indicators, context and telemetry into decisions that reduce exposure. threat intelligence">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">⌖</span>
+          <span class="image-number">04</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Threat Intelligence</span>
+            <span>•</span>
+            <time datetime="2026-11-05">Nov 5, 2026</time>
+          </div>
+          <h3>From Threat Signals to Actionable Intelligence</h3>
+          <p>Learn how security teams turn indicators, context and telemetry into decisions that reduce exposure.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=3" data-read-post="3">Read article <span>→</span></a>
+            <span class="blog-readtime">9 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="cloud security" data-search="securing hybrid cloud and on-premise infrastructure a clear framework for identity controls, network boundaries, logging and secure connectivity across hybrid environments. cloud security">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">☁</span>
+          <span class="image-number">05</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Cloud Security</span>
+            <span>•</span>
+            <time datetime="2026-11-06">Nov 6, 2026</time>
+          </div>
+          <h3>Securing Hybrid Cloud and On-Premise Infrastructure</h3>
+          <p>A clear framework for identity controls, network boundaries, logging and secure connectivity across hybrid environments.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=4" data-read-post="4">Read article <span>→</span></a>
+            <span class="blog-readtime">8 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="network security" data-search="firewall policy design: clarity before complexity build policies that are easier to audit and troubleshoot with naming standards, zones, least privilege and lifecycle reviews. network security">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">▤</span>
+          <span class="image-number">06</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Network Security</span>
+            <span>•</span>
+            <time datetime="2026-11-07">Nov 7, 2026</time>
+          </div>
+          <h3>Firewall Policy Design: Clarity Before Complexity</h3>
+          <p>Build policies that are easier to audit and troubleshoot with naming standards, zones, least privilege and lifecycle reviews.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=5" data-read-post="5">Read article <span>→</span></a>
+            <span class="blog-readtime">6 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="routing" data-search="bgp fundamentals: how the internet chooses a path a beginner-friendly guide to autonomous systems, peers, path attributes and the role of routing policy. routing">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">⇄</span>
+          <span class="image-number">07</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Routing</span>
+            <span>•</span>
+            <time datetime="2026-11-08">Nov 8, 2026</time>
+          </div>
+          <h3>BGP Fundamentals: How the Internet Chooses a Path</h3>
+          <p>A beginner-friendly guide to autonomous systems, peers, path attributes and the role of routing policy.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=6" data-read-post="6">Read article <span>→</span></a>
+            <span class="blog-readtime">10 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="zero trust" data-search="micro-segmentation and the principle of least privilege see how smaller trust zones can limit lateral movement and make access decisions more precise. zero trust">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">◫</span>
+          <span class="image-number">08</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Zero Trust</span>
+            <span>•</span>
+            <time datetime="2026-11-09">Nov 9, 2026</time>
+          </div>
+          <h3>Micro-Segmentation and the Principle of Least Privilege</h3>
+          <p>See how smaller trust zones can limit lateral movement and make access decisions more precise.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=7" data-read-post="7">Read article <span>→</span></a>
+            <span class="blog-readtime">7 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="threat intelligence" data-search="understanding the cyber kill chain in real operations connect attacker behavior to defensive controls, detection opportunities and incident response priorities. threat intelligence">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">◎</span>
+          <span class="image-number">09</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Threat Intelligence</span>
+            <span>•</span>
+            <time datetime="2026-11-10">Nov 10, 2026</time>
+          </div>
+          <h3>Understanding the Cyber Kill Chain in Real Operations</h3>
+          <p>Connect attacker behavior to defensive controls, detection opportunities and incident response priorities.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=8" data-read-post="8">Read article <span>→</span></a>
+            <span class="blog-readtime">8 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="cloud security" data-search="cloud network security: five controls to review first review identity, security groups, encryption, centralized logs and configuration drift before expanding workloads. cloud security">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">☁</span>
+          <span class="image-number">10</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Cloud Security</span>
+            <span>•</span>
+            <time datetime="2026-11-11">Nov 11, 2026</time>
+          </div>
+          <h3>Cloud Network Security: Five Controls to Review First</h3>
+          <p>Review identity, security groups, encryption, centralized logs and configuration drift before expanding workloads.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=9" data-read-post="9">Read article <span>→</span></a>
+            <span class="blog-readtime">5 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="network security" data-search="vlan design best practices for secure networks use segmentation, consistent vlan naming, trunk controls and documented inter-vlan routing to reduce operational risk. network security">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">▦</span>
+          <span class="image-number">11</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Network Security</span>
+            <span>•</span>
+            <time datetime="2026-11-12">Nov 12, 2026</time>
+          </div>
+          <h3>VLAN Design Best Practices for Secure Networks</h3>
+          <p>Use segmentation, consistent VLAN naming, trunk controls and documented inter-VLAN routing to reduce operational risk.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=10" data-read-post="10">Read article <span>→</span></a>
+            <span class="blog-readtime">6 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="routing" data-search="eigrp explained: neighbors, metrics and dual understand hello packets, k-values, successor routes and how dual helps eigrp converge efficiently. routing">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">⌘</span>
+          <span class="image-number">12</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Routing</span>
+            <span>•</span>
+            <time datetime="2026-11-13">Nov 13, 2026</time>
+          </div>
+          <h3>EIGRP Explained: Neighbors, Metrics and DUAL</h3>
+          <p>Understand hello packets, K-values, successor routes and how DUAL helps EIGRP converge efficiently.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=11" data-read-post="11">Read article <span>→</span></a>
+            <span class="blog-readtime">9 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="threat intelligence" data-search="phishing defense: people, process and technology combine email authentication, user reporting, safe workflows and layered technical controls to reduce phishing risk. threat intelligence">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">✉</span>
+          <span class="image-number">13</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Threat Intelligence</span>
+            <span>•</span>
+            <time datetime="2026-11-14">Nov 14, 2026</time>
+          </div>
+          <h3>Phishing Defense: People, Process and Technology</h3>
+          <p>Combine email authentication, user reporting, safe workflows and layered technical controls to reduce phishing risk.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=12" data-read-post="12">Read article <span>→</span></a>
+            <span class="blog-readtime">6 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="zero trust" data-search="privileged access management for infrastructure teams explore just-in-time access, credential vaulting, session oversight and practical administrator workflows. zero trust">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">♙</span>
+          <span class="image-number">14</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Zero Trust</span>
+            <span>•</span>
+            <time datetime="2026-11-15">Nov 15, 2026</time>
+          </div>
+          <h3>Privileged Access Management for Infrastructure Teams</h3>
+          <p>Explore just-in-time access, credential vaulting, session oversight and practical administrator workflows.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=13" data-read-post="13">Read article <span>→</span></a>
+            <span class="blog-readtime">7 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="cloud security" data-search="protecting apis in a connected digital environment learn how authentication, authorization, rate limits, validation and monitoring work together to protect apis. cloud security">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">⌬</span>
+          <span class="image-number">15</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Cloud Security</span>
+            <span>•</span>
+            <time datetime="2026-11-16">Nov 16, 2026</time>
+          </div>
+          <h3>Protecting APIs in a Connected Digital Environment</h3>
+          <p>Learn how authentication, authorization, rate limits, validation and monitoring work together to protect APIs.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=14" data-read-post="14">Read article <span>→</span></a>
+            <span class="blog-readtime">7 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="network security" data-search="network monitoring metrics that actually matter move beyond dashboards by choosing availability, latency, loss, utilization and security signals tied to action. network security">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">▥</span>
+          <span class="image-number">16</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Network Security</span>
+            <span>•</span>
+            <time datetime="2026-11-17">Nov 17, 2026</time>
+          </div>
+          <h3>Network Monitoring Metrics That Actually Matter</h3>
+          <p>Move beyond dashboards by choosing availability, latency, loss, utilization and security signals tied to action.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=15" data-read-post="15">Read article <span>→</span></a>
+            <span class="blog-readtime">5 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="routing" data-search="stp and rstp: preventing layer 2 loops a concise guide to root bridge selection, port roles, convergence and safer access-layer defaults. routing">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">⤢</span>
+          <span class="image-number">17</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Routing</span>
+            <span>•</span>
+            <time datetime="2026-11-18">Nov 18, 2026</time>
+          </div>
+          <h3>STP and RSTP: Preventing Layer 2 Loops</h3>
+          <p>A concise guide to root bridge selection, port roles, convergence and safer access-layer defaults.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=16" data-read-post="16">Read article <span>→</span></a>
+            <span class="blog-readtime">8 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="threat intelligence" data-search="incident response: the first 60 minutes a structured first-response checklist for validating an alert, containing risk, preserving evidence and communicating clearly. threat intelligence">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">◉</span>
+          <span class="image-number">18</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Threat Intelligence</span>
+            <span>•</span>
+            <time datetime="2026-11-01">Nov 1, 2026</time>
+          </div>
+          <h3>Incident Response: The First 60 Minutes</h3>
+          <p>A structured first-response checklist for validating an alert, containing risk, preserving evidence and communicating clearly.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=17" data-read-post="17">Read article <span>→</span></a>
+            <span class="blog-readtime">6 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="zero trust" data-search="secure remote access without implicit trust compare modern remote access approaches and the controls that keep users, devices and applications protected. zero trust">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">⌑</span>
+          <span class="image-number">19</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Zero Trust</span>
+            <span>•</span>
+            <time datetime="2026-11-02">Nov 2, 2026</time>
+          </div>
+          <h3>Secure Remote Access Without Implicit Trust</h3>
+          <p>Compare modern remote access approaches and the controls that keep users, devices and applications protected.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=18" data-read-post="18">Read article <span>→</span></a>
+            <span class="blog-readtime">7 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="cloud security" data-search="cloud security posture management explained understand configuration assessment, risk prioritization, remediation ownership and continuous compliance. cloud security">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">☁</span>
+          <span class="image-number">20</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Cloud Security</span>
+            <span>•</span>
+            <time datetime="2026-11-03">Nov 3, 2026</time>
+          </div>
+          <h3>Cloud Security Posture Management Explained</h3>
+          <p>Understand configuration assessment, risk prioritization, remediation ownership and continuous compliance.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=19" data-read-post="19">Read article <span>→</span></a>
+            <span class="blog-readtime">6 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="network security" data-search="the role of nac in enterprise network protection explore device discovery, posture checks, authentication and controlled access for wired and wireless environments. network security">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">⌂</span>
+          <span class="image-number">21</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Network Security</span>
+            <span>•</span>
+            <time datetime="2026-11-04">Nov 4, 2026</time>
+          </div>
+          <h3>The Role of NAC in Enterprise Network Protection</h3>
+          <p>Explore device discovery, posture checks, authentication and controlled access for wired and wireless environments.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=20" data-read-post="20">Read article <span>→</span></a>
+            <span class="blog-readtime">7 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="routing" data-search="troubleshooting dhcp relay and ip helper issues follow the packet path from client vlan to dhcp server and check relay configuration, routing and scope settings. routing">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">↗</span>
+          <span class="image-number">22</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Routing</span>
+            <span>•</span>
+            <time datetime="2026-11-05">Nov 5, 2026</time>
+          </div>
+          <h3>Troubleshooting DHCP Relay and IP Helper Issues</h3>
+          <p>Follow the packet path from client VLAN to DHCP server and check relay configuration, routing and scope settings.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=21" data-read-post="21">Read article <span>→</span></a>
+            <span class="blog-readtime">5 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="threat intelligence" data-search="ransomware readiness: backups are only the beginning prepare with asset visibility, segmentation, immutable backups, tested recovery and practiced response plans. threat intelligence">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">⬡</span>
+          <span class="image-number">23</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Threat Intelligence</span>
+            <span>•</span>
+            <time datetime="2026-11-06">Nov 6, 2026</time>
+          </div>
+          <h3>Ransomware Readiness: Backups Are Only the Beginning</h3>
+          <p>Prepare with asset visibility, segmentation, immutable backups, tested recovery and practiced response plans.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=22" data-read-post="22">Read article <span>→</span></a>
+            <span class="blog-readtime">8 min read</span>
+          </div>
+        </div>
+      </article>
+      <article class="blog-card reveal-blog" data-category="cloud security" data-search="building a practical cloud logging strategy choose useful events, centralize telemetry, protect log integrity and define alerts that support investigations. cloud security">
+        <div class="blog-card-image" aria-hidden="true">
+          <span class="image-symbol">▤</span>
+          <span class="image-number">24</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="category">Cloud Security</span>
+            <span>•</span>
+            <time datetime="2026-11-07">Nov 7, 2026</time>
+          </div>
+          <h3>Building a Practical Cloud Logging Strategy</h3>
+          <p>Choose useful events, centralize telemetry, protect log integrity and define alerts that support investigations.</p>
+          <div class="blog-card-bottom">
+            <a class="blog-read" href="article.html?post=23" data-read-post="23">Read article <span>→</span></a>
+            <span class="blog-readtime">6 min read</span>
+          </div>
+        </div>
+      </article>
+            <div class="blog-empty" id="blogEmpty"><h3>No matching articles found</h3><p>Try another keyword or select a different category.</p></div>
+          </div>
+          <div class="blog-pagination" aria-label="Article pages">
+            <button class="active" type="button" aria-label="Page 1">1</button>
+            <button type="button" aria-label="Page 2" onclick="document.getElementById('blogGrid').scrollIntoView({behavior:'smooth'})">2</button>
+            <button type="button" aria-label="Next page" onclick="document.getElementById('blogGrid').scrollIntoView({behavior:'smooth'})">→</button>
+          </div>
+        </div>
+        <aside class="blog-sidebar">
+          <div class="sidebar-panel">
+            <h3>Explore Topics</h3>
+            <div class="sidebar-links">
+              <a href="#latest-articles" data-side-filter="network security">Network Security <span>05</span></a>
+              <a href="#latest-articles" data-side-filter="zero trust">Zero Trust <span>04</span></a>
+              <a href="#latest-articles" data-side-filter="routing">Routing & Switching <span>05</span></a>
+              <a href="#latest-articles" data-side-filter="threat intelligence">Threat Intelligence <span>05</span></a>
+              <a href="#latest-articles" data-side-filter="cloud security">Cloud Security <span>05</span></a>
+            </div>
+          </div>
+          <div class="sidebar-panel" id="threat-intelligence">
+            <h3>Trending Reads</h3>
+            <div class="trending-item"><span class="trending-index">01</span><div><a href="article.html?post=1" data-read-post="1">Zero Trust Architecture: Start With Identity, Not Perimeter</a><small>Zero Trust · 7 min</small></div></div>
+            <div class="trending-item"><span class="trending-index">02</span><div><a href="article.html?post=6" data-read-post="6">BGP Fundamentals: How the Internet Chooses a Path</a><small>Routing · 10 min</small></div></div>
+            <div class="trending-item"><span class="trending-index">03</span><div><a href="article.html?post=17" data-read-post="17">Incident Response: The First 60 Minutes</a><small>Threat Intelligence · 6 min</small></div></div>
+          </div>
+          <div class="sidebar-panel">
+            <h3>Security Note</h3>
+            <p>Strong security is a continuous practice. Review access, validate assumptions, monitor changes and rehearse your response before an incident happens.</p>
+            <div class="blog-quote">“Visibility is the beginning of control.”</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blog-section reveal-blog" id="resources">
+      <div class="blog-newsletter">
+        <div><div class="blog-label">Stay informed</div><h2>Get the signal, not the noise.</h2><p>Receive occasional Trinetra security insights, technical explainers and company updates. No unnecessary noise.</p></div>
+        <form class="blog-newsletter-form" id="blogNewsletter"><input type="email" id="blogEmail" placeholder="Your work email address" required aria-label="Your email address"><button type="submit">Subscribe →</button></form>
+        <div class="blog-newsletter-message" id="blogNewsletterMessage" role="status"></div>
+      </div>
+    </section>
+
+    <section class="blog-section reveal-blog">
+      <div class="blog-section-heading"><div><div class="blog-label">Have a security challenge?</div><h2>Let's build a stronger defense.</h2><p>Speak with Trinetra about network security, infrastructure resilience and practical protection strategies.</p></div><a class="blog-button" href="contact.html">Contact Trinetra ↗</a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <div class="footer-glow"></div>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a class="footer-logo" href="index.html">
+          <img src="assets/trinetra-logo.png" alt="Trinetra emblem">
+          <span>TRINETRA</span>
+        </a>
+        <p class="footer-tagline">DIVINE VISION · POWER · PROTECTION</p>
+        <p class="footer-about">Intelligent network security and zero-trust defense for a safer, more resilient digital world.</p>
+        <div class="footer-socials" aria-label="Social media links">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="X">𝕏</a>
+          <a href="#" aria-label="GitHub">⌘</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Explore</h3>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a><a href="blog.html">Blog</a><a href="service.html">Services</a>
+        <a href="solutions.html">Our Solutions</a>
+        
+        <a href="blog.html#threat-intelligence">Threat Intelligence</a>
+        <a href="solutions.html#architecture">Architecture</a>
+        <a href="about.html#founder">Founder</a>
+        <a href="blog.html#resources">Resources</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Solutions</h3>
+        <a href="solutions.html">Network Security</a>
+        <a href="solutions.html">Zero-Trust Access</a>
+        <a href="solutions.html">Quantum-ready Encryption</a>
+        <a href="solutions.html">Security Operations</a>
+        <a href="solutions.html">Cloud Security</a>
+      </div>
+
+      <div class="footer-column footer-contact">
+        <h3>Get in Touch</h3>
+        <a href="contact.html"><span>✉</span> Contact our team</a>
+        <a href="contact.html"><span>⌖</span> Request a security consultation</a>
+        <a href="contact.html"><span>↗</span> Launch Defense Suite</a>
+        <div class="footer-status"><i></i> Security-first. Always.</div>
+      </div>
+    </div>
+
+    <div class="footer-newsletter">
+      <div>
+        <h3>Stay ahead of emerging threats</h3>
+        <p>Get occasional security insights and Trinetra updates.</p>
+      </div>
+      <form id="footerNewsletter" class="newsletter-form">
+        <label class="sr-only" for="newsletterEmail">Email address</label>
+        <input id="newsletterEmail" type="email" placeholder="Enter your email address" required>
+        <button type="submit">Subscribe <span>→</span></button>
+      </form>
+      <p id="newsletterMessage" class="newsletter-message" role="status"></p>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> TRINETRA. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#footer">Privacy Policy</a>
+        <a href="#footer">Terms of Service</a>
+        <a href="#footer">Cookie Policy</a>
+      </div>
+      <a class="back-to-top" href="index.html">Back to top ↑</a>
+    </div>
+  </footer>
+  <button class="blog-top-button" id="blogTopButton" aria-label="Back to top">↑</button>
+
+  <div class="blog-modal" id="blogModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="blog-modal-card">
+      <button class="blog-modal-close" id="blogModalClose" aria-label="Close article">×</button>
+      <div class="blog-label" id="modalCategory">TRINETRA INSIGHT</div>
+      <h2 id="modalTitle">Article title</h2>
+      <p id="modalDescription"></p>
+      <div id="modalArticleBody" style="white-space:pre-wrap;line-height:1.8;color:#d8cbb4;margin-top:18px"></div>
+      <div class="blog-tags"><span>TRINETRA</span><span>CYBER DEFENSE</span><span>SECURITY INSIGHTS</span></div>
+    </div>
+  </div>
+
+  <script>
+    const blogPosts = [{"category": "Network Security", "title": "The Modern Network Security Blueprint for Growing Enterprises", "description": "A practical look at layered defense, visibility, segmentation and the operating habits that make enterprise networks resilient.", "symbol": "🛡", "readtime": "8 min read"}, {"category": "Zero Trust", "title": "Zero Trust Architecture: Start With Identity, Not Perimeter", "description": "Understand why identity, device posture and least-privilege access belong at the center of a modern security program.", "symbol": "◈", "readtime": "7 min read"}, {"category": "Routing", "title": "OSPF Neighbor Formation Explained Step by Step", "description": "Explore the OSPF neighbor states, hello and dead timers, area matching and the checks that help isolate adjacency problems.", "symbol": "⌁", "readtime": "6 min read"}, {"category": "Threat Intelligence", "title": "From Threat Signals to Actionable Intelligence", "description": "Learn how security teams turn indicators, context and telemetry into decisions that reduce exposure.", "symbol": "⌖", "readtime": "9 min read"}, {"category": "Cloud Security", "title": "Securing Hybrid Cloud and On-Premise Infrastructure", "description": "A clear framework for identity controls, network boundaries, logging and secure connectivity across hybrid environments.", "symbol": "☁", "readtime": "8 min read"}, {"category": "Network Security", "title": "Firewall Policy Design: Clarity Before Complexity", "description": "Build policies that are easier to audit and troubleshoot with naming standards, zones, least privilege and lifecycle reviews.", "symbol": "▤", "readtime": "6 min read"}, {"category": "Routing", "title": "BGP Fundamentals: How the Internet Chooses a Path", "description": "A beginner-friendly guide to autonomous systems, peers, path attributes and the role of routing policy.", "symbol": "⇄", "readtime": "10 min read"}, {"category": "Zero Trust", "title": "Micro-Segmentation and the Principle of Least Privilege", "description": "See how smaller trust zones can limit lateral movement and make access decisions more precise.", "symbol": "◫", "readtime": "7 min read"}, {"category": "Threat Intelligence", "title": "Understanding the Cyber Kill Chain in Real Operations", "description": "Connect attacker behavior to defensive controls, detection opportunities and incident response priorities.", "symbol": "◎", "readtime": "8 min read"}, {"category": "Cloud Security", "title": "Cloud Network Security: Five Controls to Review First", "description": "Review identity, security groups, encryption, centralized logs and configuration drift before expanding workloads.", "symbol": "☁", "readtime": "5 min read"}, {"category": "Network Security", "title": "VLAN Design Best Practices for Secure Networks", "description": "Use segmentation, consistent VLAN naming, trunk controls and documented inter-VLAN routing to reduce operational risk.", "symbol": "▦", "readtime": "6 min read"}, {"category": "Routing", "title": "EIGRP Explained: Neighbors, Metrics and DUAL", "description": "Understand hello packets, K-values, successor routes and how DUAL helps EIGRP converge efficiently.", "symbol": "⌘", "readtime": "9 min read"}, {"category": "Threat Intelligence", "title": "Phishing Defense: People, Process and Technology", "description": "Combine email authentication, user reporting, safe workflows and layered technical controls to reduce phishing risk.", "symbol": "✉", "readtime": "6 min read"}, {"category": "Zero Trust", "title": "Privileged Access Management for Infrastructure Teams", "description": "Explore just-in-time access, credential vaulting, session oversight and practical administrator workflows.", "symbol": "♙", "readtime": "7 min read"}, {"category": "Cloud Security", "title": "Protecting APIs in a Connected Digital Environment", "description": "Learn how authentication, authorization, rate limits, validation and monitoring work together to protect APIs.", "symbol": "⌬", "readtime": "7 min read"}, {"category": "Network Security", "title": "Network Monitoring Metrics That Actually Matter", "description": "Move beyond dashboards by choosing availability, latency, loss, utilization and security signals tied to action.", "symbol": "▥", "readtime": "5 min read"}, {"category": "Routing", "title": "STP and RSTP: Preventing Layer 2 Loops", "description": "A concise guide to root bridge selection, port roles, convergence and safer access-layer defaults.", "symbol": "⤢", "readtime": "8 min read"}, {"category": "Threat Intelligence", "title": "Incident Response: The First 60 Minutes", "description": "A structured first-response checklist for validating an alert, containing risk, preserving evidence and communicating clearly.", "symbol": "◉", "readtime": "6 min read"}, {"category": "Zero Trust", "title": "Secure Remote Access Without Implicit Trust", "description": "Compare modern remote access approaches and the controls that keep users, devices and applications protected.", "symbol": "⌑", "readtime": "7 min read"}, {"category": "Cloud Security", "title": "Cloud Security Posture Management Explained", "description": "Understand configuration assessment, risk prioritization, remediation ownership and continuous compliance.", "symbol": "☁", "readtime": "6 min read"}, {"category": "Network Security", "title": "The Role of NAC in Enterprise Network Protection", "description": "Explore device discovery, posture checks, authentication and controlled access for wired and wireless environments.", "symbol": "⌂", "readtime": "7 min read"}, {"category": "Routing", "title": "Troubleshooting DHCP Relay and IP Helper Issues", "description": "Follow the packet path from client VLAN to DHCP server and check relay configuration, routing and scope settings.", "symbol": "↗", "readtime": "5 min read"}, {"category": "Threat Intelligence", "title": "Ransomware Readiness: Backups Are Only the Beginning", "description": "Prepare with asset visibility, segmentation, immutable backups, tested recovery and practiced response plans.", "symbol": "⬡", "readtime": "8 min read"}, {"category": "Cloud Security", "title": "Building a Practical Cloud Logging Strategy", "description": "Choose useful events, centralize telemetry, protect log integrity and define alerts that support investigations.", "symbol": "▤", "readtime": "6 min read"}];
+    const blogSearch = document.getElementById('blogSearch');
+    const blogCards = () => [...document.querySelectorAll('.blog-card')];
+    const filterButtons = [...document.querySelectorAll('.blog-filter')];
+    const emptyState = document.getElementById('blogEmpty');
+    let activeCategory = 'all';
+
+    function filterBlogPosts() {
+      const query = (blogSearch.value || '').trim().toLowerCase();
+      let visibleCount = 0;
+      blogCards().forEach(card => {
+        const categoryMatch = activeCategory === 'all' || card.dataset.category === activeCategory;
+        const searchMatch = !query || card.dataset.search.includes(query);
+        const visible = categoryMatch && searchMatch;
+        card.hidden = !visible;
+        if (visible) visibleCount++;
+      });
+      emptyState.classList.toggle('show', visibleCount === 0);
+    }
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        activeCategory = button.dataset.filter;
+        filterButtons.forEach(item => item.classList.toggle('active', item === button));
+        filterBlogPosts();
+      });
+    });
+    blogSearch.addEventListener('input', filterBlogPosts);
+
+    document.querySelectorAll('[data-side-filter]').forEach(link => {
+      link.addEventListener('click', () => {
+        activeCategory = link.dataset.sideFilter;
+        filterButtons.forEach(button => button.classList.toggle('active', button.dataset.filter === activeCategory));
+        filterBlogPosts();
+      });
+    });
+
+    const modal = document.getElementById('blogModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalCategory = document.getElementById('modalCategory');
+    function openBlogArticle(index) {
+      let post = blogPosts[index];
+      try {
+        const saved = JSON.parse(localStorage.getItem('trinetraSiteConfig') || '{}');
+        const managed = (saved.blogLibrary || []).find(item => item.source === 'built-in' && item.originalIndex === index);
+        if (managed && (managed.published === false || managed.deleted === true)) return;
+        if (managed) post = { ...post, title: managed.title, description: managed.summary, category: managed.category, readtime: managed.readtime || post.readtime };
+      } catch (error) {}
+      if (!post) return;
+      modalTitle.textContent = post.title;
+      modalDescription.textContent = post.description;
+      modalCategory.textContent = post.category + ' · ' + post.readtime;
+      const articleBody = document.getElementById('modalArticleBody');
+      if (articleBody) articleBody.textContent = post.body || post.description || '';
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('blogModalClose').focus();
+    }
+    // Article links navigate to the dedicated article page.
+    // Standard links preserve browser navigation and shareable article URLs.
+    function closeBlogModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('blogModalClose').addEventListener('click', closeBlogModal);
+    modal.addEventListener('click', event => { if (event.target === modal) closeBlogModal(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') closeBlogModal(); });
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal-blog, .blog-card').forEach(element => revealObserver.observe(element));
+
+    const progress = document.getElementById('blogProgress');
+    const topButton = document.getElementById('blogTopButton');
+    function updateScrollUI() {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progressValue = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      progress.style.width = progressValue + '%';
+      topButton.classList.toggle('visible', window.scrollY > 500);
+    }
+    window.addEventListener('scroll', updateScrollUI, { passive: true });
+    updateScrollUI();
+    topButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    const menuButton = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navlinks');
+    if (menuButton && navLinks) {
+      menuButton.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+        menuButton.textContent = isOpen ? '×' : '☰';
+      });
+      navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.textContent = '☰';
+      }));
+    }
+
+    document.getElementById('blogNewsletter').addEventListener('submit', event => {
+      event.preventDefault();
+      const email = document.getElementById('blogEmail');
+      const message = document.getElementById('blogNewsletterMessage');
+      if (!email.checkValidity()) { email.reportValidity(); return; }
+      message.textContent = 'Thank you! Your email has been captured in this page demo.';
+      event.target.reset();
+    });
+
+
+    // Modern scroll-reveal, staggered cards and subtle pointer lighting.
+    const motionCards = [...document.querySelectorAll('.blog-card')];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      motionCards.forEach((card, index) => {
+        card.classList.add('is-motion-ready');
+        card.style.setProperty('--motion-delay', (index % 6) * 85 + 'ms');
+      });
+      const cardObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in-view');
+            cardObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+      motionCards.forEach(card => cardObserver.observe(card));
+    }
+    motionCards.forEach(card => {
+      card.addEventListener('pointermove', event => {
+        const bounds = card.getBoundingClientRect();
+        card.style.setProperty('--pointer-x', (event.clientX - bounds.left) + 'px');
+        card.style.setProperty('--pointer-y', (event.clientY - bounds.top) + 'px');
+      }, { passive: true });
+    });
+
+        // Keep the shared footer year current.
+    const footerYear = document.getElementById('year');
+    if (footerYear) footerYear.textContent = new Date().getFullYear();
+
+    // Create subtle ambient sparks, matching the homepage atmosphere.
+    const ambientLayer = document.getElementById('ambient');
+    if (ambientLayer) {
+      for (let sparkIndex = 0; sparkIndex < 32; sparkIndex++) {
+        const spark = document.createElement('i');
+        spark.className = 'spark';
+        spark.style.left = Math.random() * 100 + '%';
+        spark.style.top = (20 + Math.random() * 80) + '%';
+        spark.style.animationDelay = (Math.random() * 7) + 's';
+        spark.style.animationDuration = (4 + Math.random() * 5) + 's';
+        ambientLayer.appendChild(spark);
+      }
+    }
+  </script>
+<script src="assets/trinetra-customizer.js"></script>
+<script src="assets/newsletter-subscriptions.js"></script>
+  <script src="assets/trinetra-ai-chat.js" defer></script>
+<script src="assets/member-auth.js" defer></script>
+</body>
+</html>

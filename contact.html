@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090806">
+<meta name="description" content="Contact TRINETRA for enterprise networking, cybersecurity, cloud and IT solutions.">
+<title>Contact Us | TRINETRA Cyber Defense</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#ffc247;--gold2:#ff9d16;--gold3:#ffe7a0;--ink:#080807;--white:#f8f5ed;--muted:#c8c1b4;--line:rgba(255,190,66,.4);--panel:rgba(12,11,9,.82);--cyan:#27d8ff;--green:#76ff79}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{font-family:Inter,Arial,sans-serif;background:var(--ink);color:var(--white);overflow-x:hidden;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;z-index:-3;background:linear-gradient(90deg,rgba(5,5,5,.24),rgba(5,5,5,.10) 55%,rgba(5,5,5,.22)),url("assets/trinetra-background.png") center/cover no-repeat;transform:scale(1.015)}
+body:after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 72% 24%,transparent 0 18%,rgba(0,0,0,.22) 68%),linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.25))}
+a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}
+.ambient{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
+.spark{position:absolute;width:3px;height:3px;border-radius:50%;background:#ffd36b;box-shadow:0 0 12px 3px #ff9f20;opacity:0;animation:floatSpark 7s linear infinite}
+@keyframes floatSpark{0%{transform:translateY(35px) scale(.5);opacity:0}20%{opacity:.8}80%{opacity:.65}100%{transform:translateY(-130px) scale(1.3);opacity:0}}
+.topbar{position:fixed;z-index:1000;top:8px;left:50%;transform:translateX(-50%);width:min(1450px,calc(100% - 36px));height:68px;padding:0 25px;display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid var(--line);border-radius:19px;background:rgba(9,9,8,.88);backdrop-filter:blur(18px);box-shadow:0 8px 35px #0009,0 0 22px #ffad2630}
+.brand{display:flex;align-items:center;gap:11px;min-width:max-content}.brand-mark{width:45px;height:45px;border-radius:50%;overflow:hidden;border:1px solid var(--gold);box-shadow:0 0 18px #ffb52d55;background:#211706}.brand-mark img{width:100%;height:100%;object-fit:cover}.brand-name{font:700 25px Cinzel,serif;letter-spacing:2px;color:#ffda82;text-shadow:0 0 13px #ff9d16aa}
+.navlinks{display:flex;align-items:center;gap:clamp(13px,2vw,29px);margin-left:auto}.navlinks a{font-size:12px;color:#f4f0e8;position:relative;padding:24px 0;transition:.25s;white-space:nowrap}.navlinks a:hover,.navlinks a.active{color:#ffd45f}.navlinks a:after{content:"";position:absolute;left:50%;bottom:13px;width:0;height:2px;background:var(--gold);box-shadow:0 0 10px var(--gold);transition:.3s;transform:translateX(-50%)}.navlinks a:hover:after,.navlinks a.active:after{width:100%}
+.launch{display:inline-flex;align-items:center;gap:8px;padding:12px 17px;border:1px solid var(--gold);border-radius:30px;color:#ffd65c;background:#281a08;white-space:nowrap;font-size:12px;font-weight:800;transition:.3s}.launch:hover{background:var(--gold);color:#171006;box-shadow:0 0 25px #ffb72b99;transform:translateY(-2px)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:10px;color:var(--gold);font-size:23px;padding:6px 11px;cursor:pointer}
+.wrap{width:min(1210px,calc(100% - 48px));margin:auto}
+.hero{padding:160px 0 62px;text-align:center;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;color:var(--gold3);font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase}.eyebrow:before,.eyebrow:after{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));box-shadow:0 0 10px var(--gold)}.eyebrow:after{transform:rotate(180deg)}
+h1,h2,h3{font-family:Cinzel,Georgia,serif}
+.hero h1{font-size:clamp(43px,7vw,82px);line-height:1.08;margin:20px 0 14px;letter-spacing:1px;background:linear-gradient(180deg,#fff3c5,#ffc247 52%,#b96b0c);color:transparent;background-clip:text;-webkit-background-clip:text;filter:drop-shadow(0 5px 20px #ff9b2470);animation:glow 4s ease-in-out infinite alternate}
+@keyframes glow{to{filter:drop-shadow(0 5px 28px #ffb52da8)}}
+.hero p{max-width:720px;margin:0 auto;color:#ded7c9;line-height:1.85;font-size:15px}
+.hero-orbit{position:absolute;width:360px;height:360px;border:1px solid #ffc24716;border-radius:50%;left:50%;top:110px;transform:translateX(-50%);pointer-events:none;animation:orbit 35s linear infinite;z-index:-1}.hero-orbit:before,.hero-orbit:after{content:"";position:absolute;inset:28px;border:1px dashed #ffc24720;border-radius:50%}.hero-orbit:after{inset:72px;border-color:#27d8ff20}@keyframes orbit{to{rotate:360deg}}
+.contact-layout{display:grid;grid-template-columns:.82fr 1.18fr;gap:25px;align-items:stretch;padding:8px 0 95px}
+.panel{position:relative;overflow:hidden;border:1px solid #ffc24755;border-radius:23px;background:linear-gradient(145deg,rgba(27,23,15,.92),rgba(7,7,6,.91));backdrop-filter:blur(15px);box-shadow:0 20px 60px #0008,inset 0 1px #fff2}
+.panel:before{content:"";position:absolute;inset:-1px;background:linear-gradient(110deg,transparent 20%,#ffc24713 48%,transparent 72%);transform:translateX(-110%);transition:.8s;pointer-events:none}.panel:hover:before{transform:translateX(110%)}
+.contact-info{padding:35px 31px}.panel-kicker{font-size:10px;letter-spacing:2.5px;color:var(--gold);font-weight:800;text-transform:uppercase}.contact-info h2,.form-panel h2{font-size:clamp(25px,3vw,34px);color:#ffe2a0;margin:13px 0}.contact-info>p{color:#c9c1b5;font-size:13px;line-height:1.8;margin-bottom:28px}
+.info-list{display:grid;gap:13px}.info-card{display:flex;gap:14px;align-items:center;padding:15px;border:1px solid #ffc24730;border-radius:14px;background:#0b0a08a8;transition:.3s}.info-card:hover{transform:translateX(5px);border-color:#ffc247a0;background:#171208}.info-icon{flex:0 0 43px;width:43px;height:43px;display:grid;place-items:center;border-radius:13px;color:var(--gold);font-size:20px;border:1px solid #ffc24766;background:#ffc24712}.info-card small{display:block;color:#a99f8d;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:5px}.info-card strong{font-size:13px;color:#f5e8ca;font-weight:600;overflow-wrap:anywhere}
+.availability{display:flex;align-items:center;gap:10px;margin-top:22px;padding:13px 15px;border:1px solid #53b85c55;border-radius:12px;background:#10200f80;color:#c9f6c6;font-size:11px}.availability i{width:8px;height:8px;border-radius:50%;background:#65ff6d;box-shadow:0 0 12px #65ff6d;animation:pulse 1.5s infinite}@keyframes pulse{50%{opacity:.35;box-shadow:0 0 2px #65ff6d}}
+.form-panel{padding:35px}.form-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start}.secure-label{font-size:10px;color:#a9e6a9;border:1px solid #5caa5c55;background:#15301588;padding:7px 10px;border-radius:30px;white-space:nowrap}.form-panel>p{font-size:12px;color:#bfb7a9;line-height:1.7;margin-bottom:24px}
+.contact-form{display:grid;grid-template-columns:1fr 1fr;gap:17px}.field{display:flex;flex-direction:column;gap:8px}.field.full{grid-column:1/-1}.field label{font-size:11px;color:#f2dfb8;font-weight:700;letter-spacing:.3px}.field label span{color:#ffb83f}.field input,.field textarea,.field select{width:100%;border:1px solid #a77b3d66;border-radius:11px;background:rgba(5,5,4,.72);color:#fff5df;padding:14px 15px;outline:none;transition:.25s;font-size:12px}.field input::placeholder,.field textarea::placeholder{color:#827969}.field select{color:#d9c9a8}.field select option{background:#12100c}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold);box-shadow:0 0 0 3px #ffc24718,0 0 18px #ffc24712}.field textarea{min-height:132px;resize:vertical;line-height:1.6}.field .hint{font-size:10px;color:#8e8678;text-align:right;margin-top:-4px}
+.form-bottom{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-top:3px}.consent{display:flex;align-items:flex-start;gap:9px;max-width:390px;color:#aaa18f;font-size:10px;line-height:1.6}.consent input{accent-color:var(--gold);margin-top:2px}.submit-btn{border:0;border-radius:11px;padding:15px 23px;background:linear-gradient(120deg,#ffe7a0,#ffb52d 58%,#ff8c16);color:#171006;font-weight:900;font-size:12px;cursor:pointer;box-shadow:0 8px 25px #ffad2640;transition:.3s}.submit-btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px #ffad2670}.submit-btn:disabled{opacity:.6;cursor:wait}
+.form-message{display:none;grid-column:1/-1;padding:13px 15px;border-radius:11px;font-size:12px;line-height:1.6}.form-message.show{display:block}.form-message.success{border:1px solid #4caa5b77;background:#102312;color:#c9f6c6}.form-message.error{border:1px solid #d66c4d77;background:#2a120e;color:#ffd0c1}
+.trust-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 0 85px}.trust-item{display:flex;align-items:center;gap:13px;padding:18px;border:1px solid #ffc24735;border-radius:15px;background:#0c0b09c9;transition:.3s}.trust-item:hover{transform:translateY(-5px);border-color:#ffc24788}.trust-item b{display:block;color:#ffe0a0;font-size:12px;margin-bottom:4px}.trust-item span{font-size:10px;color:#aaa18f;line-height:1.5}.trust-icon{font-size:23px;color:var(--gold)}
+footer{position:relative;border-top:1px solid #ffc24745;background:rgba(5,5,4,.94);overflow:hidden}
+.footer-glow{position:absolute;width:600px;height:240px;left:50%;top:-190px;transform:translateX(-50%);background:#ffad2620;filter:blur(65px);pointer-events:none}
+.footer-main{position:relative;width:min(1210px,calc(100% - 48px));margin:auto;padding:58px 0 42px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:35px}
+.footer-logo{display:flex;align-items:center;gap:10px;font:700 24px Cinzel,serif;letter-spacing:2px;color:var(--gold3)}.footer-logo img{width:43px;height:43px;border-radius:50%;border:1px solid var(--gold);object-fit:cover;box-shadow:0 0 15px #ffb52d44}.footer-tagline{font-size:9px;letter-spacing:2px;color:#e4b85e;margin:13px 0}.footer-about{max-width:280px;color:#aaa18f;font-size:11px;line-height:1.8}.footer-socials{display:flex;gap:9px;margin-top:18px}.footer-socials a{width:32px;height:32px;display:grid;place-items:center;border:1px solid #ffc24755;border-radius:50%;font-size:12px;color:var(--gold3);transition:.25s}.footer-socials a:hover{background:var(--gold);color:#171006;transform:translateY(-3px)}
+.footer-column{display:flex;flex-direction:column;gap:12px}.footer-column h3{font-size:15px;color:#ffe0a0;margin-bottom:7px}.footer-column a{font-size:11px;color:#aaa18f;transition:.2s}.footer-column a:hover{color:var(--gold);transform:translateX(3px)}.footer-status{display:inline-flex;align-items:center;gap:8px;margin-top:5px;color:#b7e8b4;font-size:10px}.footer-status i{width:7px;height:7px;border-radius:50%;background:#70ff70;box-shadow:0 0 9px #70ff70}
+.footer-newsletter{width:min(1210px,calc(100% - 48px));margin:0 auto 30px;padding:22px 25px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border:1px solid #ffc24745;border-radius:16px;background:linear-gradient(100deg,#171208,#0b0a08)}.footer-newsletter h3{font-size:17px;color:#ffe0a0;margin-bottom:5px}.footer-newsletter p{font-size:10px;color:#aaa18f}.newsletter-form{display:flex;gap:8px;flex:1;max-width:440px}.newsletter-form input{min-width:0;flex:1;border:1px solid #a77b3d66;border-radius:9px;background:#050504;color:white;padding:12px;font-size:11px;outline:none}.newsletter-form input:focus{border-color:var(--gold)}.newsletter-form button{border:0;border-radius:9px;background:var(--gold);color:#171006;padding:0 15px;font-size:11px;font-weight:900;cursor:pointer}.newsletter-message{width:100%;color:#bff2bd;font-size:10px}
+.footer-bottom{width:min(1210px,calc(100% - 48px));margin:auto;padding:20px 0 24px;border-top:1px solid #ffffff15;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#8f8779;font-size:10px}.footer-legal{display:flex;gap:17px;flex-wrap:wrap}.footer-legal a:hover,.back-top:hover{color:var(--gold)}.back-top{color:#d6b86f}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .75s ease,transform .75s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+#toast{position:fixed;right:22px;bottom:22px;z-index:2000;max-width:min(390px,calc(100% - 44px));padding:15px 18px;border:1px solid #ffc24788;border-radius:12px;background:#171208f2;color:#ffe7ae;box-shadow:0 12px 35px #0009;opacity:0;transform:translateY(20px);pointer-events:none;transition:.35s;font-size:12px;line-height:1.6}#toast.show{opacity:1;transform:translateY(0)}
+@media(max-width:1100px){.navlinks{gap:12px}.navlinks a{font-size:10px}.launch{font-size:10px;padding:10px 12px}.footer-main{grid-template-columns:1.3fr 1fr 1fr}.footer-contact{grid-column:2/-1}}
+@media(max-width:800px){.topbar{width:calc(100% - 22px);padding:0 14px}.menu-btn{display:block}.launch{display:none}.navlinks{display:none;position:absolute;top:74px;left:0;right:0;padding:12px 18px 18px;background:rgba(8,8,7,.98);border:1px solid #a87831;border-radius:14px;flex-direction:column;align-items:stretch;gap:0}.navlinks.open{display:flex}.navlinks a{padding:13px 7px;border-bottom:1px solid #ffffff12;font-size:13px}.navlinks a:after{display:none}.contact-layout{grid-template-columns:1fr}.contact-info{order:2}.form-panel{order:1}.trust-strip{grid-template-columns:1fr}.footer-main{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}.footer-contact{grid-column:auto}}
+@media(max-width:520px){.wrap{width:calc(100% - 30px)}.brand-name{font-size:21px}.brand-mark{width:39px;height:39px}.hero{padding:135px 0 45px}.hero h1{font-size:43px}.hero p{font-size:13px}.contact-layout{padding-bottom:65px}.form-panel,.contact-info{padding:25px 19px}.contact-form{grid-template-columns:1fr}.field.full,.form-bottom,.form-message{grid-column:1}.form-head{display:block}.secure-label{display:inline-block;margin-top:8px}.form-bottom{align-items:stretch}.submit-btn{width:100%}.footer-main{grid-template-columns:1fr 1fr;gap:28px 18px}.footer-brand{grid-column:1/-1}.footer-contact{grid-column:1/-1}.footer-newsletter{width:calc(100% - 30px);padding:20px}.newsletter-form{max-width:none;width:100%}.footer-bottom{width:calc(100% - 30px)}.footer-legal{gap:10px}.hero-orbit{width:280px;height:280px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+
+/* Shared footer copied from the homepage */
+/* Responsive Trinetra footer */
+    .site-footer{position:relative;overflow:hidden;margin-top:45px;padding:58px max(28px,calc((100% - 1335px)/2)) 22px;background:linear-gradient(180deg,rgba(10,9,8,.94),rgba(4,4,4,.99));border-top:1px solid #d99b3d88;isolation:isolate}
+    .site-footer:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.2;background:radial-gradient(ellipse at 15% 0%,#ffb52b55,transparent 42%),radial-gradient(ellipse at 85% 30%,#ff8e1c30,transparent 38%)}
+    .footer-glow{position:absolute;top:-1px;left:50%;width:min(720px,80%);height:1px;transform:translateX(-50%);background:#ffd16c;box-shadow:0 0 24px 5px #ffae2b88}
+    .footer-main{display:grid;grid-template-columns:1.65fr 1fr 1.25fr 1.35fr;gap:42px;padding-bottom:42px}
+    .footer-logo{display:inline-flex;align-items:center;gap:12px}
+    .footer-logo img{width:48px;height:48px;object-fit:cover;border-radius:50%;border:1px solid #dca443;box-shadow:0 0 18px #ffb52d44}
+    .footer-logo span{font:700 27px Cinzel,serif;letter-spacing:2px;color:#ffda82;text-shadow:0 0 12px #ff9d1666}
+    .footer-tagline{font-size:10px;letter-spacing:1.7px;color:#f4bd58;margin:12px 0}
+    .footer-about{max-width:330px;color:#c7beb0;font-size:13px;line-height:1.75}
+    .footer-socials{display:flex;gap:9px;margin-top:20px}
+    .footer-socials a{width:34px;height:34px;display:grid;place-items:center;border:1px solid #9b713b;border-radius:50%;color:#f5c66d;background:#17120b;transition:.25s;font-size:13px;font-weight:700}
+    .footer-socials a:hover{background:#ffc247;color:#171006;transform:translateY(-4px);box-shadow:0 0 17px #ffb52d77}
+    .footer-column{display:flex;flex-direction:column;align-items:flex-start;gap:13px}
+    .footer-column h3,.footer-newsletter h3{font-size:15px;color:#ffda8a;margin:5px 0 7px;font-weight:700}
+    .footer-column>a{font-size:13px;color:#c9c1b5;transition:.2s;line-height:1.5}
+    .footer-column>a:hover,.footer-legal a:hover,.back-to-top:hover{color:#ffc247;transform:translateX(3px)}
+    .footer-contact>a{display:flex;gap:10px;align-items:flex-start}
+    .footer-contact>a span{color:#ffc247}
+    .footer-status{display:flex;align-items:center;gap:9px;margin-top:6px;padding:9px 12px;border:1px solid #6d592f;border-radius:30px;color:#d7d0c4;font-size:11px;background:#17130c}
+    .footer-status i{width:7px;height:7px;border-radius:50%;background:#6cff65;box-shadow:0 0 10px #6cff65}
+    .footer-newsletter{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 0;border-top:1px solid #a87a3d55;border-bottom:1px solid #a87a3d55;position:relative}
+    .footer-newsletter h3{font-size:17px;margin:0 0 6px}
+    .footer-newsletter p{color:#c7beb0;font-size:12px}
+    .newsletter-form{display:flex;width:min(470px,48%);padding:4px;border:1px solid #a77c3f;border-radius:10px;background:#15120d}
+    .newsletter-form input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#fff;padding:10px 12px;font:inherit;font-size:12px}
+    .newsletter-form input::placeholder{color:#a99d8b}
+    .newsletter-form button{border:0;border-radius:7px;padding:10px 15px;background:linear-gradient(135deg,#ffdc79,#e9a32a);color:#171006;font-weight:700;font-size:12px;cursor:pointer;white-space:nowrap;transition:.25s}
+    .newsletter-form button:hover{box-shadow:0 0 18px #ffb52d77;transform:translateY(-1px)}
+    .newsletter-message{position:absolute;right:0;bottom:2px;color:#ffd16c!important;font-size:11px!important}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:22px;color:#a99f90;font-size:11px}
+    .footer-legal{display:flex;gap:22px}
+    .footer-legal a,.back-to-top{color:#bdb3a5;transition:.2s}
+    .back-to-top{white-space:nowrap}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:900px){.footer-main{grid-template-columns:1.4fr 1fr 1fr;gap:30px}.footer-contact{grid-column:2/4}.footer-newsletter{align-items:flex-start;flex-direction:column}.newsletter-form{width:100%}}
+    @media(max-width:600px){.site-footer{padding:42px 20px 20px;margin-top:25px}.footer-main{grid-template-columns:1fr 1fr;gap:28px 18px;padding-bottom:30px}.footer-brand{grid-column:1/-1}.footer-contact{grid-column:auto}.footer-logo img{width:42px;height:42px}.footer-logo span{font-size:23px}.footer-column h3{font-size:14px}.footer-column>a{font-size:12px}.footer-newsletter{gap:15px;padding:20px 0 28px}.footer-newsletter h3{font-size:15px}.newsletter-form{flex-direction:column;border:0;background:transparent;padding:0;gap:8px}.newsletter-form input{min-height:44px;border:1px solid #a77c3f;border-radius:8px;background:#15120d}.newsletter-form button{min-height:43px}.newsletter-message{bottom:5px;left:0;right:auto}.footer-bottom{align-items:flex-start;flex-direction:column;gap:13px}.footer-legal{flex-wrap:wrap;gap:14px}.footer-bottom p,.footer-legal a,.back-to-top{font-size:10px}}
+    @media(prefers-reduced-motion:reduce){.footer-socials a,.footer-column>a,.footer-legal a,.back-to-top,.newsletter-form button{transition:none}}
+
+
+
+    .navlinks a.nav-cta{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:10px 15px!important;margin:0 1px;border:1px solid #ffc247;
+      border-radius:999px;background:linear-gradient(120deg,#ffe7a0,#ffb52d 58%,#ff9418);
+      color:#171006!important;font-weight:800!important;font-size:11px!important;
+      letter-spacing:.15px;box-shadow:0 5px 18px #ffad2638;
+      transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
+    }
+    .navlinks a.nav-cta:after{display:none!important}
+    .navlinks a.nav-cta:hover{color:#100c05!important;transform:translateY(-2px);box-shadow:0 9px 24px #ffad2670;filter:brightness(1.06)}
+    @media(max-width:760px){.navlinks a.nav-cta{align-self:flex-start;margin:10px 0 2px;padding:11px 17px!important}}
+    
+
+    .launch-suite-right{
+      display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;
+      padding:11px 16px;border:1px solid #ffc247;border-radius:999px;
+      background:linear-gradient(120deg,#ffe7a0,#ffb52d 58%,#ff9418);
+      color:#171006!important;font-size:11px;font-weight:800;letter-spacing:.15px;
+      box-shadow:0 5px 18px #ffad2638;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
+    }
+    .launch-suite-right:hover{transform:translateY(-2px);box-shadow:0 9px 24px #ffad2670;filter:brightness(1.06)}
+    @media(max-width:1100px){.launch-suite-right{padding:9px 11px;font-size:10px}}
+    @media(max-width:760px){.launch-suite-right{display:none}}
+    
+
+            .launch-suite-mobile{display:none}
+            @media(max-width:760px){.navlinks .launch-suite-mobile{display:block;color:#ffd36b;font-weight:800}}
+            
+</style>
+</head>
+<body id="home">
+<div class="ambient" id="ambient" aria-hidden="true"></div>
+<header class="topbar">
+  <a class="brand" href="index.html#home" aria-label="Trinetra home"><span class="brand-mark"><img src="assets/trinetra-logo.png" alt="Trinetra emblem"></span><span class="brand-name">TRINETRA</span></a>
+  <nav class="navlinks" id="navlinks" aria-label="Main navigation">
+      <a href="index.html#home">Home</a><a href="about.html">About</a><a href="service.html">Services</a><a href="solutions.html">Solutions</a><a href="blog.html">Blog</a><a class="active" href="contact.html">Contact</a>
+    <a class="launch-suite-mobile" href="launch-defense-suite.html">Launch Defense Suite</a></nav>
+  <a class="launch-suite-right" href="launch-defense-suite.html">Launch Defense Suite</a><a class="launch" href="#contact-form">➤ Start a Conversation</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="hero-orbit"></div>
+    <span class="eyebrow">Connect · Collaborate · Secure</span>
+    <h1>LET'S CONNECT</h1>
+    <p>Have a network challenge, a cybersecurity concern, or a technology project in mind? Tell us what you are building. The TRINETRA team is ready to explore a smarter, stronger digital future with you.</p>
+  </section>
+
+  <section class="contact-layout wrap" id="contact-form">
+    <aside class="panel contact-info reveal">
+      <span class="panel-kicker">Contact information</span>
+      <h2>Let's build something secure.</h2>
+      <p>Choose the best way to reach our team, or send your requirements through the secure enquiry form. Share a little context and we can make the first conversation more productive.</p>
+      <div class="info-list">
+        <a class="info-card" href="mailto:info@trinetra.com"><span class="info-icon">✉</span><span><small>Email our team</small><strong>info@trinetra.com</strong></span></a>
+        <a class="info-card" href="#contact-form"><span class="info-icon">⌖</span><span><small>Business enquiries</small><strong>Project & consultation requests</strong></span></a>
+        <a class="info-card" href="index.html#solutions"><span class="info-icon">◈</span><span><small>Explore capabilities</small><strong>Networking · Cybersecurity · Cloud</strong></span></a>
+        <div class="info-card"><span class="info-icon">◷</span><span><small>Enquiry support</small><strong>Submit your details any time</strong></span></div>
+      </div>
+      <div class="availability"><i></i><span><b>Enquiry channel ready</b> — send your requirements using the form.</span></div>
+    </aside>
+
+    <section class="panel form-panel reveal">
+      <div class="form-head"><div><span class="panel-kicker">Tell us about your project</span><h2>Send an enquiry</h2></div><span class="secure-label">✦ PRIVATE ENQUIRY</span></div>
+      <p>Fields marked with <b style="color:#ffb83f">*</b> are required. We use these details to understand and respond to your request.</p>
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="field"><label for="fullName">Full name <span>*</span></label><input id="fullName" name="name" type="text" placeholder="Enter your full name" autocomplete="name" required minlength="2"></div>
+        <div class="field"><label for="email">Business email <span>*</span></label><input id="email" name="email" type="email" placeholder="name@company.com" autocomplete="email" required></div>
+        <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" placeholder="+91 00000 00000" autocomplete="tel"></div>
+        <div class="field"><label for="company">Company / organisation</label><input id="company" name="company" type="text" placeholder="Your company name" autocomplete="organization"></div>
+        <div class="field"><label for="service">What can we help with? <span>*</span></label><select id="service" name="service" required><option value="">Select a service</option><option>Network Infrastructure & Routing</option><option>Cybersecurity & Threat Defense</option><option>Firewall & Zero-Trust Security</option><option>Cloud & Data Centre Solutions</option><option>Software & Web Development</option><option>IT Consulting & Managed Services</option><option>Other / Not sure yet</option></select></div>
+        <div class="field"><label for="budget">Project timeline</label><select id="budget" name="timeline"><option value="">Select a timeline</option><option>Immediately</option><option>Within 1 month</option><option>1–3 months</option><option>3–6 months</option><option>Just exploring</option></select></div>
+        <div class="field full"><label for="message">Tell us about your requirements <span>*</span></label><textarea id="message" name="message" maxlength="1500" placeholder="Describe your challenge, current environment, goals, or the support you need..." required minlength="10"></textarea><span class="hint"><span id="charCount">0</span> / 1500 characters</span></div>
+        <div class="form-bottom">
+          <label class="consent"><input type="checkbox" id="consent" required><span>I agree that TRINETRA may use these details to respond to my enquiry. <b style="color:#ffb83f">*</b></span></label>
+          <button class="submit-btn" type="submit" id="submitBtn">Send Enquiry <span aria-hidden="true">↗</span></button>
+        </div>
+        <div class="form-message" id="formMessage" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+  </section>
+
+  <section class="trust-strip wrap reveal" aria-label="Our approach">
+    <div class="trust-item"><span class="trust-icon">◈</span><span><b>Security-first thinking</b><span>Designed around resilience and protection.</span></span></div>
+    <div class="trust-item"><span class="trust-icon">⌘</span><span><b>Engineering-led approach</b><span>Practical technology for real environments.</span></span></div>
+    <div class="trust-item"><span class="trust-icon">✧</span><span><b>Collaborative delivery</b><span>Clear communication from first discussion.</span></span></div>
+  </section>
+</main>
+
+<footer class="site-footer" id="footer">
+    <div class="footer-glow"></div>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a class="footer-logo" href="index.html#home">
+          <img src="assets/trinetra-logo.png" alt="Trinetra emblem">
+          <span>TRINETRA</span>
+        </a>
+        <p class="footer-tagline">DIVINE VISION · POWER · PROTECTION</p>
+        <p class="footer-about">Intelligent network security and zero-trust defense for a safer, more resilient digital world.</p>
+        <div class="footer-socials" aria-label="Social media links">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="X">𝕏</a>
+          <a href="#" aria-label="GitHub">⌘</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Explore</h3>
+        <a href="index.html#home">Home</a>
+        <a href="about.html">About Us</a><a href="service.html">Services</a>
+        <a href="solutions.html">Our Solutions</a>
+        
+        <a href="index.html#threat-intel">Threat Intelligence</a>
+        <a href="index.html#architecture">Architecture</a>
+        <a href="index.html#founder">Founder</a>
+        <a href="index.html#resources">Resources</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Solutions</h3>
+        <a href="solutions.html">Network Security</a>
+        <a href="solutions.html">Zero-Trust Access</a>
+        <a href="solutions.html">Quantum-ready Encryption</a>
+        <a href="solutions.html">Security Operations</a>
+        <a href="solutions.html">Cloud Security</a>
+      </div>
+
+      <div class="footer-column footer-contact">
+        <h3>Get in Touch</h3>
+        <a href="contact.html"><span>✉</span> Contact our team</a>
+        <a href="contact.html"><span>⌖</span> Request a security consultation</a>
+        <a href="contact.html"><span>↗</span> Launch Defense Suite</a>
+        <div class="footer-status"><i></i> Security-first. Always.</div>
+      </div>
+    </div>
+
+    <div class="footer-newsletter">
+      <div>
+        <h3>Stay ahead of emerging threats</h3>
+        <p>Get occasional security insights and Trinetra updates.</p>
+      </div>
+      <form id="footerNewsletter" class="newsletter-form">
+        <label class="sr-only" for="newsletterEmail">Email address</label>
+        <input id="newsletterEmail" type="email" placeholder="Enter your email address" required>
+        <button type="submit">Subscribe <span>→</span></button>
+      </form>
+      <p id="newsletterMessage" class="newsletter-message" role="status"></p>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> TRINETRA. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#footer">Privacy Policy</a>
+        <a href="#footer">Terms of Service</a>
+        <a href="#footer">Cookie Policy</a>
+      </div>
+      <a class="back-to-top" href="index.html#home">Back to top ↑</a>
+    </div>
+  </footer>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  const ambient = document.getElementById('ambient');
+  for (let i=0;i<36;i++) {
+    const spark=document.createElement('i'); spark.className='spark';
+    spark.style.left=Math.random()*100+'%'; spark.style.top=(20+Math.random()*80)+'%';
+    spark.style.animationDelay=(Math.random()*7)+'s'; spark.style.animationDuration=(4+Math.random()*5)+'s';
+    ambient.appendChild(spark);
+  }
+  const menuBtn=document.getElementById('menuBtn'), nav=document.getElementById('navlinks');
+  menuBtn.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));menuBtn.textContent=open?'×':'☰';});
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menuBtn.textContent='☰';menuBtn.setAttribute('aria-expanded','false');}));
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  document.getElementById('year').textContent=new Date().getFullYear();
+  const message=document.getElementById('message'), count=document.getElementById('charCount');
+  message.addEventListener('input',()=>count.textContent=message.value.length);
+  const toast=document.getElementById('toast'); let toastTimer;
+  function notify(text){toast.textContent=text;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),4200);}
+  const form=document.getElementById('contactForm'), formMessage=document.getElementById('formMessage'), submit=document.getElementById('submitBtn');
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    if(!form.reportValidity()) return;
+    if(!document.getElementById('consent').checked){document.getElementById('consent').focus();return;}
+    const data=Object.fromEntries(new FormData(form).entries());
+    const key='trinetraContactEnquiries';
+    let enquiries=[];
+    try{enquiries=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(enquiries))enquiries=[];}catch(err){enquiries=[];}
+    data.id='ENQ-'+Date.now()+'-'+Math.random().toString(36).slice(2,7).toUpperCase();
+    data.submittedAt=new Date().toISOString();
+    data.status='New';
+    enquiries.unshift(data);
+    localStorage.setItem(key,JSON.stringify(enquiries));
+    formMessage.className='form-message show success';
+    formMessage.textContent='Thank you, '+data.name+'! Your enquiry has been saved successfully. Our team can review it in the TRINETRA dashboard.';
+    notify('Your enquiry has been saved successfully.');
+    form.reset();count.textContent='0';
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var yearNode=document.getElementById('year');
+  if(yearNode) yearNode.textContent=new Date().getFullYear();
+})();
+</script>
+
+<script src="assets/trinetra-customizer.js"></script>
+<script src="assets/newsletter-subscriptions.js"></script>
+  <script src="assets/trinetra-ai-chat.js" defer></script>
+<script src="assets/member-auth.js" defer></script>
+</body>
+</html>

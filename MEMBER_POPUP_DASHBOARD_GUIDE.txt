@@ -1,0 +1,33 @@
+TRINETRA POPUP SIGN-IN AND MEMBER DASHBOARD
+
+WHAT VISITORS SEE
+- A Sign In link is added to the public website navigation.
+- Clicking it opens a responsive popup with Sign In and Create Account tabs.
+- Visitors register with their own name, email address and password.
+- Successful sign-in or registration opens My Account.
+- The popup closes with the X button, backdrop click or Escape key.
+
+WHAT THE ADMIN SEES
+- Dashboard > Registered Website Members.
+- Enter the private dashboard admin key from api/config.php.
+- Load member names, emails, registration dates and account status.
+- Block/unblock or delete a member account.
+- Password hashes are never returned to the dashboard.
+
+REQUIRED SERVER SETUP
+- PHP with PDO MySQL enabled and HTTPS.
+- Import database.sql.
+- Configure api/config.php with database credentials.
+- Replace the admin_key placeholder with a long, unique secret (at least 32 characters).
+- Never place the admin key in public JavaScript or share it with visitors.
+
+NOTE
+This feature stores member accounts in MySQL on the hosting server. Browser-only preview or file:// opening cannot register accounts; deploy to PHP hosting and finish database setup first. Existing member accounts in the same members table remain available.
+
+LATEST POPUP AND DASHBOARD IMPROVEMENTS
+- The popup backdrop is now lightly transparent, so the current website page remains visible behind the sign-in / sign-up card.
+- The login and registration card uses a translucent glass-style finish.
+- Password Show/Hide controls are available on sign-in and sign-up forms.
+- Optional Remember my email stores only the email address in this browser; it never stores the password.
+- Dashboard member management now includes live search by name/email/ID, account-status filtering, and CSV export of the currently filtered member list.
+- The dashboard continues to support blocking/unblocking and deleting member accounts.

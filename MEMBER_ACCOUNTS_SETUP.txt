@@ -1,0 +1,35 @@
+TRINETRA MEMBER ACCOUNT SYSTEM — INSTALLATION
+
+WHAT THIS ADDS
+- Public Sign In link in the main navigation.
+- Create Account, Sign In, My Account, and Log Out pages.
+- Accounts are stored in MySQL; passwords are stored as PHP password_hash hashes (not plain text).
+- PHP sessions, HttpOnly/SameSite cookies, CSRF checks for authenticated actions, prepared SQL statements.
+
+REQUIRED HOSTING
+Your web hosting must support PHP 8.0+ with PDO MySQL and a MySQL/MariaDB database. This will not work by opening the HTML files directly from your computer (file://) or on a static-only host.
+
+INSTALL
+1. Upload the website files to your PHP-enabled hosting public folder.
+2. Create a MySQL database and database user in your hosting control panel.
+3. Open phpMyAdmin, select that database, and import database.sql.
+4. In the uploaded api folder, edit config.php and enter the database host, database name, database username, and database password.
+5. Keep api/.htaccess in place so the config file is blocked from direct browser access. Use HTTPS on the live website.
+6. Visit signup.html and create a test member account. Then test login.html, account.html, and Log Out.
+
+IMPORTANT SECURITY / SCOPE
+- Visitors create accounts with their own email and password. Do not share your hosting/database credentials with visitors.
+- The first release provides member registration, login, a basic member profile, and logout. It does not yet provide email verification, password reset emails, paid subscriptions, or a private members-only content area.
+- The existing website pages remain public. This adds member accounts but does not automatically restrict pages or services to members.
+- No admin user-management screen is included. Do not expose member records in the existing localStorage-based website dashboard. A separate admin-protected user manager can be added next.
+- Configure regular database backups and use HTTPS. Set a strong database password and never commit api/config.php to a public code repository.
+
+POPUP SIGN-IN + DASHBOARD MEMBER MANAGEMENT
+1. Upload all website files to PHP-enabled hosting and enable HTTPS.
+2. Create a MySQL database and import database.sql in phpMyAdmin (the members table is included).
+3. Edit api/config.php with your real database host, database name, database username and database password.
+4. In api/config.php, replace CHANGE_THIS_TO_A_LONG_RANDOM_ADMIN_KEY with a private random key of at least 32 characters. Keep it secret and do not share it with visitors.
+5. Open dashboard.html, find Registered Website Members, enter the private admin key and click Load registered members.
+6. New visitor accounts created from the Sign In popup will be listed there. The dashboard can block/unblock or delete accounts. Passwords are hashed and are never shown in the dashboard.
+
+The member list endpoint is protected by the private dashboard admin key. Do not publish api/config.php or share the admin key. Keep the dashboard and hosting account access restricted to trusted administrators.

@@ -1,0 +1,23 @@
+TRINETRA DASHBOARD LOGIN — REQUIRED ONE-TIME SETUP
+
+The dashboard pages are now protected by a server-side PHP session. Direct visits to dashboard.php, contact-enquiries.php, email-subscribers.php and registered-members.php redirect to admin-login.php unless an administrator is signed in. Logging out destroys the admin session.
+
+1. Upload all website files to PHP-enabled Apache hosting. Keep the includes folder and root .htaccess file.
+2. Open api/config.php. Preserve your existing database settings and add/update these values:
+
+'dashboard_admin_username' => 'your-private-admin-username',
+'dashboard_admin_password_hash' => 'PASTE_HASH_HERE',
+
+3. Generate a password hash on your hosting terminal (PHP CLI):
+   php -r "echo password_hash('REPLACE_WITH_A_LONG_UNIQUE_PASSWORD', PASSWORD_DEFAULT), PHP_EOL;"
+   Copy the printed hash into dashboard_admin_password_hash. Do not put the plain password in this config file.
+4. Visit /admin-login.php and sign in with the username and original password you selected.
+5. Use the new Log Out button on dashboard pages.
+
+IMPORTANT SECURITY NOTES
+- Use HTTPS on the live site. The admin session cookie is HttpOnly and SameSite=Strict; it is marked Secure automatically when HTTPS is detected.
+- Protect api/config.php from public access (api/.htaccess already denies direct requests).
+- Do not share the admin password or the password hash.
+- This is a single administrator login. It is separate from public visitor/member accounts.
+- The Registered Website Members page still uses the existing private member-admin key in api/config.php as an additional check. Configure that key as a long random value as described in MEMBER_ACCOUNTS_SETUP.txt.
+- The contact enquiries and email subscriber screens in this project currently read browser localStorage; this dashboard login protects those pages but does not migrate those records into MySQL.
